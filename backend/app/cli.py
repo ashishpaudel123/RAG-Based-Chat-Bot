@@ -3,6 +3,7 @@
     python -m app.cli create-admin --email admin@example.com --name "Admin" --password Secret123
     python -m app.cli ingest ../sample_data --tags "policy"
     python -m app.cli reindex
+    python -m app.cli list-models
 """
 
 import argparse
@@ -60,6 +61,29 @@ def reindex(args):
               f"({run.failures} failures) in {run.duration_ms} ms")
 
 
+def list_models(args):
+    from app.config import get_settings
+    from app.services.llm import GeminiProvider, LLMError
+
+    settings = get_settings()
+    try:
+        models = GeminiProvider(settings).list_models()
+    except LLMError as exc:
+        raise SystemExit(f"Could not list models: {exc}")
+    rows = []
+    for m in models:
+        actions = set(m.supported_actions or [])
+        kind = "chat" if "generateContent" in actions else "embedding" if {"embedContent", "batchEmbedContents"} & actions else None
+        if kind:
+            rows.append((kind, (m.name or "").removeprefix("models/"), m.display_name or ""))
+    for kind in ("chat", "embedding"):
+        print(f"\n{kind.upper()} MODELS (use for {'GEMINI_MODEL' if kind == 'chat' else 'GEMINI_EMBEDDING_MODEL'}):")
+        for _, name, display in sorted(r for r in rows if r[0] == kind):
+            print(f"  {name:45} {display}")
+    print(f"\nCurrently configured: GEMINI_MODEL={settings.gemini_model}  "
+          f"GEMINI_EMBEDDING_MODEL={settings.gemini_embedding_model}")
+
+
 def main():
     parser = argparse.ArgumentParser(prog="python -m app.cli")
     sub = parser.add_subparsers(required=True)
@@ -72,6 +96,8 @@ def main():
     p.add_argument("path")
     p.add_argument("--tags", default="")
     p.set_defaults(func=ingest)
+    p = sub.add_parser("list-models", help="show Gemini models available to the configured API key")
+    p.set_defaults(func=list_models)
     p = sub.add_parser("reindex")
     p.add_argument("--document-id")
     p.set_defaults(func=reindex)

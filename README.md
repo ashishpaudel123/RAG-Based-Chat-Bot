@@ -124,7 +124,7 @@ that matter most for quality:
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `GEMINI_MODEL` | `gemini-2.5-flash` | generation model |
+| `GEMINI_MODEL` | `gemini-flash-latest` | generation model (rolling alias; run `python -m app.cli list-models` to see the models your key can use, and pin one for reproducible evaluations) |
 | `GEMINI_EMBEDDING_MODEL` / `EMBEDDING_DIMENSIONS` | `gemini-embedding-001` / `768` | embedding model and size (run a full re-index after changing) |
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | `1000` / `200` | characters per chunk and overlap |
 | `TOP_K` | `5` | candidates retrieved per query |
