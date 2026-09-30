@@ -40,9 +40,12 @@ def send_message(body: ChatRequest, request: Request, db: DB, user: CurrentUser)
     except LLMError as exc:
         db.rollback()
         record_error("gemini", str(exc), user_id=user.id, path=request.url.path)
-        detail = ("The AI service is busy right now. Please wait a moment and try again."
-                  if exc.status_code == 429 else
-                  "The AI service is temporarily unavailable. Please try again shortly.")
+        if exc.daily_quota:
+            detail = "Today's AI usage limit has been reached. Please try again later or contact the administrator."
+        elif exc.status_code == 429:
+            detail = "The AI service is receiving too many requests. Please wait a minute and try again."
+        else:
+            detail = "The AI service is temporarily unavailable. Please try again shortly."
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail)
     return ChatResponse(
         conversation_id=conversation.id,

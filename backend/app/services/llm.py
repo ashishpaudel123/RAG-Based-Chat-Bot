@@ -6,8 +6,10 @@ surfaced as ``LLMError`` so callers can return a controlled message.
 """
 
 import hashlib
+import logging
 import math
 import re
+import threading
 import time
 from dataclasses import dataclass
 from functools import lru_cache
@@ -21,10 +23,12 @@ TaskType = Literal["RETRIEVAL_DOCUMENT", "RETRIEVAL_QUERY"]
 class LLMError(Exception):
     """Raised when the model provider cannot produce a result."""
 
-    def __init__(self, message: str, *, retryable: bool = False, status_code: int | None = None):
+    def __init__(self, message: str, *, retryable: bool = False, status_code: int | None = None,
+                 daily_quota: bool = False):
         super().__init__(message)
         self.retryable = retryable
         self.status_code = status_code
+        self.daily_quota = daily_quota  # a per-day quota was exhausted (will not recover soon)
 
 
 @dataclass
@@ -46,9 +50,44 @@ class LLMProvider(Protocol):
     def embed(self, texts: list[str], task_type: TaskType) -> list[list[float]]: ...
 
 
+def _quota_details(exc) -> tuple[bool, float | None]:
+    """Return (is_daily_quota, retry_delay_seconds) from a Gemini 429 error."""
+    body = getattr(exc, "details", None) or {}
+    items = body.get("error", {}).get("details", []) if isinstance(body, dict) else []
+    daily, delay = False, None
+    for item in items if isinstance(items, list) else []:
+        if not isinstance(item, dict):
+            continue
+        for violation in item.get("violations", []) or []:
+            quota_id = f"{violation.get('quotaId', '')} {violation.get('quotaMetric', '')}"
+            if "PerDay" in quota_id or "per_day" in quota_id.lower():
+                daily = True
+        retry = item.get("retryDelay")
+        if isinstance(retry, str) and retry.endswith("s"):
+            try:
+                delay = float(retry[:-1])
+            except ValueError:
+                pass
+    return daily, delay
+
+
+def _api_error(exc, code, *, retryable: bool, daily_quota: bool = False) -> "LLMError":
+    detail = (getattr(exc, "message", None) or str(exc)).splitlines()[0][:300]
+    hint = ""
+    if code == 404:
+        hint = (" | Hint: the configured model is not available to this API key. Run "
+                "`python -m app.cli list-models` and set GEMINI_MODEL / GEMINI_EMBEDDING_MODEL in .env")
+    elif code == 429:
+        hint = (" | Hint: daily quota for this model is used up; switch GEMINI_MODEL to a model with a higher "
+                "free-tier limit (e.g. a Flash-Lite model) or enable billing" if daily_quota else
+                " | Hint: per-minute rate limit reached; wait a minute or use a model with a higher limit")
+    return LLMError(f"Gemini API error ({code}): {detail}{hint}", retryable=retryable, status_code=code,
+                    daily_quota=daily_quota)
+
+
 class GeminiProvider:
     name = "gemini"
-    EMBED_BATCH = 100
+    EMBED_BATCH = 50  # stays under the free-tier 100 embeddings/minute limit per batch
 
     def __init__(self, settings: Settings):
         if not settings.gemini_api_key:
@@ -64,8 +103,24 @@ class GeminiProvider:
         self.settings = settings
         self.model = settings.gemini_model
         self.embedding_model = settings.gemini_embedding_model
+        # Primary model first, then fallbacks used when it is overloaded or unavailable.
+        self.models = list(dict.fromkeys([settings.gemini_model, *settings.gemini_fallback_model_list]))
+        self._local = threading.local()
 
-    def _with_retries(self, fn):
+    @property
+    def last_model(self) -> str:
+        """Model that served the most recent generate() call on this thread."""
+        return getattr(self._local, "model", self.model)
+
+    def _with_retries(self, fn, *, wait_for_rate_limit: bool = False):
+        """Call ``fn`` with retries on transient errors.
+
+        * 5xx / timeouts: retried with exponential backoff.
+        * 429 quota errors: never blindly retried (that only burns more quota).
+          Per-minute limits are waited out only when ``wait_for_rate_limit`` is
+          set (background indexing); otherwise the error is raised at once so the
+          caller can fail over to another model. Daily limits are never waited on.
+        """
         from google.genai import errors
 
         attempts = max(1, self.settings.llm_max_retries)
@@ -74,15 +129,15 @@ class GeminiProvider:
                 return fn()
             except errors.APIError as exc:
                 code = getattr(exc, "code", None)
-                retryable = code in (408, 429, 500, 502, 503, 504)
+                if code == 429:
+                    daily, delay = _quota_details(exc)
+                    if wait_for_rate_limit and not daily and attempt < attempts - 1:
+                        time.sleep(min(65.0, (delay or 30.0) + 1.0))
+                        continue
+                    raise _api_error(exc, code, retryable=True, daily_quota=daily) from exc
+                retryable = code in (408, 500, 502, 503, 504)
                 if not retryable or attempt == attempts - 1:
-                    detail = (getattr(exc, "message", None) or str(exc)).splitlines()[0][:300]
-                    hint = ""
-                    if code == 404:
-                        hint = (" | Hint: the configured model is not available to this API key. Run "
-                                "`python -m app.cli list-models` and set GEMINI_MODEL / GEMINI_EMBEDDING_MODEL in .env")
-                    raise LLMError(f"Gemini API error ({code}): {detail}{hint}", retryable=retryable,
-                                   status_code=code) from exc
+                    raise _api_error(exc, code, retryable=retryable) from exc
             except Exception as exc:  # network errors, timeouts
                 if attempt == attempts - 1:
                     raise LLMError(f"Gemini request failed: {type(exc).__name__}", retryable=True) from exc
@@ -102,13 +157,25 @@ class GeminiProvider:
             # small caps can produce empty answers; keep a generous floor.
             max_output_tokens=max(max_output_tokens or 0, self.settings.max_output_tokens),
         )
-        response = self._with_retries(
-            lambda: self._client.models.generate_content(model=self.model, contents=contents, config=config)
-        )
-        text = (response.text or "").strip() if response else ""
-        if not text:
-            raise LLMError("Gemini returned an empty response (possibly blocked by safety filters)")
-        return text
+        last_error: LLMError | None = None
+        for model in self.models:
+            try:
+                response = self._with_retries(
+                    lambda m=model: self._client.models.generate_content(model=m, contents=contents, config=config)
+                )
+            except LLMError as exc:
+                # Fail over on overload/rate limit/outage or a model this key cannot use.
+                if exc.retryable or exc.status_code == 404:
+                    logging.getLogger("chatbot").warning("Model %s failed (%s); trying next model", model, exc)
+                    last_error = exc
+                    continue
+                raise
+            text = (response.text or "").strip() if response else ""
+            if not text:
+                raise LLMError("Gemini returned an empty response (possibly blocked by safety filters)")
+            self._local.model = model
+            return text
+        raise last_error or LLMError("No Gemini model configured")
 
     def embed(self, texts: list[str], task_type: TaskType) -> list[list[float]]:
         types = self._types
@@ -121,7 +188,10 @@ class GeminiProvider:
             response = self._with_retries(
                 lambda b=batch: self._client.models.embed_content(
                     model=self.embedding_model, contents=b, config=config
-                )
+                ),
+                # Indexing runs in the background of an admin action, so it can wait
+                # out per-minute limits; interactive query embeddings fail fast.
+                wait_for_rate_limit=task_type == "RETRIEVAL_DOCUMENT",
             )
             vectors.extend(_normalize(list(e.values)) for e in response.embeddings)
         return vectors

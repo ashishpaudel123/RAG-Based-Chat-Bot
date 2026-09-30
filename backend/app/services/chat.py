@@ -59,7 +59,7 @@ def handle_message(db: Session, user: User, conversation: Conversation | None, t
         is_fallback=result.is_fallback,
         retrieval_query=result.retrieval_query,
         latency_ms=int((time.perf_counter() - started) * 1000),
-        model=None if result.reason in ("small_talk", "no_evidence") else pipeline.llm.model,
+        model=None if result.reason in ("small_talk", "no_evidence") else getattr(pipeline.llm, "last_model", pipeline.llm.model),
         prompt_version=settings.prompt_version,
     )
     # Guard against vectors whose chunk row was removed concurrently.
