@@ -124,8 +124,8 @@ that matter most for quality:
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `GEMINI_MODEL` | `gemini-flash-latest` | generation model (rolling alias; run `python -m app.cli list-models` to see the models your key can use, and pin one for reproducible evaluations) |
-| `GEMINI_FALLBACK_MODELS` | `gemini-flash-lite-latest` | comma-separated models tried in order when the main model is overloaded (503), rate limited (429) or unavailable; empty disables failover |
+| `GEMINI_MODEL` | `gemini-flash-lite-latest` | generation model (rolling alias). Flash-Lite has much higher free-tier limits than Flash (e.g. 500 vs 20 requests/day). Run `python -m app.cli list-models` to see the models your key can use, and pin one for reproducible evaluations |
+| `GEMINI_FALLBACK_MODELS` | `gemini-flash-latest` | comma-separated models tried in order when the main model is overloaded (503), out of quota (429) or unavailable; empty disables failover |
 | `GEMINI_EMBEDDING_MODEL` / `EMBEDDING_DIMENSIONS` | `gemini-embedding-001` / `768` | embedding model and size (run a full re-index after changing) |
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | `1000` / `200` | characters per chunk and overlap |
 | `TOP_K` | `5` | candidates retrieved per query |
@@ -133,6 +133,8 @@ that matter most for quality:
 | `MAX_CONTEXT_CHUNKS` | `4` | evidence chunks sent to Gemini |
 | `QUERY_REWRITE` | `true` | rewrite follow-up questions into standalone search queries |
 | `HISTORY_MESSAGES` / `SUMMARY_TRIGGER_MESSAGES` | `8` / `20` | memory window and when older turns are summarised |
+
+**Free tier:** each chat message uses 1 embedding + 1 generation request (plus 1 for query rewriting on follow-ups; set `QUERY_REWRITE=false` to save it). Quota errors are not retried on the same model; the app fails over to the next model, and document indexing waits out per-minute embedding limits. Check usage at <https://aistudio.google.com/rate-limit>.
 
 Tune `RELEVANCE_THRESHOLD` with the evaluation harness: too high causes false fallbacks, too low lets
 irrelevant chunks through.

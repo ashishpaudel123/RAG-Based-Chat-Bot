@@ -51,12 +51,13 @@ class Settings(BaseSettings):
     # provider used by the automated tests and for demos without an API key.
     llm_provider: Literal["gemini", "fake"] = "gemini"
     gemini_api_key: str | None = Field(default=None, alias="GEMINI_API_KEY")
-    # "gemini-flash-latest" is Google's rolling alias for the current Flash model.
-    # Pin a specific model id for reproducible evaluations (see `python -m app.cli list-models`).
-    gemini_model: str = "gemini-flash-latest"
+    # Rolling aliases for Google's current Flash-Lite / Flash models. Flash-Lite
+    # has far higher free-tier limits (e.g. 500 vs 20 requests/day), so it is the
+    # default. Pin specific ids for reproducible evaluations (`python -m app.cli list-models`).
+    gemini_model: str = "gemini-flash-lite-latest"
     # Comma-separated models tried in order when the primary model is overloaded
-    # (503), rate limited (429) or unavailable. Empty string disables failover.
-    gemini_fallback_models: str = "gemini-flash-lite-latest"
+    # (503), out of quota (429) or unavailable. Empty string disables failover.
+    gemini_fallback_models: str = "gemini-flash-latest"
     gemini_embedding_model: str = "gemini-embedding-001"
     embedding_dimensions: int = 768
     temperature: float = 0.2
