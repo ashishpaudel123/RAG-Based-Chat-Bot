@@ -6,8 +6,10 @@ surfaced as ``LLMError`` so callers can return a controlled message.
 """
 
 import hashlib
+import logging
 import math
 import re
+import threading
 import time
 from dataclasses import dataclass
 from functools import lru_cache
@@ -64,6 +66,14 @@ class GeminiProvider:
         self.settings = settings
         self.model = settings.gemini_model
         self.embedding_model = settings.gemini_embedding_model
+        # Primary model first, then fallbacks used when it is overloaded or unavailable.
+        self.models = list(dict.fromkeys([settings.gemini_model, *settings.gemini_fallback_model_list]))
+        self._local = threading.local()
+
+    @property
+    def last_model(self) -> str:
+        """Model that served the most recent generate() call on this thread."""
+        return getattr(self._local, "model", self.model)
 
     def _with_retries(self, fn):
         from google.genai import errors
@@ -102,13 +112,25 @@ class GeminiProvider:
             # small caps can produce empty answers; keep a generous floor.
             max_output_tokens=max(max_output_tokens or 0, self.settings.max_output_tokens),
         )
-        response = self._with_retries(
-            lambda: self._client.models.generate_content(model=self.model, contents=contents, config=config)
-        )
-        text = (response.text or "").strip() if response else ""
-        if not text:
-            raise LLMError("Gemini returned an empty response (possibly blocked by safety filters)")
-        return text
+        last_error: LLMError | None = None
+        for model in self.models:
+            try:
+                response = self._with_retries(
+                    lambda m=model: self._client.models.generate_content(model=m, contents=contents, config=config)
+                )
+            except LLMError as exc:
+                # Fail over on overload/rate limit/outage or a model this key cannot use.
+                if exc.retryable or exc.status_code == 404:
+                    logging.getLogger("chatbot").warning("Model %s failed (%s); trying next model", model, exc)
+                    last_error = exc
+                    continue
+                raise
+            text = (response.text or "").strip() if response else ""
+            if not text:
+                raise LLMError("Gemini returned an empty response (possibly blocked by safety filters)")
+            self._local.model = model
+            return text
+        raise last_error or LLMError("No Gemini model configured")
 
     def embed(self, texts: list[str], task_type: TaskType) -> list[list[float]]:
         types = self._types

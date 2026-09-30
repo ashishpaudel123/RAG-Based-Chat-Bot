@@ -54,6 +54,9 @@ class Settings(BaseSettings):
     # "gemini-flash-latest" is Google's rolling alias for the current Flash model.
     # Pin a specific model id for reproducible evaluations (see `python -m app.cli list-models`).
     gemini_model: str = "gemini-flash-latest"
+    # Comma-separated models tried in order when the primary model is overloaded
+    # (503), rate limited (429) or unavailable. Empty string disables failover.
+    gemini_fallback_models: str = "gemini-flash-lite-latest"
     gemini_embedding_model: str = "gemini-embedding-001"
     embedding_dimensions: int = 768
     temperature: float = 0.2
@@ -75,6 +78,10 @@ class Settings(BaseSettings):
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def gemini_fallback_model_list(self) -> list[str]:
+        return [m.strip() for m in self.gemini_fallback_models.split(",") if m.strip()]
 
     @property
     def max_upload_bytes(self) -> int:
