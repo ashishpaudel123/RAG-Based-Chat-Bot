@@ -76,12 +76,21 @@ class GeminiProvider:
                 code = getattr(exc, "code", None)
                 retryable = code in (408, 429, 500, 502, 503, 504)
                 if not retryable or attempt == attempts - 1:
-                    raise LLMError(f"Gemini API error ({code})", retryable=retryable, status_code=code) from exc
+                    detail = (getattr(exc, "message", None) or str(exc)).splitlines()[0][:300]
+                    hint = ""
+                    if code == 404:
+                        hint = (" | Hint: the configured model is not available to this API key. Run "
+                                "`python -m app.cli list-models` and set GEMINI_MODEL / GEMINI_EMBEDDING_MODEL in .env")
+                    raise LLMError(f"Gemini API error ({code}): {detail}{hint}", retryable=retryable,
+                                   status_code=code) from exc
             except Exception as exc:  # network errors, timeouts
                 if attempt == attempts - 1:
                     raise LLMError(f"Gemini request failed: {type(exc).__name__}", retryable=True) from exc
             time.sleep(min(8, 2 ** attempt))
         raise LLMError("Gemini request failed")  # pragma: no cover
+
+    def list_models(self) -> list:
+        return list(self._with_retries(lambda: list(self._client.models.list())))
 
     def generate(self, system_instruction, turns, *, temperature=None, max_output_tokens=None) -> str:
         types = self._types
@@ -89,7 +98,9 @@ class GeminiProvider:
         config = types.GenerateContentConfig(
             system_instruction=system_instruction,
             temperature=self.settings.temperature if temperature is None else temperature,
-            max_output_tokens=max_output_tokens or self.settings.max_output_tokens,
+            # Newer Gemini models spend output tokens on internal "thinking", so
+            # small caps can produce empty answers; keep a generous floor.
+            max_output_tokens=max(max_output_tokens or 0, self.settings.max_output_tokens),
         )
         response = self._with_retries(
             lambda: self._client.models.generate_content(model=self.model, contents=contents, config=config)

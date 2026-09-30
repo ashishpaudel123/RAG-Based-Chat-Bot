@@ -51,11 +51,13 @@ class Settings(BaseSettings):
     # provider used by the automated tests and for demos without an API key.
     llm_provider: Literal["gemini", "fake"] = "gemini"
     gemini_api_key: str | None = Field(default=None, alias="GEMINI_API_KEY")
-    gemini_model: str = "gemini-2.5-flash"
+    # "gemini-flash-latest" is Google's rolling alias for the current Flash model.
+    # Pin a specific model id for reproducible evaluations (see `python -m app.cli list-models`).
+    gemini_model: str = "gemini-flash-latest"
     gemini_embedding_model: str = "gemini-embedding-001"
     embedding_dimensions: int = 768
     temperature: float = 0.2
-    max_output_tokens: int = 1024
+    max_output_tokens: int = 4096
     llm_timeout_seconds: int = 60
     llm_max_retries: int = 3
 
