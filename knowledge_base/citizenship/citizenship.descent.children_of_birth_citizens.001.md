@@ -17,8 +17,8 @@ source_document_id: "src-reg-2063-consolidated"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as replaced by the First Amendment Act, 2079 (text from a user-supplied excerpt, not yet checked against the Gazette)"
-confidence: medium
+amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as replaced by the First Amendment Act, 2079 (text from a user-supplied excerpt, not yet checked against the Gazette); may be affected by the Second Amendment Act, 2082 (text not yet seen)"
+confidence: low
 related_sources:
   - "नेपाल नागरिकता ऐन, २०६३, दफा ३(४) (पहिलो संशोधन, २०७९)"
   - "नेपालको संविधान, धारा ११"
@@ -54,6 +54,7 @@ English: A child of a citizen by birth whose father and mother are both Nepali c
 स्रोतमा उल्लेख छैन (not stated in the source)। अयोग्य ठहरिएमा सात दिनभित्र जानकारी। [नियमावली, नियम ६]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
+- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले दफा ३(४क) थपी, जन्मको आधारमा नागरिकता पाएका एक अभिभावकको अर्को अभिभावकको नागरिकता नपाउँदै मृत्यु भएको वा सम्पर्कविहीन भएको अवस्थाका लागि दफा ५(५क) सँग जोडिएको छुट्टै बाटो बनाएको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
 - दफा ३(४) को पाठ प्रयोगकर्ताले दिएको उद्धरणबाट लिइएको हो; नेपाल राजपत्रमा प्रकाशित पहिलो संशोधन ऐन, २०७९ सँग भिडाउनुहोस्।
 - थप प्रमाण (जस्तै बसोबासको प्रमाण) कार्यालयअनुसार माग हुन सक्छ: स्रोतमा उल्लेख छैन।
 

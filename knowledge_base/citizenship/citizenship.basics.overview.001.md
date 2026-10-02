@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text as amended up to the Nepal Citizenship (First Amendment) Ordinance, 2069; the 2079 First Amendment Act was not available when this record was written"
+amendment_status: "Act text as amended up to the Nepal Citizenship (First Amendment) Ordinance, 2069; the 2079 First Amendment Act was not available when this record was written; may be affected by the Second Amendment Act, 2082 (text not yet seen)"
 confidence: high
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३ (संशोधनसहित, २०७८), नियम ८"
@@ -49,6 +49,7 @@ English: The Nepal Citizenship Act, 2063 recognises citizenship by descent (s.3)
 सामान्यतया सम्बन्धित **जिल्ला प्रशासन कार्यालय (प्रमुख जिल्ला अधिकारी)**। प्रमुख जिल्ला अधिकारीले आफ्नो मातहतको अधिकृत वा नागरिकता वितरण टोली प्रमुखलाई अधिकार प्रत्यायोजन गर्न सक्छन्। [नियमावली, नियम ८(२)]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
+- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले वंशज (दफा ३(४क)), अङ्गीकृत (दफा ५(५क), ५(५ख)), आमाबाबुको विवरण हटाउने (दफा ८क(१क)), पुनरावलोकन (दफा १८), सजाय (दफा २१(३क)) र नाबालक परिचयपत्र (दफा २२क) सम्बन्धी परिवर्तन गरेको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
 - नेपालको संविधानका नागरिकतासम्बन्धी धारा र गैरआवासीय नेपाली नागरिकताको व्यवस्था यो रेकर्ड लेख्दा प्रयोग भएका स्रोतमा थिएनन् (स्रोत उपलब्ध छैन)।
 - नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ ले ल्याएका परिवर्तनहरू यहाँ समेटिएका छैनन्।
 

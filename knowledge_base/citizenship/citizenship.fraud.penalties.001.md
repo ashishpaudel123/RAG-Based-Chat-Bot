@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text up to the 2069 Ordinance"
+amendment_status: "Act text up to the 2069 Ordinance; may be affected by the Second Amendment Act, 2082 (text not yet seen)"
 confidence: high
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३, नियम १२"
@@ -48,6 +48,7 @@ English: A certificate obtained with false details is cancelled. Foreigners obta
   - उद्योग वा मद्दत गर्नेलाई सोही सजायको आधा। [२१(७)]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
+- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले दफा २१(३क) को सजाय नयाँ दफा ५(५क) र ५(५ख) का अवस्थामा पनि लागू हुने गरी विस्तार गरेको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
 - अनुमान / Inference: ऐनमा उल्लिखित “पुनरावेदन अदालत” को ठाउँमा अदालत संरचना पछि परिवर्तन भएको हुन सक्छ; हालको अदालत कानुन व्यवसायी वा अदालतसँग पुष्टि गर्नुहोस्।
 
 ## स्रोत (Sources)

@@ -286,7 +286,9 @@
       "foreign",
       "foreigner",
       "indian",
-      "american"
+      "american",
+      "bideshi",
+      "videsi"
     ],
     "श्रीमती": [
       "srimati",
@@ -295,7 +297,11 @@
       "patni",
       "पत्नी",
       "buhari",
-      "बुहारी"
+      "बुहारी",
+      "mahila",
+      "woman",
+      "women",
+      "स्वास्नी"
     ],
     "उजुरी": [
       "ujuri",
@@ -303,7 +309,13 @@
       "appeal",
       "punarawedan",
       "पुनरावेदन",
-      "review"
+      "review",
+      "challenge",
+      "challenging",
+      "chitta bujhena",
+      "चित्त नबुझे",
+      "दोहोर्‍याई हेर्न",
+      "pheri herna"
     ],
     "टोली": [
       "toli",
@@ -353,6 +365,15 @@
       "सोही दिन",
       "same day",
       "समय"
+    ],
+    "बसाइँसराइ": [
+      "basai",
+      "basai sarera",
+      "moved",
+      "migration",
+      "another district",
+      "arko jilla",
+      "अर्को जिल्ला"
     ]
   }
 }

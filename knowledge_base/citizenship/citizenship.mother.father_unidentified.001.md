@@ -17,8 +17,8 @@ source_document_id: "src-reg-2063-consolidated"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Rule 3(3ख) and 3(6क) added by the Second Amendment Rules, 2078; Act s.3(5) (First Amendment Act, 2079) and Constitution Art. 11(5) quoted from a user-supplied excerpt, not yet checked against the Gazette"
-confidence: medium
+amendment_status: "Rule 3(3ख) and 3(6क) added by the Second Amendment Rules, 2078; Act s.3(5) (First Amendment Act, 2079) and Constitution Art. 11(5) quoted from a user-supplied excerpt, not yet checked against the Gazette; may be affected by the Second Amendment Act, 2082 (text not yet seen)"
+confidence: low
 related_sources:
   - "नेपाल नागरिकता ऐन, २०६३, दफा ३(५) (पहिलो संशोधन, २०७९)"
   - "नेपालको संविधान, धारा ११(५)"
@@ -70,6 +70,7 @@ English: A person aged 16+ born in Nepal to a Nepali citizen mother, living in N
 - बाबु विदेशी भएको थाहा भएको अवस्था (बाबु पहिचान भएको) फरक व्यवस्था हो।
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
+- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले दफा ५(३)(ग) संशोधन गरी स्वघोषणामा निवेदक र आमा दुवैलाई समेटेको (आमाको मृत्यु वा चिकित्सकीय प्रमाणित असक्षमता अपवाद), बाबु सम्पर्कविहीन भएको वा आमाले बाबु पहिचान गर्न नसकेको अवस्था थपेको, र विदेशमा जन्मेको तर नेपालमा स्थायी बसोबास गर्ने, विदेशी नागरिकता/राहदानी नलिएको, बाबु पहिचान नभएको व्यक्तिका लागि अङ्गीकृत नागरिकताको बाटो (दफा ५(५क)/(५ख)) थपेको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
 - संविधान धारा ११(५) र ऐन दफा ३(५) को पाठ प्रयोगकर्ताले दिएको उद्धरणबाट लिइएको हो; आधिकारिक पाठसँग भिडाउनुहोस्।
 - नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ ले एकल आमाका सन्तानसम्बन्धी व्यवस्था थप सजिलो बनाएको बताइन्छ, तर त्यसको पाठ उपलब्ध छैन; यो रेकर्डमा समेटिएको छैन।
 - सर्वोच्च अदालतका नजिर यहाँ समेटिएका छैनन् (स्रोत उपलब्ध छैन)।

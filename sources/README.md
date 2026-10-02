@@ -108,3 +108,12 @@ Not used:
   in the records. The "blank parent names" quote merges rule 3(6) (guardian's name for a person with no known
   parents) with 3(6क) (father's details left blank). The National ID requirement is unconfirmed.
 - **Act s.8क (surname/address):** not seen in any text; confirm first.
+
+## Research pack 2082/2083 (2026-10-02)
+
+`research_pack_2082.md` (from the user's .docx) gives the official URLs of the Second Amendment Act 2082
+(Act No. 08, Ministry of Law PDF), the Fourth Amendment Rules 2082 (Department of Printing page), the DAO Kathmandu
+charter PDF and the MoHA NRN forms. These hosts are blocked from Claude's environment, so the PDFs still need to be
+downloaded into `sources/pdfs/`. Its description of the 2082 Act (s.3(4क), 5(3)(ग), 5(5क), 5(5ख), 8क(1क), 18, 21(3क),
+22क) was added as a warning to the six records it affects; nothing was quoted from it. Its 50 test questions
+were added to the evaluation set (`rw-*`).

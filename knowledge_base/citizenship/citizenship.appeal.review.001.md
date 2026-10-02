@@ -17,8 +17,8 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text up to the 2069 Ordinance"
-confidence: high
+amendment_status: "Act text up to the 2069 Ordinance; may be affected by the Second Amendment Act, 2082 (text not yet seen)"
+confidence: low
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३, नियम ६, १५(४)"
 user_questions:
@@ -42,6 +42,7 @@ English: If refused, the office must decide and inform you within 7 days. You ma
 - नागरिकताबाट हटाउने आदेशउपर पैंतीस दिनभित्र पुनरावेदन। [ऐन, दफा १४(२)]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
+- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले दफा १८ नै प्रतिस्थापन गरी, मर्का पर्ने व्यक्तिले **पैंतीस दिनभित्र** सम्बन्धित जिल्ला प्रशासन कार्यालयमार्फत वा सिधै **गृह मन्त्रालयका सचिवसमक्ष** निवेदन दिन सक्ने, निर्णयको समयसीमा तोकिएको र सचिवको निर्णय अन्तिम हुने (नेपाल सरकारको आदेश/निर्णयबाहेक) व्यवस्था गरेको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
 - दोहोर्‍याई हेर्ने निवेदनको ढाँचा र कुन कार्यालयमा बुझाउने: स्रोतमा उल्लेख छैन। अनुमान / Inference: सामान्यतया गृह मन्त्रालय।
 - अदालतमा रिट निवेदन जस्ता अन्य उपचार यी स्रोतमा छैनन्।
 
