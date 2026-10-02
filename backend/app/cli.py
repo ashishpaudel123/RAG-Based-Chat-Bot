@@ -4,6 +4,8 @@
     python -m app.cli ingest ../sample_data --tags "policy"
     python -m app.cli reindex
     python -m app.cli list-models
+    python -m app.cli import-gemini gemini_batch1.txt --out ../knowledge_base   # split a Gemini answer into records
+    python -m app.cli check-records ../knowledge_base                          # lint records before ingesting
 """
 
 import argparse
@@ -88,6 +90,54 @@ def list_models(args):
           f"GEMINI_EMBEDDING_MODEL={settings.gemini_embedding_model}")
 
 
+def import_gemini(args):
+    from app.services.records import check_record, read_text, split_batch
+
+    out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    records = split_batch(read_text(Path(args.file)))
+    if not records:
+        raise SystemExit("No records found. Gemini's answer should contain lines like 'FILE: <id>.md' "
+                         "followed by the record starting with '---'.")
+    written = skipped = 0
+    for record_id, text in records:
+        target = out / f"{record_id}.md"
+        report = check_record(target.name, text)
+        if target.exists() and not args.overwrite:
+            print(f"  exists   {target.name} (use --overwrite to replace)")
+            skipped += 1
+            continue
+        target.write_text(text, encoding="utf-8")
+        written += 1
+        status = "ok" if report.ok and not report.warnings else ("ERROR" if not report.ok else "warn")
+        print(f"  {status:8} {target.name}")
+        for msg in report.errors:
+            print(f"           error: {msg}")
+        for msg in report.warnings:
+            print(f"           warning: {msg}")
+    print(f"\n{written} record(s) written to {out}, {skipped} skipped. Next: python -m app.cli check-records {out}")
+
+
+def check_records(args):
+    from app.services.records import check_folder
+
+    reports = check_folder(Path(args.path))
+    if not reports:
+        raise SystemExit(f"No records found in {args.path}")
+    for r in reports:
+        if r.errors or r.warnings:
+            print(f"{'ERROR' if r.errors else 'warn ':5}  {r.file}")
+            for msg in r.errors:
+                print(f"         error: {msg}")
+            for msg in r.warnings:
+                print(f"         warning: {msg}")
+    bad = sum(1 for r in reports if r.errors)
+    warned = sum(1 for r in reports if r.warnings and not r.errors)
+    print(f"\n{len(reports)} record(s): {len(reports) - bad - warned} clean, {warned} with warnings, {bad} with errors.")
+    if bad:
+        raise SystemExit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(prog="python -m app.cli")
     sub = parser.add_subparsers(required=True)
@@ -102,11 +152,20 @@ def main():
     p.set_defaults(func=ingest)
     p = sub.add_parser("list-models", help="show Gemini models available to the configured API key")
     p.set_defaults(func=list_models)
+    p = sub.add_parser("import-gemini", help="split a Gemini batch answer (.txt/.md/.docx) into record files")
+    p.add_argument("file")
+    p.add_argument("--out", default="../knowledge_base")
+    p.add_argument("--overwrite", action="store_true")
+    p.set_defaults(func=import_gemini)
+    p = sub.add_parser("check-records", help="lint knowledge records before ingesting")
+    p.add_argument("path", nargs="?", default="../knowledge_base")
+    p.set_defaults(func=check_records)
     p = sub.add_parser("reindex")
     p.add_argument("--document-id")
     p.set_defaults(func=reindex)
     args = parser.parse_args()
-    init_db()
+    if args.func not in (import_gemini, check_records):  # file-only commands need no database
+        init_db()
     args.func(args)
 
 
