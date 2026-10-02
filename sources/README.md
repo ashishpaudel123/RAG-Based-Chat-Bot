@@ -90,10 +90,21 @@ Preeti/Himali PDFs were converted with `tools/convert_pdf_text.py` (needs `pymup
 The 21 records in `knowledge_base/citizenship/` were written from these texts and are all `pending`.
 
 **Gazette references received (2026-10-02, no texts yet):** First Amendment Act 2079 (reported as
-"Volume 79, Extraordinary Issue 6" - check the volume number), Second Amendment Act 2082 (Extraordinary Issue 27,
+Gazette Vol. 73; "79" was the Act year), Second Amendment Act 2082 (Extraordinary Issue 27,
 2082-06-05), Third Amendment Regulation 2080 (Gazette No. 28, 2080-06-04), Fourth Amendment Regulation 2082
 (Gazette No. 55, 2082-09-21). These confirm the sources exist, but records need the actual text.
 
 **Still needed (PDFs):** the four amendment texts above (or a consolidated Act and Regulation that include
 them), the Constitution Part 2, and the DAO citizen charters. The DAO fees/timing record was written from a
 summary and must be checked against a charter before it is verified.
+
+## Excerpts received (2026-10-02, second batch)
+
+Quoted text was supplied for Constitution Art. 10-11, Act s.3(4)/3(5) as amended in 2079, and the Bhaktapur/Sunsari
+charters. It is used in the records (marked "user-supplied excerpt") and must still be checked against the official text.
+Not used:
+- **Second Amendment Act 2082:** only a description, no text.
+- **"Fourth Amendment Regulation 2082" quotes:** these are rules 3(3ख) and 3(6क) from the 2078 amendment, already
+  in the records. The "blank parent names" quote merges rule 3(6) (guardian's name for a person with no known
+  parents) with 3(6क) (father's details left blank). The National ID requirement is unconfirmed.
+- **Act s.8क (surname/address):** not seen in any text; confirm first.

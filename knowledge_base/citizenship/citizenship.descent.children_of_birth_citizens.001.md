@@ -5,7 +5,7 @@ source_type: regulation
 authority_tier: 1
 issuing_authority: "Government of Nepal"
 source_title: "नेपाल नागरिकता नियमावली, २०६३ (as amended up to 2078)"
-section: "नियम ३(३क); ऐन दफा ३(४)"
+section: "नियम ३(३क); ऐन दफा ३(४) (पहिलो संशोधन, २०७९)"
 category: citizenship_by_descent
 jurisdiction: Nepal
 district: null
@@ -17,10 +17,11 @@ source_document_id: "src-reg-2063-consolidated"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as it appears in the Act PDF used (amended up to the 2069 Ordinance); the 2079 Amendment Act text was not available"
+amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as replaced by the First Amendment Act, 2079 (text from a user-supplied excerpt, not yet checked against the Gazette)"
 confidence: medium
 related_sources:
-  - "नेपाल नागरिकता ऐन, २०६३, दफा ३(४)"
+  - "नेपाल नागरिकता ऐन, २०६३, दफा ३(४) (पहिलो संशोधन, २०७९)"
+  - "नेपालको संविधान, धारा ११"
 user_questions:
   - "जन्मसिद्ध नागरिकता भएका बाबुआमाका छोराछोरीले वंशजको नागरिकता पाउँछन्?"
   - "janmasiddha nagarikta ko santan lai bansaj ko nagarikta"
@@ -31,13 +32,14 @@ user_questions:
 # जन्मको आधारमा नागरिकता पाएका बाबुआमाका सन्तानको वंशजको नागरिकता (Children of citizens by birth)
 
 ## सारांश (Summary)
-जन्मको आधारमा नागरिकता पाएको व्यक्तिको, त्यस्तो प्रमाणपत्र पाउनुअघि जन्मेको सन्तानले **वंशजको आधारमा** नागरिकता लिन सक्छ। सोह्र वर्ष पूरा भएपछि जन्मदर्ता, **बाबु र आमा दुवैको** नागरिकता र स्थानीय तहको सिफारिससहित अनुसूची–१ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन दिनुपर्छ।
+जन्मको आधारमा नागरिकता पाएको नागरिकको सन्तानले, **बाबु र आमा दुवै** नेपाली नागरिक भए, **वंशजको आधारमा** नागरिकता लिन सक्छ। सोह्र वर्ष पूरा भएपछि जन्मदर्ता, **बाबु र आमा दुवैको** नागरिकता र स्थानीय तहको सिफारिससहित अनुसूची–१ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन दिनुपर्छ।
 
-English: A child born before the parent obtained citizenship by birth may obtain citizenship by descent. At 16+, apply on Schedule-1 with the birth certificate, the citizenship certificates of **both** father and mother, and the local-level recommendation.
+English: A child of a citizen by birth whose father and mother are both Nepali citizens gets citizenship by descent. At 16+, apply on Schedule-1 with the birth certificate, the citizenship certificates of **both** father and mother, and the local-level recommendation.
 
 ## कानुनी नियम (Legal rule)
-- दफा ४ बमोजिम जन्मको आधारमा नागरिकता प्राप्त गरेको व्यक्तिको त्यस्तो प्रमाणपत्र प्राप्त गर्नुअघि जन्मेको सन्तानले वंशजको आधारमा नागरिकता प्राप्त गर्न सक्नेछ। [ऐन, दफा ३(४)]
+- "जन्मको आधारमा नेपालको नागरिकता प्राप्त गरेको नागरिकको सन्तानले बाबु र आमा दुवै नेपालको नागरिक रहेछन् भने निजको उमेर सोह्र वर्ष पूरा भएपछि वंशजको आधारमा नेपालको नागरिकता प्राप्त गर्नेछ।" [ऐन, दफा ३(४), पहिलो संशोधन २०७९] (प्रयोगकर्ताले दिएको उद्धरणबाट; राजपत्रसँग भिडाउनुहोस्)
 - ऐनको दफा ३(४) बमोजिम सोह्र वर्ष पूरा भएको व्यक्तिले अनुसूची–१ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन दिनुपर्छ। [नियमावली, नियम ३(३क)]
+- पुरानो (२०६९ सम्म संशोधित) ऐनको PDF मा दफा ३(४) को पाठ फरक थियो: जन्मको आधारमा नागरिकता पाएको व्यक्तिको त्यस्तो प्रमाणपत्र पाउनुअघि जन्मेको सन्तानले वंशजको नागरिकता पाउने। हाल २०७९ को संशोधित पाठ लागू हुन्छ।
 
 ## आवश्यक कागजात (Required documents)
 [नियमावली, नियम ३(३क)]
@@ -52,11 +54,11 @@ English: A child born before the parent obtained citizenship by birth may obtain
 स्रोतमा उल्लेख छैन (not stated in the source)। अयोग्य ठहरिएमा सात दिनभित्र जानकारी। [नियमावली, नियम ६]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
-- नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ ले यो विषयमा परिवर्तन ल्याएको बताइन्छ, तर त्यसको आधिकारिक पाठ यो रेकर्ड लेख्दा उपलब्ध थिएन। ऐनको हालको पाठ र जिल्ला प्रशासन कार्यालयको सूचना पुष्टि गर्नुहोस्।
+- दफा ३(४) को पाठ प्रयोगकर्ताले दिएको उद्धरणबाट लिइएको हो; नेपाल राजपत्रमा प्रकाशित पहिलो संशोधन ऐन, २०७९ सँग भिडाउनुहोस्।
 - थप प्रमाण (जस्तै बसोबासको प्रमाण) कार्यालयअनुसार माग हुन सक्छ: स्रोतमा उल्लेख छैन।
 
 ## स्रोत (Sources)
-- नेपाल नागरिकता ऐन, २०६३, दफा ३(४)
+- नेपाल नागरिकता ऐन, २०६३, दफा ३(४), नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ द्वारा संशोधित
 - नेपाल नागरिकता नियमावली, २०६३ (दोस्रो संशोधन, २०७८), नियम ३(३क) – https://lawcommission.gov.np/content/12656/12656-nepal-citizenship-regulation/
 
 ## प्रयोगकर्ताले सोध्ने तरिका (How users ask)

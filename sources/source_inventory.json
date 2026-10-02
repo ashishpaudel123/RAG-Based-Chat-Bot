@@ -32,7 +32,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Confirm the linked text includes BOTH amendments (2072 first amendment and 2077 second amendment); download the consolidated Nepali text."
+          "Confirm the linked text includes BOTH amendments (2072 first amendment and 2077 second amendment); download the consolidated Nepali text.",
+          "User-supplied excerpt (2026-10-02, second batch): Art. 10(1), 10(2), 11(2), 11(5) quoted; used in citizenship.constitution.part2.001. Check the wording and the clause numbering of 11(2) against the official text."
         ]
       }
     },
@@ -102,7 +103,7 @@
       "jurisdiction": "Nepal",
       "source_url": null,
       "retrieved_date": null,
-      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship). User-provided reference (2026-10-02): published in the Nepal Gazette, 'Volume 79', Extraordinary Issue 6.",
+      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship). User-provided reference (2026-10-02): published in the Nepal Gazette, 'Volume 79', Extraordinary Issue 6. User-supplied excerpt (2026-10-02, second batch): Gazette Vol. 73 (the earlier 'Volume 79' was the Act year); authenticated Jestha 2080. Quoted new s.3(4) and s.3(5), and a new s.8क (surname/address of mother or father).",
       "review": {
         "priority": "critical",
         "verified_by_human": false,
@@ -110,7 +111,8 @@
         "pdf_downloaded": false,
         "flags": [
           "Find the official text: Nepal Law Commission (recent Acts) or Nepal Gazette 2080. Or use the consolidated Act that already includes it.",
-          "'Volume 79' looks like the Act year, not a Gazette volume (2080 BS issues are Khanda 73); check the Gazette volume/issue and date (Gemini said 2080-02-17)."
+          "'Volume 79' looks like the Act year, not a Gazette volume (2080 BS issues are Khanda 73); check the Gazette volume/issue and date (Gemini said 2080-02-17).",
+          "User-supplied excerpt (2026-10-02, second batch): s.3(4) and s.3(5) used in the descent records. s.8क is NOT used: it is not in any text seen, and its wording is close to Constitution Art. 12; confirm before writing a record."
         ]
       }
     },
@@ -137,7 +139,8 @@
         "flags": [
           "Existence now reported by the user (Extraordinary Issue 27, 2082-06-05) but the text has not been seen. The House was dissolved ~12 Sep 2025 (2082-05-27), so check whether it was passed before dissolution or is an ordinance.",
           "amendment_status 'current consolidated text' is wrong for an amending Act; it amends the 2063 Act.",
-          "Gemini did not quote any provision from it; do not write records from it until the official text is in hand."
+          "Gemini did not quote any provision from it; do not write records from it until the official text is in hand.",
+          "User-supplied excerpt (2026-10-02, second batch): only a description (single mothers' children), no text. Nothing written from it."
         ]
       }
     },
@@ -265,7 +268,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Existence reported by the user; the text has not been seen. Find the exact Gazette PDF (current URL is a list page)."
+          "Existence reported by the user; the text has not been seen. Find the exact Gazette PDF (current URL is a list page).",
+          "User-supplied excerpt (2026-10-02, second batch): the quoted 'Fourth Amendment' provisions (Sch. 4क self-declaration, leaving the father's details blank) are already rules 3(3ख) and 3(6क) of the Regulation as amended in 2078, so they are not new in 2082. The 'blank parent names' quote also merges rule 3(6) (no known parents: guardian's name is written) with 3(6क) (father unidentified: left blank). The National ID number requirement is unconfirmed. Nothing written from it."
         ]
       }
     },
@@ -446,7 +450,8 @@
         "pdf_downloaded": false,
         "flags": [
           "Charter from 2076 (2019) predates the 2079 amendment: check for a newer charter; older fees/documents may be outdated (spec §20).",
-          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
+          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text.",
+          "User-supplied excerpt (2026-10-02, second batch): Rs 10 stamp for a new certificate; Rs 13 stamp for a duplicate and for corrections; same day when evidence is complete. Used in citizenship.dao.fees_timing.001."
         ]
       }
     },
@@ -473,6 +478,31 @@
         "flags": [
           "Verify the claim about records destroyed by fire before 2047-01-17 directly on the page.",
           "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-sunsari-charter",
+      "source_title_ne": "नागरिक बडापत्र - जिल्ला प्रशासन कार्यालय सुनसरी",
+      "source_title_en": "Citizen Charter - DAO Sunsari",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Sunsari",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "unknown",
+      "status": "current",
+      "jurisdiction": "Sunsari",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "User-supplied excerpt (2026-10-02, second batch): Rs 10 stamp for a new certificate; Rs 10 stamp for a duplicate; same-day issue.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Add the official URL and charter date."
         ]
       }
     },

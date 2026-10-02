@@ -497,7 +497,7 @@
         "citizenship.dao.fees_timing.001"
       ],
       "expected_answer_facts": [
-        "free"
+        "Rs 10"
       ],
       "must_not_claim": [
         "Rs 500",
@@ -539,6 +539,21 @@
       "must_not_claim": [
         "Rs 500"
       ]
+    },
+    {
+      "id": "const-en-01",
+      "question": "What does the Constitution say about getting citizenship from the mother?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "eligibility",
+      "expected_sources": [
+        "citizenship.constitution.part2.001",
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [
+        "11(5)"
+      ],
+      "must_not_claim": []
     }
   ]
 }
