@@ -4,7 +4,8 @@ from sqlalchemy import text
 from app import __version__
 from app.config import get_settings
 from app.deps import DB
-from app.schemas import HealthOut
+from app.schemas import HealthOut, ProfileOut
+from app.services.profile import get_profile
 from app.services.vector_store import get_vector_store
 
 router = APIRouter(prefix="/api", tags=["health"])
@@ -33,3 +34,11 @@ def health(db: DB):
         indexed_chunks=chunks,
         version=__version__,
     )
+
+
+@router.get("/profile", response_model=ProfileOut)
+def profile():
+    """Public assistant identity and suggested questions for the chat UI."""
+    p = get_profile()
+    return ProfileOut(id=p.id, assistant_name=p.assistant_name, tagline=p.tagline, suggestions=list(p.suggestions),
+                      answer_format=p.answer_format)

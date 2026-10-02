@@ -40,7 +40,41 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-def init_db() -> None:
+def init_db() -> list[str]:
+    """Create tables and add any columns that are missing from an older database.
+
+    Returns the "table.column" names that were added, so callers can run
+    follow-up work (e.g. refreshing vector metadata) after an upgrade.
+    """
     from app import models  # noqa: F401  (register models)
 
     Base.metadata.create_all(bind=engine)
+    return _add_missing_columns()
+
+
+def _add_missing_columns(bind=None) -> list[str]:
+    """Minimal forward-only migration: ALTER TABLE ... ADD COLUMN for new nullable
+    or server-defaulted columns. Good enough for this project's additive schema
+    changes without a migration framework."""
+    from sqlalchemy import inspect, text
+
+    bind = bind or engine
+    inspector = inspect(bind)
+    added: list[str] = []
+    with bind.begin() as conn:
+        for table in Base.metadata.sorted_tables:
+            if not inspector.has_table(table.name):
+                continue
+            existing = {c["name"] for c in inspector.get_columns(table.name)}
+            for column in table.columns:
+                if column.name in existing:
+                    continue
+                col_type = column.type.compile(dialect=bind.dialect)
+                ddl = f'ALTER TABLE {table.name} ADD COLUMN "{column.name}" {col_type}'
+                if column.server_default is not None:
+                    default = column.server_default.arg
+                    default = default.text if hasattr(default, "text") else str(default)
+                    ddl += f" DEFAULT '{default}'" if not default.isdigit() else f" DEFAULT {default}"
+                conn.execute(text(ddl))
+                added.append(f"{table.name}.{column.name}")
+    return added

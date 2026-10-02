@@ -12,6 +12,7 @@ os.environ.update(
     CHROMA_DIR=f"{_tmp}/chroma",
     STORAGE_DIR=f"{_tmp}/docs",
     LLM_PROVIDER="fake",
+    DOMAIN_PROFILE="customer_service",
     RELEVANCE_THRESHOLD="0.2",
     ADMIN_EMAIL="admin@example.com",
     ADMIN_PASSWORD="Admin12345",

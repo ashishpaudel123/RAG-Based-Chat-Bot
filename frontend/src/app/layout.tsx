@@ -3,8 +3,8 @@ import { AuthProvider } from "@/lib/auth";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Customer Service Chatbot",
-  description: "Retrieval-augmented customer service assistant with source-backed answers.",
+  title: "Knowledge Assistant",
+  description: "Retrieval-augmented assistant with source-backed answers.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

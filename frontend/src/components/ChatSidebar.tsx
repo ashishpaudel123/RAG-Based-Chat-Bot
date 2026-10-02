@@ -6,6 +6,7 @@ import type { ConversationSummary, User } from "@/lib/api";
 import { Logo } from "./ui";
 
 interface Props {
+  assistantName: string;
   user: User;
   conversations: ConversationSummary[];
   activeId: string | null;
@@ -17,7 +18,7 @@ interface Props {
   onLogout: () => void;
 }
 
-export function ChatSidebar({ user, conversations, activeId, loading, onSelect, onNew, onRename, onDelete, onLogout }: Props) {
+export function ChatSidebar({ assistantName, user, conversations, activeId, loading, onSelect, onNew, onRename, onDelete, onLogout }: Props) {
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
 
@@ -26,7 +27,7 @@ export function ChatSidebar({ user, conversations, activeId, loading, onSelect, 
       <div className="flex items-center gap-2.5 px-4 py-4">
         <Logo size={30} />
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold">Customer Service</p>
+          <p className="truncate text-sm font-semibold" title={assistantName}>{assistantName}</p>
           <p className="text-xs text-muted">AI assistant</p>
         </div>
       </div>

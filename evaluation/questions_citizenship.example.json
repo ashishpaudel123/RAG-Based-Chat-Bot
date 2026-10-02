@@ -1,0 +1,38 @@
+{
+  "version": "0.1-example",
+  "description": "Example entries in the spec §23 format. Replace with the full gold set; expected_sources are record ids from knowledge_base/.",
+  "questions": [
+    {
+      "id": "lost-roman-01",
+      "question": "mero citizenship harayo, duplicate kasari banaune?",
+      "language": "roman_ne",
+      "noise_level": "medium",
+      "expected_intent": "lost",
+      "expected_sources": ["citizenship.duplicate.lost.001"],
+      "expected_answer_facts": ["<a fact the correct answer must contain, copied from the record>"],
+      "must_not_claim": ["<a wrong or invented claim, e.g. a fee not in the sources>"],
+      "expect_clarification": false
+    },
+    {
+      "id": "eligibility-ne-01",
+      "question": "म नागरिकता बनाउन सक्छु?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "eligibility",
+      "expected_sources": [],
+      "expected_answer_facts": [],
+      "must_not_claim": [],
+      "expect_clarification": true,
+      "answerable": true
+    },
+    {
+      "id": "outofscope-en-01",
+      "question": "What is the capital of Australia?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_sources": [],
+      "expected_answer_facts": [],
+      "must_not_claim": ["Canberra"]
+    }
+  ]
+}

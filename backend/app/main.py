@@ -13,6 +13,7 @@ from app.models import User
 from app.routers import admin, auth, chat, documents, feedback, health
 from app.security import hash_password
 from app.services.error_log import record_error
+from app.services.profile import get_profile
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("chatbot")
@@ -37,7 +38,17 @@ def seed_admin() -> None:
 async def lifespan(_: FastAPI):
     if settings.environment == "production" and settings.jwt_secret == "change-me-in-production":
         raise RuntimeError("JWT_SECRET must be set in production")
-    init_db()
+    added = init_db()
+    if added:
+        logger.info("Database upgraded: added columns %s", ", ".join(added))
+    if any(col.startswith("documents.") for col in added):
+        # New source-metadata columns: copy their defaults onto existing vectors so
+        # filtering works without re-embedding anything.
+        from app.services.knowledge import sync_all_vector_metadata
+
+        with SessionLocal() as db:
+            logger.info("Refreshed vector metadata for %d documents", sync_all_vector_metadata(db))
+    get_profile()  # fail fast on a missing/invalid DOMAIN_PROFILE
     seed_admin()
     if settings.llm_provider == "gemini" and not settings.gemini_api_key:
         logger.warning("GEMINI_API_KEY is not set: chat and indexing will fail until it is configured")

@@ -74,6 +74,14 @@ class CitationOut(ORM):
     snippet: str
     score: float
     rank: int
+    source_type: str | None = None
+    authority_tier: int | None = None
+    validity_status: str | None = None
+    legal_reference: str | None = None
+    district: str | None = None
+    effective_from: str | None = None
+    source_url: str | None = None
+    last_verified: str | None = None
 
 
 class FeedbackOut(ORM):
@@ -90,6 +98,9 @@ class MessageOut(ORM):
     is_fallback: bool
     latency_ms: int | None
     created_at: datetime
+    kind: str | None = None
+    confidence: str | None = None
+    language: str | None = None
     citations: list[CitationOut] = []
     feedback: FeedbackOut | None = None
 
@@ -147,6 +158,23 @@ class DocumentOut(ORM):
     created_at: datetime
     updated_at: datetime
     indexed_at: datetime | None
+    record_id: str | None = None
+    source_type: str = "other"
+    authority: str | None = None
+    authority_tier: int = 3
+    category: str | None = None
+    legal_reference: str | None = None
+    jurisdiction: str | None = None
+    district: str | None = None
+    validity_status: str = "current"
+    effective_from: str | None = None
+    effective_until: str | None = None
+    source_url: str | None = None
+    last_verified: str | None = None
+    verification_status: str = "verified"
+    language: str | None = None
+    lineage_id: str | None = None
+    supersedes_id: str | None = None
 
 
 class ChunkOut(ORM):
@@ -212,3 +240,11 @@ class HealthOut(BaseModel):
     llm_configured: bool
     indexed_chunks: int
     version: str
+
+
+class ProfileOut(BaseModel):
+    id: str
+    assistant_name: str
+    tagline: str
+    suggestions: list[str]
+    answer_format: str

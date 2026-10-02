@@ -40,7 +40,8 @@ def _admin_id(db) -> str:
 
 
 def ingest(args):
-    files = sorted(p for p in Path(args.path).rglob("*") if p.suffix.lower() in ALLOWED_TYPES)
+    files = sorted(p for p in Path(args.path).rglob("*") if p.suffix.lower() in ALLOWED_TYPES
+                   and not p.name.lower().startswith(("readme", "_")))
     if not files:
         raise SystemExit(f"No supported documents found in {args.path}")
     with SessionLocal() as db:
@@ -49,7 +50,10 @@ def ingest(args):
             try:
                 doc = knowledge.create_document(db, filename=path.name, data=path.read_bytes(), title=None,
                                                 tags=knowledge.normalize_tags(args.tags), user_id=admin_id)
-                print(f"  {doc.status:8} {doc.chunk_count:3} chunks  {path.name}" + (f"  ({doc.error})" if doc.error else ""))
+                note = f"  v{doc.version}" if doc.version > 1 else ""
+                note += "  [pending review - not searchable yet]" if doc.verification_status == "pending" else ""
+                print(f"  {doc.status:8} {doc.chunk_count:3} chunks  {path.name}{note}"
+                      + (f"  ({doc.error})" if doc.error else ""))
             except DocumentValidationError as exc:
                 print(f"  skipped           {path.name}: {exc}")
 

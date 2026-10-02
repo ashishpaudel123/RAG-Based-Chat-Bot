@@ -1,0 +1,67 @@
+{
+  "id": "nepal_citizenship",
+  "assistant_name": "Nepal Citizenship Assistant",
+  "tagline": "नागरिकता सम्बन्धी प्रश्न सोध्नुहोस् — नेपाली, English वा Roman Nepali मा।",
+  "domain_description": "Nepali citizenship law and administration: citizenship by descent, through the mother, birth-based, naturalized, matrimonial, children, non-resident Nepali, honorary, first-time certificates, duplicates/lost/damaged certificates, corrections, name/surname/marriage changes, renunciation, reacquisition, dual citizenship, verification, records, fraud consequences, ward recommendation, District/Area Administration Office procedure, fees, processing time and appeals.",
+  "role_description": "a knowledgeable, friendly Nepali citizenship information assistant. You explain Nepali citizenship law and procedure in simple language, like a helpful knowledgeable Nepali person, not like a government PDF. You are not a lawyer and you never invent legal rules",
+  "answer_format": "structured",
+  "default_reply_language": "ne",
+  "intents": [
+    "eligibility", "required_documents", "application_process", "office_location", "fee", "processing_time",
+    "correction", "replacement", "lost", "damaged", "marriage", "divorce", "child", "parent", "mother", "father",
+    "foreign_spouse", "naturalization", "descent", "birth_based", "non_resident", "honorary", "renunciation",
+    "reacquisition", "dual_citizenship", "verification", "citizenship_number", "legal_definition", "complaint",
+    "appeal", "status", "local_procedure", "historical_law", "fraud", "national_id"
+  ],
+  "fact_fields": [
+    "age", "birth_country", "father_nationality", "mother_nationality", "father_identified", "mother_identified",
+    "parents_have_citizenship_certificate", "marital_status", "spouse_nationality", "has_birth_registration",
+    "existing_citizenship_type", "certificate_problem", "district", "lives_abroad", "foreign_citizenship_held",
+    "applying_for"
+  ],
+  "clarification_guidance": "Ask only for facts that change eligibility or procedure: e.g. the person's age, which parent is (or was) a Nepali citizen, place of birth (Nepal or abroad), whether the father is identified, the spouse's nationality for marriage cases, or the district when the user asks what a specific office requires. Never ask for facts already given. Never ask more than 3 questions. Do not ask for clarification for general questions that can be answered with the national rule.",
+  "suggestions": [
+    "नागरिकता कसरी बनाउने?",
+    "mero citizenship harayo, duplicate kasari banaune?",
+    "What documents are required for citizenship by descent?",
+    "आमाको नामबाट नागरिकता बनाउन मिल्छ?"
+  ],
+  "greetings": {
+    "ne": "नमस्ते! म नेपाली नागरिकतासम्बन्धी जानकारी दिने सहायक हुँ। नागरिकता बनाउने, हराएको नागरिकता, नाम सच्याउने, विवाहपछिको नागरिकता जस्ता विषयमा सोध्नुहोस् — नेपाली, English वा Roman Nepali मा।",
+    "en": "Hello! I'm a Nepali citizenship information assistant. Ask me about obtaining citizenship, lost certificates, corrections, marriage-based citizenship and more — in Nepali, English or Roman Nepali."
+  },
+  "thanks": {
+    "ne": "धन्यवाद! अरू केही जान्नु छ भने सोध्नुहोस्।",
+    "en": "You're welcome! Ask me anything else about Nepali citizenship."
+  },
+  "fallback_messages": {
+    "ne": "माफ गर्नुहोस्, यो कुरा हालका आधिकारिक स्रोतहरूबाट पुष्टि गर्न सकिनँ, त्यसैले अनुमान गरेर भन्न चाहन्नँ। कृपया प्रश्न अलि स्पष्ट गर्नुहोस् (जस्तै: तपाईंको अवस्था, उमेर, कुन जिल्ला) वा सम्बन्धित जिल्ला प्रशासन कार्यालयमा सम्पर्क गर्नुहोस्।",
+    "en": "I could not verify this from the current official sources, so I'd rather not guess. Please add a little more detail about your situation (for example your age or district), or contact the relevant District Administration Office."
+  },
+  "verification_note": {
+    "ne": "⚠️ यी विवरणहरू स्रोतबाट पुष्टि हुन सकेनन्, कृपया सम्बन्धित कार्यालयमा पुष्टि गर्नुहोस्:",
+    "en": "⚠️ I could not verify these details from the sources; please confirm with the relevant office:"
+  },
+  "synonyms": {
+    "नागरिकता": ["nagarikta", "nagrikta", "nagarikata", "nagarikataa", "nagrikataa", "nagrita", "nagrikata", "citizenship", "citizen"],
+    "प्रतिलिपि": ["pratilipi", "duplicate", "copy", "replacement"],
+    "हरायो": ["harayo", "haraeko", "harayeko", "lost", "missing"],
+    "वंशज": ["bansaj", "bansaja", "banshaj", "vansaj", "vanshaj", "descent"],
+    "अंगीकृत": ["angikrit", "angikrita", "naturalized", "naturalised", "naturalization"],
+    "वैवाहिक": ["baibahik", "vaivahik", "matrimonial", "marriage", "bibaha", "bihe"],
+    "जन्मसिद्ध": ["janmasiddha", "janmasidha", "birth-based", "birthright"],
+    "गैरआवासीय": ["gairawasiya", "gair aawasiya", "non-resident", "nrn"],
+    "सिफारिस": ["sifaris", "siphaaris", "recommendation"],
+    "वडा": ["wada", "woda", "ward"],
+    "जिल्ला प्रशासन कार्यालय": ["dao", "jilla prashasan", "district administration office", "cdo office"],
+    "संशोधन": ["sansodhan", "sanshodhan", "correction", "amendment"],
+    "आमा": ["aama", "ama", "mother"],
+    "बाबु": ["babu", "baba", "father"],
+    "जन्मदर्ता": ["janmadarta", "janma darta", "birth registration", "birth certificate"],
+    "शुल्क": ["sulka", "shulka", "fee", "charge", "dastur"],
+    "कागजात": ["kagajat", "kagaj", "documents", "papers"],
+    "परित्याग": ["parityag", "renunciation", "renounce"],
+    "दोहोरो नागरिकता": ["dohoro nagarikta", "dual citizenship", "dual nationality"],
+    "बनाउने": ["banaune", "banauni", "banauna", "obtain", "apply", "make"]
+  }
+}
