@@ -493,8 +493,12 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "fee",
-      "expected_sources": [],
-      "expected_answer_facts": [],
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [
+        "Rs 10"
+      ],
       "must_not_claim": [
         "Rs 500",
         "Rs 1000"
@@ -518,6 +522,37 @@
       "noise_level": "clean",
       "expected_sources": [],
       "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "fee-rne-01",
+      "question": "nagarikta banauna kati din lagcha ra kati paisa?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "fee",
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [
+        "same day"
+      ],
+      "must_not_claim": [
+        "Rs 500"
+      ]
+    },
+    {
+      "id": "const-en-01",
+      "question": "What does the Constitution say about getting citizenship from the mother?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "eligibility",
+      "expected_sources": [
+        "citizenship.constitution.part2.001",
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [
+        "11(5)"
+      ],
       "must_not_claim": []
     }
   ]

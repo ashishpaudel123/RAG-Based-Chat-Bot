@@ -61,7 +61,7 @@ the consolidated Citizenship Regulation with Schedules, the Distribution Directi
 
 ## Problems found in Gemini's output
 
-- **Possibly non-existent source:** the "Nepal Citizenship (Second Amendment) Act, 2082" (published 2082-06-05)
+- **Reported to exist (text still needed):** the "Nepal Citizenship (Second Amendment) Act, 2082" (published 2082-06-05)
   needs confirming in the Nepal Gazette. The House of Representatives was dissolved around 12 September 2025, so
   an Act dated after that is unusual. The Fourth Amendment Regulation 2082 depends on the same claim. Do not
   write any knowledge record from either one until you have the official text.
@@ -89,6 +89,22 @@ the consolidated Citizenship Regulation with Schedules, the Distribution Directi
 Preeti/Himali PDFs were converted with `tools/convert_pdf_text.py` (needs `pymupdf` and `npttf2utf`).
 The 21 records in `knowledge_base/citizenship/` were written from these texts and are all `pending`.
 
-**Still needed:** the consolidated Act including the 2079 First Amendment (Act section 3(4)/3(5) text),
-the Constitution Part 2, recent DAO citizen charters (for local documents, fees and timings), and the
-3rd/4th Regulation amendments if they exist.
+**Gazette references received (2026-10-02, no texts yet):** First Amendment Act 2079 (reported as
+Gazette Vol. 73; "79" was the Act year), Second Amendment Act 2082 (Extraordinary Issue 27,
+2082-06-05), Third Amendment Regulation 2080 (Gazette No. 28, 2080-06-04), Fourth Amendment Regulation 2082
+(Gazette No. 55, 2082-09-21). These confirm the sources exist, but records need the actual text.
+
+**Still needed (PDFs):** the four amendment texts above (or a consolidated Act and Regulation that include
+them), the Constitution Part 2, and the DAO citizen charters. The DAO fees/timing record was written from a
+summary and must be checked against a charter before it is verified.
+
+## Excerpts received (2026-10-02, second batch)
+
+Quoted text was supplied for Constitution Art. 10-11, Act s.3(4)/3(5) as amended in 2079, and the Bhaktapur/Sunsari
+charters. It is used in the records (marked "user-supplied excerpt") and must still be checked against the official text.
+Not used:
+- **Second Amendment Act 2082:** only a description, no text.
+- **"Fourth Amendment Regulation 2082" quotes:** these are rules 3(3ख) and 3(6क) from the 2078 amendment, already
+  in the records. The "blank parent names" quote merges rule 3(6) (guardian's name for a person with no known
+  parents) with 3(6क) (father's details left blank). The National ID requirement is unconfirmed.
+- **Act s.8क (surname/address):** not seen in any text; confirm first.
