@@ -1,0 +1,724 @@
+{
+  "version": "1.0",
+  "generated_by": "Gemini Deep Research (prompt 1), reviewed by Claude Code on 2026-10-02",
+  "status": "UNVERIFIED - every entry must be checked by a person (see sources/README.md)",
+  "missing_sources": [
+    "Nepal Citizenship (First Amendment) Act, 2079 official text (or consolidated Act including it)",
+    "Nepal Citizenship (First and Second Amendment) Regulations (not listed)",
+    "Consolidated Nepal Citizenship Regulation, 2063 with all amendments and Schedules (अनुसूची) 1-11",
+    "MOHA circular(s) on implementing the 2079 First Amendment",
+    "Newer citizen charters for DAO Bhaktapur and Panchthar (listed ones are from 2075/2076)"
+  ],
+  "sources": [
+    {
+      "source_document_id": "src-const-2072",
+      "source_title_ne": "नेपालको संविधान",
+      "source_title_en": "Constitution of Nepal",
+      "source_type": "constitution",
+      "authority_tier": 1,
+      "issuing_authority": "Constituent Assembly of Nepal / Nepal Law Commission",
+      "publication_date": "2015-09-20 (AD) / 2072-06-03 BS",
+      "effective_date": "2015-09-20 (AD)",
+      "amendment_status": "amended by 2nd amendment",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://lawcommission.gov.np/content/13437/nepal-s-constitution/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Covers Part 2 citizenship articles (Articles 10-15). The link provided hosts the constitution inclusive of the 2nd amendment.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Confirm the linked text includes BOTH amendments (2072 first amendment and 2077 second amendment); download the consolidated Nepali text."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-act-2063",
+      "source_title_ne": "नेपाल नागरिकता ऐन, २०६३",
+      "source_title_en": "Nepal Citizenship Act, 2063",
+      "source_type": "act",
+      "authority_tier": 1,
+      "issuing_authority": "House of Representatives / Nepal Law Commission",
+      "publication_date": "2006-11-26 (AD) / 2063-08-10 BS",
+      "effective_date": "2006-11-26 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://lawcommission.gov.np/content/12939/12939-nepal-citizenship-act-2063/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Original Act PDF. Base text for citizenship by descent, birth, and naturalization. PDF relies on Preeti/scanned text formats standard to NLC.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "This entry is the ORIGINAL 2063 text. Download the latest consolidated text (संशोधनसहित) that includes the 2079 First Amendment; the original alone is outdated.",
+          "Gemini notes Preeti/scanned PDF: check that text copies correctly; otherwise let Gemini read page images.",
+          "Uploaded PDF (Himali font) carries amendments only up to the 2069 ordinance; it does NOT contain the 2079 First Amendment. Still need the consolidated Act."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-act-amend1-ord-2078",
+      "source_title_ne": "नेपाल नागरिकता (पहिलो संशोधन) अध्यादेश, २०७८",
+      "source_title_en": "Nepal Citizenship (First Amendment) Ordinance, 2078",
+      "source_type": "amendment",
+      "authority_tier": 1,
+      "issuing_authority": "President of Nepal / Nepal Law Commission",
+      "publication_date": "2021-05-23 (AD) / 2078-02-09 BS",
+      "effective_date": "2021-05-23 (AD)",
+      "amendment_status": "superseded by First Amendment Act",
+      "status": "superseded",
+      "jurisdiction": "Nepal",
+      "source_url": "https://lawcommission.gov.np/content/12384/12384-nepal-citizenship-first-amend/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Temporary ordinance that preceded the 2079 First Amendment Act.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Ordinance only (lapsed/replaced). Keep as historical; do not use as current law."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-act-amend1-2079",
+      "source_title_ne": "नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९",
+      "source_title_en": "Nepal Citizenship (First Amendment) Act, 2079",
+      "source_type": "amendment",
+      "authority_tier": 1,
+      "issuing_authority": "Federal Parliament (authenticated by the President)",
+      "publication_date": "2023-05-31 (AD) / 2080-02-17 BS",
+      "effective_date": "2023-05-31 (AD)",
+      "amendment_status": "amends Nepal Citizenship Act, 2063",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": null,
+      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship).",
+      "review": {
+        "priority": "critical",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Find the official text: Nepal Law Commission (recent Acts) or Nepal Gazette 2080. Or use the consolidated Act that already includes it."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-act-amend2-2082",
+      "source_title_ne": "नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२",
+      "source_title_en": "Nepal Citizenship (Second Amendment) Act, 2082",
+      "source_type": "amendment",
+      "authority_tier": 1,
+      "issuing_authority": "Federal Parliament / Department of Printing",
+      "publication_date": "2025-09-21 (AD) / 2082-06-05 BS",
+      "effective_date": "2025-09-21 (AD)",
+      "amendment_status": "amends Nepal Citizenship Act, 2063 (unconfirmed)",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://dop.gov.np/content/12736/citizenship-act-2082/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Published in Rajpatra Extraordinary Issue 27.",
+      "review": {
+        "priority": "critical",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "UNCONFIRMED: verify in the Nepal Gazette (rajpatra.dop.gov.np) that this Act exists and its exact date. The House of Representatives was dissolved around 12 September 2025 (Bhadra 2082), so an Act published on 2082-06-05 needs checking.",
+          "amendment_status 'current consolidated text' is wrong for an amending Act; it amends the 2063 Act.",
+          "Gemini did not quote any provision from it; do not write records from it until the official text is in hand."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-2063",
+      "source_title_ne": "नेपाल नागरिकता नियमावली, २०६३",
+      "source_title_en": "Nepal Citizenship Regulation, 2063",
+      "source_type": "regulation",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal / Nepal Law Commission",
+      "publication_date": "2006-12-14 (AD) / 2063-08-29 BS",
+      "effective_date": "2006-12-14 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://lawcommission.gov.np/content/12656/12656-nepal-citizenship-regulation/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Base administrative rules for processing citizenship.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "ORIGINAL 2063 text. Get the consolidated Regulation including all amendments (1st, 2nd, 3rd 2080, 4th 2082). The 1st and 2nd Regulation amendments are missing from this inventory.",
+          "Uploaded PDF is an older (Preeti) text; records cite the consolidated version src-reg-2063-consolidated instead."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-2063-consolidated",
+      "source_title_ne": "नेपाल नागरिकता नियमावली, २०६३ (संशोधनसहित)",
+      "source_title_en": "Nepal Citizenship Regulation, 2063 (consolidated)",
+      "source_type": "regulation",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "consolidated up to the 2078 amendment",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "Uploaded by the user. Kalimati Unicode PDF whose text layer is partly garbled (sources/text/src-reg-2063-consolidated.raw.txt); the knowledge records cite this version.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Text layer garbled (र/ह shown as ि): check every quoted rule against the page images.",
+          "Does not include the 3rd (2080) or 4th (2082) amendments: confirm whether those exist and what they changed.",
+          "Add the official source_url."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-2063-english",
+      "source_title_ne": "नेपाल नागरिकता नियमावली, २०६३ (अंग्रेजी अनुवाद)",
+      "source_title_en": "Nepal Citizenship Rules, 2063 (English translation)",
+      "source_type": "translation",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "translation of the original text with the first amendment only",
+      "status": "historical",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "Uploaded by the user. Unofficial/old English translation, useful for English wording only; not cited as authority.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Outdated: never cite for current procedure."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-amend3-2080",
+      "source_title_ne": "नेपाल नागरिकता (तेस्रो संशोधन) नियमावली, २०८०",
+      "source_title_en": "Nepal Citizenship (Third Amendment) Regulation, 2080",
+      "source_type": "amendment",
+      "authority_tier": 1,
+      "issuing_authority": "Ministry of Home Affairs",
+      "publication_date": "2023-09-26 (AD) / 2080-06-09 BS",
+      "effective_date": "2023-09-26 (AD)",
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://moha.gov.np/en/post/na-pa-l-na-gara-kata-ta-sa-ra-sa-sha-thhana-na-yama-val-2",
+      "retrieved_date": "2026-10-02",
+      "notes": "Accommodates procedures for children of citizens by birth. Rajpatra lists date as 2080-06-04, MOHA published on 2080-06-09.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Dates disagree (Gazette 2080-06-04 vs MOHA 2080-06-09); record the Gazette date."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-amend4-2082",
+      "source_title_ne": "नेपाल नागरिकता (चौथो संशोधन) नियमावली, २०८२",
+      "source_title_en": "Nepal Citizenship (Fourth Amendment) Regulation, 2082",
+      "source_type": "amendment",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal / Department of Printing",
+      "publication_date": "2026-01-04 (AD) / 2082-09-21 BS",
+      "effective_date": "2026-01-04 (AD)",
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://dop.gov.np/category/sankhya-2082/?page=8",
+      "retrieved_date": "2026-10-02",
+      "notes": "Rajpatra Vol. 55. Modifies regulations to align with the 2082 Second Amendment Act.",
+      "review": {
+        "priority": "critical",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "source_url is a Gazette LIST page, not the document. Find the exact PDF link.",
+          "Its description depends on the unconfirmed Second Amendment Act 2082; verify both together."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-directive-2063",
+      "source_title_ne": "नागरिकता प्रमाणपत्र वितरण कार्यविधि निर्देशिका, २०६३",
+      "source_title_en": "Citizenship Certificate Distribution Directive, 2063",
+      "source_type": "directive",
+      "authority_tier": 1,
+      "issuing_authority": "Ministry of Home Affairs",
+      "publication_date": "2011-08-03 (AD) / 2068-04-18 BS",
+      "effective_date": null,
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://moha.gov.np/en/post/na-gara-kata-pa-rama-naepata-ra-va-taranae-ka-ra-yava-thha-na-ra-tha-sha-ka",
+      "retrieved_date": "2026-10-02",
+      "notes": "MOHA PDF uses Preeti font encoding. Details the mobile team distribution and verification criteria.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Publication date 2068-04-18 for a '2063' directive suggests an amended version; confirm which version the PDF is.",
+          "Preeti font PDF: check text extraction.",
+          "Uploaded PDF (Preeti, 72 pp) converted to sources/text/src-directive-2063.txt."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-toli-directive-2070",
+      "source_title_ne": "नागरिकता वितरण टोली सम्बन्धी निर्देशिका, २०७०",
+      "source_title_en": "Citizenship Distribution Team (Toli) Directive, 2070",
+      "source_type": "directive",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "original text",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "Uploaded by the user (Preeti; converted to sources/text/src-toli-directive-2070.txt). Covers mobile citizenship-distribution teams.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Check whether it was replaced by a later team directive.",
+          "Add the official source_url and publication date."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-ktm-charter",
+      "source_title_ne": "नागरिक बडापत्र - जिल्ला प्रशासन कार्यालय काठमाडौं",
+      "source_title_en": "Citizen Charter - DAO Kathmandu",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Kathmandu",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Kathmandu",
+      "source_url": "https://daokathmandu.moha.gov.np/en/page/citizen-charter-23",
+      "retrieved_date": "2026-10-02",
+      "notes": "Details requirements for new, duplicate, and NRN citizenship.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "No date: note the date shown on the charter page; treat as local practice of DAO Kathmandu only."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-ktm-notice-amend1",
+      "source_title_ne": "नागरिकता सम्बन्धी सूचना (२०८०-०३-१०)",
+      "source_title_en": "Citizenship Notice (2080-03-10)",
+      "source_type": "local_notice",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Kathmandu",
+      "publication_date": "2023-06-25 (AD) / 2080-03-10 BS",
+      "effective_date": "2023-06-25 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Kathmandu",
+      "source_url": "https://daokathmandu.moha.gov.np/post/citizenship-14",
+      "retrieved_date": "2026-10-02",
+      "notes": "Instructs local wards on providing recommendations under the Nepal Citizenship (First Amendment) Act 2079.",
+      "review": {
+        "priority": "low",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Local notice; good evidence of practice after the 2079 amendment."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-lalitpur-charter",
+      "source_title_ne": "नागरिक वडापत्र - जिल्ला प्रशासन कार्यालय ललितपुर",
+      "source_title_en": "Citizen Charter - DAO Lalitpur",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Lalitpur",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Lalitpur",
+      "source_url": "https://daolalitpur.moha.gov.np/service/390",
+      "retrieved_date": "2026-10-02",
+      "notes": "Comprehensive list of schedule forms required for citizenship services.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "No date: note the date shown on the page."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-lalitpur-nrn-notice",
+      "source_title_ne": "गैर आवासीय नेपाली नागरिकता सम्बन्धी सूचना",
+      "source_title_en": "Non-Resident Nepali Citizenship Notice",
+      "source_type": "local_notice",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Lalitpur",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Lalitpur",
+      "source_url": "https://daolalitpur.moha.gov.np/assets/163/Suchana_NRN_20231019_0001.pdf/file",
+      "retrieved_date": "2026-10-02",
+      "notes": "Specifies requirements for Schedule 8 (Oath) and Schedule 9 for NRN citizenship relinquishment.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Check the date in the PDF (file name suggests 2023-10-19)."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-bhaktapur-charter",
+      "source_title_ne": "नागरिक बडापत्र - जिल्ला प्रशासन कार्यालय भक्तपुर",
+      "source_title_en": "Citizen Charter - DAO Bhaktapur",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Bhaktapur",
+      "publication_date": "2019-09-01 (AD) / 2076-05-15 BS",
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Bhaktapur",
+      "source_url": "https://daobhaktapur.moha.gov.np/office-layout/647",
+      "retrieved_date": "2026-10-02",
+      "notes": "Includes detailed room numbers and specific documentation requirements for new and duplicate citizenship.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Charter from 2076 (2019) predates the 2079 amendment: check for a newer charter; older fees/documents may be outdated (spec §20)."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-kaski-charter",
+      "source_title_ne": "प्रतिलिपी नागरिकता प्रमाणपत्र - जिल्ला प्रशासन कार्यालय कास्की",
+      "source_title_en": "Duplicate Citizenship Certificate - DAO Kaski",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Kaski",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Kaski",
+      "source_url": "https://daokaski.moha.gov.np/service/646",
+      "retrieved_date": "2026-10-02",
+      "notes": "Provides workflow for duplicate citizenship (Schedule-2) and specifies conditions for certificates lost in the 2047 BS fire.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Verify the claim about records destroyed by fire before 2047-01-17 directly on the page."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-morang-charter",
+      "source_title_ne": "नागरिक बडापत्र - जिल्ला प्रशासन कार्यालय मोरङ",
+      "source_title_en": "Citizen Charter - DAO Morang",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Morang",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Morang",
+      "source_url": "https://daomorang.moha.gov.np/assets/72/%E0%A4%A8%E0%A4%BE%E0%A4%97%E0%A4%B0%E0%A4%BF%E0%A4%95_%E0%A4%B5%E0%A4%A1%E0%A4%BE%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0.pdf/file",
+      "retrieved_date": "2026-10-02",
+      "notes": "Contains sample forms and detailed photo/verification requirements for citizenship through mother with unidentified father.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "No date: note the date in the PDF."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-dao-panchthar-charter",
+      "source_title_ne": "नागरिक बडापत्र - जिल्ला प्रशासन कार्यालय पाँचथर",
+      "source_title_en": "Citizen Charter - DAO Panchthar",
+      "source_type": "dao_charter",
+      "authority_tier": 3,
+      "issuing_authority": "District Administration Office, Panchthar",
+      "publication_date": "2019-01-25 (AD) / 2075-10-11 BS",
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Panchthar",
+      "source_url": "https://daopanchthar.moha.gov.np/en/page/na-gara-ka-bda-pata-ra-11",
+      "retrieved_date": "2026-10-02",
+      "notes": "Covers naturalized citizenship via marriage (Schedule-7) and civil servant family citizenship processing.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Charter from 2075 (2019) predates the 2079 amendment: check for a newer version."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-aao-tikapur",
+      "source_title_ne": "ईलाका प्रशासन कार्यालय, टिकापुरको काम, कर्तव्य र अधिकार",
+      "source_title_en": "Duties and Rights of Area Administration Office, Tikapur",
+      "source_type": "official_portal",
+      "authority_tier": 2,
+      "issuing_authority": "Area Administration Office, Tikapur",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Kailali (Tikapur Area)",
+      "source_url": "https://aaotikapur.moha.gov.np/page/iil-ka-pa-rasha-sana-ka-ra-ya-lyaka-ka-mahara",
+      "retrieved_date": "2026-10-02",
+      "notes": "Details the delegated authority for AAOs to distribute citizenship and correct past mobile team roster errors.",
+      "review": {
+        "priority": "low",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Describes duties only; not a source for fees/documents."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-aao-pharping",
+      "source_title_ne": "नेपाली नागरिकता सम्बन्धी जानकारी - ईलाका प्रशासन कार्यालय, फर्पिङ",
+      "source_title_en": "Nepali Citizenship Information - AAO Pharping",
+      "source_type": "official_portal",
+      "authority_tier": 2,
+      "issuing_authority": "Area Administration Office, Pharping",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Kathmandu (Pharping Area)",
+      "source_url": "https://aaopharping.moha.gov.np/page/about-nepali-citizenship",
+      "retrieved_date": "2026-10-02",
+      "notes": "Explains online recommendation tracking and verification via the CMIS system for citizenship processing.",
+      "review": {
+        "priority": "low",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": []
+      }
+    },
+    {
+      "source_document_id": "src-donidcr-faq",
+      "source_title_ne": "राष्ट्रिय परिचयपत्र सम्बन्धी धेरै सोधिने प्रश्नहरु",
+      "source_title_en": "National ID Frequently Asked Questions",
+      "source_type": "official_portal",
+      "authority_tier": 2,
+      "issuing_authority": "Department of National ID and Civil Registration",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "current consolidated text",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://donidcr.gov.np/pages/abboyed-asked-questions--rational-identity-10/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Outlines how citizenship certificates act as the primary breeder document for the eNID system, handling date of birth discrepancies.",
+      "review": {
+        "priority": "low",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Title has a typo in the URL; confirm the page opens."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-donidcr-mother-circular",
+      "source_title_ne": "आमाको नामबाट जारी भएको नेपाली नागरिकताको प्रमाणपत्र बाहक नेपाली नागरिकको राष्ट्रिय परिचयपत्र विवरण दर्ता सम्बन्धी परिपत्र",
+      "source_title_en": "Circular regarding NID details registration of citizens holding citizenship via mother",
+      "source_type": "circular",
+      "authority_tier": 2,
+      "issuing_authority": "Department of National ID and Civil Registration",
+      "publication_date": "2026-03-10 (AD) / 2082-11-26 BS",
+      "effective_date": "2026-03-10 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://donidcr.gov.np/content/412/circular-regarding-registration-of-national-identity-card/",
+      "retrieved_date": "2026-10-02",
+      "notes": "Directs local stations on how to process NID biometric enrollments for citizens lacking a father's citizenship record.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Verify date 2082-11-26 and the circular text."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-sc-8557",
+      "source_title_ne": "सविना दमाईसमेत विरूद्ध नेपाल सरकार (निर्णय नं. ८५५७)",
+      "source_title_en": "Sabina Damai v. Government of Nepal (Decision No. 8557)",
+      "source_type": "court_decision",
+      "authority_tier": 1,
+      "issuing_authority": "Supreme Court of Nepal",
+      "publication_date": "2011 (AD) / 2068 BS",
+      "effective_date": null,
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://nkp.gov.np/full_detail/124",
+      "retrieved_date": "2026-10-02",
+      "notes": "Foundational case cited in subsequent jurisprudence; established that a child raised by a single Nepali mother without paternal identification cannot be denied citizenship.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "URL nkp.gov.np/full_detail/124 looks suspicious for decision no. 8557: confirm the page shows this case.",
+          "Supreme Court precedents are binding (Constitution Art. 128(4)); kept at authority tier 1."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-sc-9627",
+      "source_title_ne": "सज्दा सापकोटा विरूद्ध नेपाल सरकार (निर्णय नं. ९६२७)",
+      "source_title_en": "Sajda Sapkota v. Government of Nepal (Decision No. 9627)",
+      "source_type": "court_decision",
+      "authority_tier": 1,
+      "issuing_authority": "Supreme Court of Nepal",
+      "publication_date": "2016-10 (AD) / 2073 Kartik BS",
+      "effective_date": "2016-03-15 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://nkp.gov.np/full_detail/8670",
+      "retrieved_date": "2026-10-02",
+      "notes": "Landmark writ of mandamus explicitly declaring that doubting an absent father's nationality to deny citizenship via a Nepali mother is unlawful.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Confirm decision date and the URL."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-sc-9687",
+      "source_title_ne": "सृजन खरेल विरूद्ध नेपाल सरकार (निर्णय नं. ९६८७)",
+      "source_title_en": "Srijan Kharel (Deepti Gurung) v. Government of Nepal (Decision No. 9687)",
+      "source_type": "court_decision",
+      "authority_tier": 1,
+      "issuing_authority": "Supreme Court of Nepal",
+      "publication_date": "2016-12 (AD) / 2073 Poush BS",
+      "effective_date": "2016-08-29 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://nkp.gov.np/full_detail/8730",
+      "retrieved_date": "2026-10-02",
+      "notes": "Establishes that the whereabouts of the father are legally irrelevant when an applicant claims citizenship solely through a qualifying mother.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Confirm decision date and the URL."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-sc-9841",
+      "source_title_ne": "उमा भट्टराई विरूद्ध जिल्ला प्रशासन कार्यालय, मोरङ (निर्णय नं. ९८४१)",
+      "source_title_en": "Uma Bhattarai v. DAO Morang (Decision No. 9841)",
+      "source_type": "court_decision",
+      "authority_tier": 1,
+      "issuing_authority": "Supreme Court of Nepal",
+      "publication_date": "2017-10 (AD) / 2074 Kartik BS",
+      "effective_date": "2017-08-21 (AD)",
+      "amendment_status": "original",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://nkp.gov.np/full_detail/8892",
+      "retrieved_date": "2026-10-02",
+      "notes": "Issues a mandatory directive prohibiting DAOs from denying matrilineal citizenship due to patriarchal bias, invoking CRC and CEDAW.",
+      "review": {
+        "priority": "medium",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": false,
+        "flags": [
+          "Confirm decision date and the URL."
+        ]
+      }
+    }
+  ]
+}

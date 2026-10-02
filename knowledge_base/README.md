@@ -7,8 +7,12 @@ verification status); the body is chunked and indexed.
 
 ```bash
 cd backend
-python -m app.cli ingest ../knowledge_base            # upload + index every record
+python -m app.cli import-gemini ../sources/batches/batch1.txt   # split a Gemini answer (.txt/.md/.docx) into records
+python -m app.cli check-records ../knowledge_base               # lint: front matter, required fields, placeholders, duplicate ids
+python -m app.cli ingest ../knowledge_base                      # upload + index every record
 ```
+
+Sources, the review checklist and the Gemini prompts are in [`../sources/`](../sources/README.md).
 
 * Records with `verification_status: pending` are stored but **never used to answer** until an admin
   marks them `verified` (Admin → Knowledge base → Edit). Check each record against the official

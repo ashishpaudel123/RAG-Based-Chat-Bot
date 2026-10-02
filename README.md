@@ -204,8 +204,14 @@ Knowledge records live in `knowledge_base/` — one Markdown file per topic with
 (see [`knowledge_base/_TEMPLATE.md`](knowledge_base/_TEMPLATE.md) and [`knowledge_base/README.md`](knowledge_base/README.md)).
 
 ```bash
-cd backend && python -m app.cli ingest ../knowledge_base   # records start as "pending"
+cd backend
+python -m app.cli import-gemini ../sources/batches/batch1.txt   # split a Gemini batch answer into record files
+python -m app.cli check-records ../knowledge_base               # lint records
+python -m app.cli ingest ../knowledge_base                      # records start as "pending"
 ```
+
+The official source inventory, its review checklist and the Gemini prompts used to write records are in
+[`sources/`](sources/README.md).
 
 Review each record against its official source, then mark it **Verified** in Admin → Knowledge base
 (or set `verification_status: verified` before ingesting). Only verified, current records are used for
@@ -252,7 +258,7 @@ fusion and threshold settings, prompt version, question-set version and corpus (
 ## Testing
 
 ```bash
-cd backend && python -m pytest -q          # 51 tests, offline (fake provider, SQLite)
+cd backend && python -m pytest -q          # 56 tests, offline (fake provider, SQLite)
 TEST_DATABASE_URL=postgresql+psycopg://user:pass@localhost:5432/chatbot_test python -m pytest -q
 cd frontend && npx eslint src && npm run build
 ```
