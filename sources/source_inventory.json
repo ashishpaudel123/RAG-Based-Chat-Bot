@@ -3,11 +3,12 @@
   "generated_by": "Gemini Deep Research (prompt 1), reviewed by Claude Code on 2026-10-02",
   "status": "UNVERIFIED - every entry must be checked by a person (see sources/README.md)",
   "missing_sources": [
-    "Nepal Citizenship (First Amendment) Act, 2079 official text (or consolidated Act including it)",
-    "Nepal Citizenship (First and Second Amendment) Regulations (not listed)",
-    "Consolidated Nepal Citizenship Regulation, 2063 with all amendments and Schedules (अनुसूची) 1-11",
-    "MOHA circular(s) on implementing the 2079 First Amendment",
-    "Newer citizen charters for DAO Bhaktapur and Panchthar (listed ones are from 2075/2076)"
+    "Text of the Nepal Citizenship (First Amendment) Act, 2079 (or the consolidated Act including it)",
+    "Text of the Nepal Citizenship (Second Amendment) Act, 2082 (Gazette Extraordinary Issue 27, 2082-06-05)",
+    "Text of the Third (2080, Gazette No. 28) and Fourth (2082, Gazette No. 55) Amendment Regulations",
+    "Constitution of Nepal, Part 2 (Articles 10-15), consolidated Nepali text",
+    "DAO citizen charter PDFs (Kathmandu, Lalitpur, Bhaktapur, Kaski) to check fees and timings",
+    "MOHA circular(s) on implementing the 2079 First Amendment"
   ],
   "sources": [
     {
@@ -24,7 +25,7 @@
       "jurisdiction": "Nepal",
       "source_url": "https://lawcommission.gov.np/content/13437/nepal-s-constitution/",
       "retrieved_date": "2026-10-02",
-      "notes": "Covers Part 2 citizenship articles (Articles 10-15). The link provided hosts the constitution inclusive of the 2nd amendment.",
+      "notes": "Covers Part 2 citizenship articles (Articles 10-15). The link provided hosts the constitution inclusive of the 2nd amendment. User-provided reference (2026-10-02): Part 2 (Articles 10-15) is also on the MOHA portal.",
       "review": {
         "priority": "high",
         "verified_by_human": false,
@@ -101,14 +102,15 @@
       "jurisdiction": "Nepal",
       "source_url": null,
       "retrieved_date": null,
-      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship).",
+      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship). User-provided reference (2026-10-02): published in the Nepal Gazette, 'Volume 79', Extraordinary Issue 6.",
       "review": {
         "priority": "critical",
         "verified_by_human": false,
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Find the official text: Nepal Law Commission (recent Acts) or Nepal Gazette 2080. Or use the consolidated Act that already includes it."
+          "Find the official text: Nepal Law Commission (recent Acts) or Nepal Gazette 2080. Or use the consolidated Act that already includes it.",
+          "'Volume 79' looks like the Act year, not a Gazette volume (2080 BS issues are Khanda 73); check the Gazette volume/issue and date (Gemini said 2080-02-17)."
         ]
       }
     },
@@ -121,19 +123,19 @@
       "issuing_authority": "Federal Parliament / Department of Printing",
       "publication_date": "2025-09-21 (AD) / 2082-06-05 BS",
       "effective_date": "2025-09-21 (AD)",
-      "amendment_status": "amends Nepal Citizenship Act, 2063 (unconfirmed)",
+      "amendment_status": "amends Nepal Citizenship Act, 2063",
       "status": "current",
       "jurisdiction": "Nepal",
       "source_url": "https://dop.gov.np/content/12736/citizenship-act-2082/",
       "retrieved_date": "2026-10-02",
-      "notes": "Published in Rajpatra Extraordinary Issue 27.",
+      "notes": "Published in Rajpatra Extraordinary Issue 27. User-provided reference (2026-10-02): confirms Extraordinary Issue 27, 2082-06-05.",
       "review": {
         "priority": "critical",
         "verified_by_human": false,
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "UNCONFIRMED: verify in the Nepal Gazette (rajpatra.dop.gov.np) that this Act exists and its exact date. The House of Representatives was dissolved around 12 September 2025 (Bhadra 2082), so an Act published on 2082-06-05 needs checking.",
+          "Existence now reported by the user (Extraordinary Issue 27, 2082-06-05) but the text has not been seen. The House was dissolved ~12 Sep 2025 (2082-05-27), so check whether it was passed before dissolution or is an ordinance.",
           "amendment_status 'current consolidated text' is wrong for an amending Act; it amends the 2063 Act.",
           "Gemini did not quote any provision from it; do not write records from it until the official text is in hand."
         ]
@@ -224,21 +226,21 @@
       "source_type": "amendment",
       "authority_tier": 1,
       "issuing_authority": "Ministry of Home Affairs",
-      "publication_date": "2023-09-26 (AD) / 2080-06-09 BS",
-      "effective_date": "2023-09-26 (AD)",
-      "amendment_status": "current consolidated text",
+      "publication_date": "2023-09-21 (AD) / 2080-06-04 BS",
+      "effective_date": "2023-09-21 (AD)",
+      "amendment_status": "amends Nepal Citizenship Regulation, 2063",
       "status": "current",
       "jurisdiction": "Nepal",
       "source_url": "https://moha.gov.np/en/post/na-pa-l-na-gara-kata-ta-sa-ra-sa-sha-thhana-na-yama-val-2",
       "retrieved_date": "2026-10-02",
-      "notes": "Accommodates procedures for children of citizens by birth. Rajpatra lists date as 2080-06-04, MOHA published on 2080-06-09.",
+      "notes": "Accommodates procedures for children of citizens by birth. Rajpatra lists date as 2080-06-04, MOHA published on 2080-06-09. User-provided reference (2026-10-02): Gazette Number 28, 2080-06-04; also on the MOHA website.",
       "review": {
         "priority": "medium",
         "verified_by_human": false,
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Dates disagree (Gazette 2080-06-04 vs MOHA 2080-06-09); record the Gazette date."
+          "Gazette date 2080-06-04 confirmed by the user; get the text (the consolidated Regulation PDF stops at 2078)."
         ]
       }
     },
@@ -251,20 +253,19 @@
       "issuing_authority": "Government of Nepal / Department of Printing",
       "publication_date": "2026-01-04 (AD) / 2082-09-21 BS",
       "effective_date": "2026-01-04 (AD)",
-      "amendment_status": "current consolidated text",
+      "amendment_status": "amends Nepal Citizenship Regulation, 2063",
       "status": "current",
       "jurisdiction": "Nepal",
       "source_url": "https://dop.gov.np/category/sankhya-2082/?page=8",
       "retrieved_date": "2026-10-02",
-      "notes": "Rajpatra Vol. 55. Modifies regulations to align with the 2082 Second Amendment Act.",
+      "notes": "User-provided reference (2026-10-02): Nepal Gazette Number 55, 2082-09-21.",
       "review": {
         "priority": "critical",
         "verified_by_human": false,
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "source_url is a Gazette LIST page, not the document. Find the exact PDF link.",
-          "Its description depends on the unconfirmed Second Amendment Act 2082; verify both together."
+          "Existence reported by the user; the text has not been seen. Find the exact Gazette PDF (current URL is a list page)."
         ]
       }
     },
@@ -342,7 +343,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "No date: note the date shown on the charter page; treat as local practice of DAO Kathmandu only."
+          "No date: note the date shown on the charter page; treat as local practice of DAO Kathmandu only.",
+          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
         ]
       }
     },
@@ -392,7 +394,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "No date: note the date shown on the page."
+          "No date: note the date shown on the page.",
+          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
         ]
       }
     },
@@ -442,7 +445,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Charter from 2076 (2019) predates the 2079 amendment: check for a newer charter; older fees/documents may be outdated (spec §20)."
+          "Charter from 2076 (2019) predates the 2079 amendment: check for a newer charter; older fees/documents may be outdated (spec §20).",
+          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
         ]
       }
     },
@@ -467,7 +471,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Verify the claim about records destroyed by fire before 2047-01-17 directly on the page."
+          "Verify the claim about records destroyed by fire before 2047-01-17 directly on the page.",
+          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
         ]
       }
     },

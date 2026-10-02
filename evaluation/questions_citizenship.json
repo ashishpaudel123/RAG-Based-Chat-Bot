@@ -493,8 +493,12 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "fee",
-      "expected_sources": [],
-      "expected_answer_facts": [],
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [
+        "free"
+      ],
       "must_not_claim": [
         "Rs 500",
         "Rs 1000"
@@ -519,6 +523,22 @@
       "expected_sources": [],
       "expected_answer_facts": [],
       "must_not_claim": []
+    },
+    {
+      "id": "fee-rne-01",
+      "question": "nagarikta banauna kati din lagcha ra kati paisa?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "fee",
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [
+        "same day"
+      ],
+      "must_not_claim": [
+        "Rs 500"
+      ]
     }
   ]
 }
