@@ -74,3 +74,21 @@ the consolidated Citizenship Regulation with Schedules, the Distribution Directi
 - **Date conflicts:** the Third Amendment Regulation 2080 shows two different dates; use the Gazette date.
 - **Court decisions:** Supreme Court precedents are binding (Constitution Art. 128(4)), so they stay at
   authority tier 1. Confirm each NKP URL; the one for decision 8557 looks suspicious.
+
+## PDFs received (2026-10-02)
+
+| File | What it is | Text |
+|---|---|---|
+| `src-act-2063.pdf` | Citizenship Act 2063, Himali font, amended only up to the 2069 ordinance (**no 2079 First Amendment**) | `text/src-act-2063.txt` |
+| `src-reg-2063.pdf` | Older Regulation text (Preeti) | `text/src-reg-2063.txt` |
+| `src-reg-2063-consolidated.pdf` | Regulation consolidated up to 2078 (Kalimati; garbled text layer) | `text/src-reg-2063-consolidated.raw.txt` |
+| `src-reg-2063-english.pdf` | Old English translation of the Rules (first amendment only) | not used for records |
+| `src-directive-2063.pdf` | Distribution Directive 2063 (Preeti, 72 pp) | `text/src-directive-2063.txt` |
+| `src-toli-directive-2070.pdf` | Distribution Team (Toli) Directive 2070 (Preeti) | `text/src-toli-directive-2070.txt` |
+
+Preeti/Himali PDFs were converted with `tools/convert_pdf_text.py` (needs `pymupdf` and `npttf2utf`).
+The 21 records in `knowledge_base/citizenship/` were written from these texts and are all `pending`.
+
+**Still needed:** the consolidated Act including the 2079 First Amendment (Act section 3(4)/3(5) text),
+the Constitution Part 2, recent DAO citizen charters (for local documents, fees and timings), and the
+3rd/4th Regulation amendments if they exist.

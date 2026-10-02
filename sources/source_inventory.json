@@ -54,10 +54,11 @@
         "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
           "This entry is the ORIGINAL 2063 text. Download the latest consolidated text (संशोधनसहित) that includes the 2079 First Amendment; the original alone is outdated.",
-          "Gemini notes Preeti/scanned PDF: check that text copies correctly; otherwise let Gemini read page images."
+          "Gemini notes Preeti/scanned PDF: check that text copies correctly; otherwise let Gemini read page images.",
+          "Uploaded PDF (Himali font) carries amendments only up to the 2069 ordinance; it does NOT contain the 2079 First Amendment. Still need the consolidated Act."
         ]
       }
     },
@@ -157,9 +158,62 @@
         "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
-          "ORIGINAL 2063 text. Get the consolidated Regulation including all amendments (1st, 2nd, 3rd 2080, 4th 2082). The 1st and 2nd Regulation amendments are missing from this inventory."
+          "ORIGINAL 2063 text. Get the consolidated Regulation including all amendments (1st, 2nd, 3rd 2080, 4th 2082). The 1st and 2nd Regulation amendments are missing from this inventory.",
+          "Uploaded PDF is an older (Preeti) text; records cite the consolidated version src-reg-2063-consolidated instead."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-2063-consolidated",
+      "source_title_ne": "नेपाल नागरिकता नियमावली, २०६३ (संशोधनसहित)",
+      "source_title_en": "Nepal Citizenship Regulation, 2063 (consolidated)",
+      "source_type": "regulation",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "consolidated up to the 2078 amendment",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "Uploaded by the user. Kalimati Unicode PDF whose text layer is partly garbled (sources/text/src-reg-2063-consolidated.raw.txt); the knowledge records cite this version.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Text layer garbled (र/ह shown as ि): check every quoted rule against the page images.",
+          "Does not include the 3rd (2080) or 4th (2082) amendments: confirm whether those exist and what they changed.",
+          "Add the official source_url."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-reg-2063-english",
+      "source_title_ne": "नेपाल नागरिकता नियमावली, २०६३ (अंग्रेजी अनुवाद)",
+      "source_title_en": "Nepal Citizenship Rules, 2063 (English translation)",
+      "source_type": "translation",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "translation of the original text with the first amendment only",
+      "status": "historical",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "Uploaded by the user. Unofficial/old English translation, useful for English wording only; not cited as authority.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Outdated: never cite for current procedure."
         ]
       }
     },
@@ -233,10 +287,37 @@
         "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
           "Publication date 2068-04-18 for a '2063' directive suggests an amended version; confirm which version the PDF is.",
-          "Preeti font PDF: check text extraction."
+          "Preeti font PDF: check text extraction.",
+          "Uploaded PDF (Preeti, 72 pp) converted to sources/text/src-directive-2063.txt."
+        ]
+      }
+    },
+    {
+      "source_document_id": "src-toli-directive-2070",
+      "source_title_ne": "नागरिकता वितरण टोली सम्बन्धी निर्देशिका, २०७०",
+      "source_title_en": "Citizenship Distribution Team (Toli) Directive, 2070",
+      "source_type": "directive",
+      "authority_tier": 1,
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "original text",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": null,
+      "retrieved_date": "2026-10-02",
+      "notes": "Uploaded by the user (Preeti; converted to sources/text/src-toli-directive-2070.txt). Covers mobile citizenship-distribution teams.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Check whether it was replaced by a later team directive.",
+          "Add the official source_url and publication date."
         ]
       }
     },
