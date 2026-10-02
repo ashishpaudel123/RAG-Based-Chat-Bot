@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 from sqlalchemy import select
 
 from app.config import get_settings
@@ -9,9 +9,43 @@ from app.models import Chunk, Document, IndexRun
 from app.rate_limit import limit
 from app.schemas import ChunkOut, DocumentOut, IndexRunOut, ReindexRequest
 from app.services import knowledge
+from app.services.document_metadata import normalize_metadata
 from app.services.document_processing import DocumentValidationError
 
 router = APIRouter(prefix="/api", tags=["knowledge"])
+
+
+def metadata_form(
+    source_type: Annotated[str | None, Form(max_length=30)] = None,
+    authority: Annotated[str | None, Form(max_length=255)] = None,
+    authority_tier: Annotated[str | None, Form(max_length=2)] = None,
+    category: Annotated[str | None, Form(max_length=80)] = None,
+    legal_reference: Annotated[str | None, Form(max_length=255)] = None,
+    jurisdiction: Annotated[str | None, Form(max_length=80)] = None,
+    district: Annotated[str | None, Form(max_length=80)] = None,
+    validity_status: Annotated[str | None, Form(max_length=20)] = None,
+    effective_from: Annotated[str | None, Form(max_length=40)] = None,
+    effective_until: Annotated[str | None, Form(max_length=40)] = None,
+    source_url: Annotated[str | None, Form(max_length=500)] = None,
+    last_verified: Annotated[str | None, Form(max_length=40)] = None,
+    verification_status: Annotated[str | None, Form(max_length=20)] = None,
+    language: Annotated[str | None, Form(max_length=40)] = None,
+) -> dict:
+    """Optional source-metadata form fields. Omitted fields are left unchanged; an empty
+    string clears a free-text field."""
+    raw = {k: v for k, v in locals().items() if v is not None}
+    clear = {k for k, v in raw.items() if v.strip() == ""}
+    try:
+        values, _ = normalize_metadata({k: v for k, v in raw.items() if k not in clear})
+    except DocumentValidationError as exc:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, str(exc))
+    for k in clear:
+        if k not in ("source_type", "authority_tier", "validity_status", "verification_status"):
+            values[k] = None
+    return {"values": values, "clear": clear}
+
+
+MetadataForm = Annotated[dict, Depends(metadata_form)]
 
 
 async def _read_limited(file: UploadFile) -> bytes:
@@ -32,6 +66,7 @@ async def upload_document(
     db: DB,
     admin: AdminUser,
     file: Annotated[UploadFile, File()],
+    meta: MetadataForm,
     title: Annotated[str | None, Form(max_length=255)] = None,
     tags: Annotated[str | None, Form(max_length=500)] = None,
 ):
@@ -40,7 +75,7 @@ async def upload_document(
     try:
         return knowledge.create_document(
             db, filename=file.filename or "", data=data, title=title, tags=knowledge.normalize_tags(tags),
-            user_id=admin.id,
+            user_id=admin.id, metadata=meta["values"],
         )
     except DocumentValidationError as exc:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, str(exc))
@@ -66,6 +101,7 @@ async def update_document(
     document_id: str,
     db: DB,
     admin: AdminUser,
+    meta: MetadataForm,
     file: Annotated[UploadFile | None, File()] = None,
     title: Annotated[str | None, Form(max_length=255)] = None,
     tags: Annotated[str | None, Form(max_length=500)] = None,
@@ -79,6 +115,7 @@ async def update_document(
         return knowledge.replace_document(
             db, doc, filename=file.filename if data is not None else None, data=data, title=title,
             tags=knowledge.normalize_tags(tags) if tags is not None else None,
+            metadata=meta["values"], clear=meta["clear"], user_id=admin.id,
         )
     except DocumentValidationError as exc:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, str(exc))

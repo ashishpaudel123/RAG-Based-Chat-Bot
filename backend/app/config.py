@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     app_name: str = "Customer Service Chatbot"
+    # Domain profile: built-in id ("nepal_citizenship", "customer_service") or a JSON file path.
+    domain_profile: str = "nepal_citizenship"
     environment: Literal["development", "test", "production"] = "development"
 
     # --- Persistence -------------------------------------------------------
@@ -71,10 +73,17 @@ class Settings(BaseSettings):
     top_k: int = 5
     relevance_threshold: float = 0.55  # minimum cosine similarity
     max_context_chunks: int = 4
-    query_rewrite: bool = True      # rewrite follow-ups into standalone queries
+    query_rewrite: bool = True      # rewrite follow-ups into standalone queries (when analysis is off)
+    # One LLM call per message that detects language, intents and facts, normalizes the
+    # query (Nepali + English) and decides whether a clarifying question is needed.
+    query_analysis: bool = True
+    clarifying_questions: bool = True
+    candidate_pool: int = 20        # candidates per retriever before fusion/reranking
+    rrf_k: int = 60                 # reciprocal-rank-fusion constant
+    keyword_min_coverage: float = 0.5  # share of query terms a keyword-only match must contain
     history_messages: int = 8       # recent messages sent as conversation memory
     summary_trigger_messages: int = 20  # summarise older history beyond this
-    prompt_version: str = "v1.0"
+    prompt_version: str = "v2.0"
 
     @property
     def cors_origin_list(self) -> list[str]:

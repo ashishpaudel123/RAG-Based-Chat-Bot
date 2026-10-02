@@ -44,7 +44,7 @@ class LLMProvider(Protocol):
 
     def generate(
         self, system_instruction: str, turns: list[ChatTurn], *, temperature: float | None = None,
-        max_output_tokens: int | None = None,
+        max_output_tokens: int | None = None, json_mode: bool = False,
     ) -> str: ...
 
     def embed(self, texts: list[str], task_type: TaskType) -> list[list[float]]: ...
@@ -147,7 +147,8 @@ class GeminiProvider:
     def list_models(self) -> list:
         return list(self._with_retries(lambda: list(self._client.models.list())))
 
-    def generate(self, system_instruction, turns, *, temperature=None, max_output_tokens=None) -> str:
+    def generate(self, system_instruction, turns, *, temperature=None, max_output_tokens=None,
+                 json_mode=False) -> str:
         types = self._types
         contents = [types.Content(role=t.role, parts=[types.Part(text=t.text)]) for t in turns]
         config = types.GenerateContentConfig(
@@ -156,6 +157,7 @@ class GeminiProvider:
             # Newer Gemini models spend output tokens on internal "thinking", so
             # small caps can produce empty answers; keep a generous floor.
             max_output_tokens=max(max_output_tokens or 0, self.settings.max_output_tokens),
+            response_mime_type="application/json" if json_mode else None,
         )
         last_error: LLMError | None = None
         for model in self.models:
@@ -223,8 +225,11 @@ class FakeProvider:
             vec[h % self.DIM] += 1.0
         return _normalize(vec)
 
-    def generate(self, system_instruction, turns, *, temperature=None, max_output_tokens=None) -> str:
+    def generate(self, system_instruction, turns, *, temperature=None, max_output_tokens=None,
+                 json_mode=False) -> str:
         prompt = turns[-1].text if turns else ""
+        if "QUERY_ANALYSIS" in system_instruction:
+            return self._fake_analysis(prompt)
         if "Rewrite the user's latest message" in system_instruction:
             match = re.search(r"Latest message:\s*(.+)", prompt, re.S)
             return (match.group(1) if match else prompt).strip()
@@ -245,6 +250,23 @@ class FakeProvider:
             return "INSUFFICIENT_EVIDENCE"
         scored.sort(key=lambda x: -x[0])
         return " ".join(f"{s} [{sid}]" for _, sid, s in scored[:2])
+
+
+    @staticmethod
+    def _fake_analysis(prompt: str) -> str:
+        """Heuristic stand-in for the LLM query analysis (no clarification, no intents)."""
+        import json
+
+        from app.services.normalization import detect_language
+
+        match = re.search(r"<latest_message>\s*(.*?)\s*</latest_message>", prompt, re.S)
+        question = (match.group(1) if match else prompt).strip()
+        return json.dumps({
+            "language": detect_language(question), "standalone_question": question, "search_queries": [question],
+            "keywords": [], "intents": [], "facts": {}, "district": None, "time_reference": None,
+            "source_preference": "both", "missing_facts": [], "needs_clarification": False,
+            "clarifying_questions": [],
+        })
 
 
 _STOP = set("a an the is are was were be to of and or in on for with what how do does did can i my me you your "

@@ -74,6 +74,13 @@ class Message(Base):
     latency_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
     model: Mapped[str | None] = mapped_column(String(100), nullable=True)
     prompt_version: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    # answer | clarification | fallback | small_talk
+    kind: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    # HIGH | MEDIUM | LOW | NEEDS_CLARIFICATION (spec §26; for logic and auditing)
+    confidence: Mapped[str | None] = mapped_column(String(30), nullable=True)
+    language: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    analysis: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # intents, facts, district...
+    warnings: Mapped[list | None] = mapped_column(JSON, nullable=True)   # unverified claims
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
     conversation: Mapped[Conversation] = relationship(back_populates="messages")
@@ -104,6 +111,28 @@ class Document(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, onupdate=_now)
     indexed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    # --- Source metadata and legal versioning (spec §6, §16) ----------------
+    # Dates are free text so both AD and BS (e.g. "2082-01-15 BS") can be recorded.
+    record_id: Mapped[str | None] = mapped_column(String(120), nullable=True, index=True)
+    source_type: Mapped[str] = mapped_column(String(30), default="other", server_default="other")
+    authority: Mapped[str | None] = mapped_column(String(255), nullable=True)  # issuing authority
+    authority_tier: Mapped[int] = mapped_column(Integer, default=3, server_default="3")  # 1 = primary law ... 5 = informal
+    category: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    legal_reference: Mapped[str | None] = mapped_column(String(255), nullable=True)  # e.g. "दफा ३", "Rule 7"
+    jurisdiction: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    district: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    validity_status: Mapped[str] = mapped_column(String(20), default="current", server_default="current")
+    effective_from: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    effective_until: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    source_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    last_verified: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    # Only "verified" documents are searchable; "pending" waits for human review.
+    verification_status: Mapped[str] = mapped_column(String(20), default="verified", server_default="verified")
+    language: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    extra_metadata: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    lineage_id: Mapped[str | None] = mapped_column(String(36), nullable=True, index=True)  # shared by all versions
+    supersedes_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
 
     chunks: Mapped[list["Chunk"]] = relationship(
         back_populates="document", cascade="all, delete-orphan", passive_deletes=True, order_by="Chunk.chunk_index"
@@ -144,6 +173,14 @@ class Citation(Base):
     snippet: Mapped[str] = mapped_column(Text)
     score: Mapped[float] = mapped_column(Float)
     rank: Mapped[int] = mapped_column(Integer)
+    source_type: Mapped[str | None] = mapped_column(String(30), nullable=True)
+    authority_tier: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    validity_status: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    legal_reference: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    district: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    effective_from: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    source_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    last_verified: Mapped[str | None] = mapped_column(String(40), nullable=True)
 
     message: Mapped[Message] = relationship(back_populates="citations")
 

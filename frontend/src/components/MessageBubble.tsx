@@ -6,6 +6,13 @@ import remarkGfm from "remark-gfm";
 import { api, type Citation, type Message } from "@/lib/api";
 import { Logo } from "./ui";
 
+const SOURCE_LABEL: Record<string, string> = {
+  constitution: "Constitution", act: "Act", amendment: "Amendment", regulation: "Regulation",
+  directive: "Directive", circular: "Circular", official_notice: "Notice", form: "Form",
+  court_decision: "Court", dao_charter: "Office charter", local_notice: "Local notice",
+  official_portal: "Official", secondary: "Secondary", faq: "FAQ", informal: "Informal",
+};
+
 export function MessageBubble({ message, onUpdate }: { message: Message; onUpdate?: (m: Message) => void }) {
   if (message.role === "user") {
     return (
@@ -21,11 +28,21 @@ export function MessageBubble({ message, onUpdate }: { message: Message; onUpdat
       <Logo size={30} />
       <div className="min-w-0 max-w-[85%] flex-1">
         <div className="rounded-2xl rounded-tl-md border border-border bg-surface px-4 py-3 text-sm shadow-sm">
-          {message.is_fallback && (
-            <p className="mb-2 inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
-              Not found in the knowledge base
-            </p>
-          )}
+          {(() => {
+            const ne = message.language != null && message.language !== "en";
+            const label = message.is_fallback
+              ? ne ? "आधिकारिक स्रोतमा भेटिएन" : "Not found in the knowledge base"
+              : message.kind === "clarification"
+                ? ne ? "केही विवरण चाहियो" : "A few details needed"
+                : message.confidence === "LOW"
+                  ? ne ? "कम निश्चितता — सम्बन्धित कार्यालयमा पुष्टि गर्नुहोस्" : "Low confidence — please verify with the relevant office"
+                  : null;
+            return label ? (
+              <p className="mb-2 inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+                {label}
+              </p>
+            ) : null;
+          })()}
           <div className="prose-chat">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
@@ -51,7 +68,8 @@ function Sources({ citations }: { citations: Citation[] }) {
       <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted">Sources</p>
       <ul className="space-y-1.5">
         {citations.map((c) => {
-          const location = [c.section, c.page ? `page ${c.page}` : null].filter(Boolean).join(" · ");
+          const location = [c.legal_reference, c.section, c.page ? `page ${c.page}` : null, c.district]
+            .filter(Boolean).join(" · ");
           const expanded = open === c.rank;
           return (
             <li key={`${c.rank}-${c.chunk_id}`} className="rounded-lg bg-background text-xs">
@@ -65,14 +83,38 @@ function Sources({ citations }: { citations: Citation[] }) {
                   {c.rank}
                 </span>
                 <span className="min-w-0 flex-1 truncate">
+                  {c.source_type && SOURCE_LABEL[c.source_type] && (
+                    <span className="mr-1.5 rounded bg-surface px-1 py-px text-[10px] font-semibold uppercase tracking-wide text-muted">
+                      {SOURCE_LABEL[c.source_type]}
+                    </span>
+                  )}
                   <span className="font-medium">{c.document_title}</span>
                   {location && <span className="text-muted"> — {location}</span>}
+                  {c.validity_status && c.validity_status !== "current" && (
+                    <span className="ml-1.5 rounded bg-amber-50 px-1 text-[10px] font-semibold text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+                      {c.validity_status}
+                    </span>
+                  )}
                 </span>
                 <span className="shrink-0 text-muted" title="Retrieval similarity">{Math.round(c.score * 100)}%</span>
                 <span className="shrink-0 text-muted">{expanded ? "▴" : "▾"}</span>
               </button>
               {expanded && (
-                <p className="whitespace-pre-wrap border-t border-border px-2.5 py-2 leading-relaxed text-muted">{c.snippet}</p>
+                <div className="border-t border-border px-2.5 py-2">
+                  <p className="whitespace-pre-wrap leading-relaxed text-muted">{c.snippet}</p>
+                  {(c.source_url || c.last_verified || c.effective_from) && (
+                    <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted">
+                      {c.effective_from && <span>Effective from: {c.effective_from}</span>}
+                      {c.last_verified && <span>Last verified: {c.last_verified}</span>}
+                      {c.source_url && /^https?:\/\//.test(c.source_url) && (
+                        <a href={c.source_url} target="_blank" rel="noopener noreferrer nofollow"
+                          className="font-medium text-accent hover:underline">
+                          Official source ↗
+                        </a>
+                      )}
+                    </p>
+                  )}
+                </div>
               )}
             </li>
           );

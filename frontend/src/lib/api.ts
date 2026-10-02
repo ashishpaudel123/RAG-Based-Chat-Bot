@@ -31,6 +31,14 @@ export interface Citation {
   snippet: string;
   score: number;
   rank: number;
+  source_type: string | null;
+  authority_tier: number | null;
+  validity_status: string | null;
+  legal_reference: string | null;
+  district: string | null;
+  effective_from: string | null;
+  source_url: string | null;
+  last_verified: string | null;
 }
 
 export interface Feedback {
@@ -47,6 +55,9 @@ export interface Message {
   is_fallback: boolean;
   latency_ms: number | null;
   created_at: string;
+  kind?: "answer" | "clarification" | "fallback" | "small_talk" | null;
+  confidence?: "HIGH" | "MEDIUM" | "LOW" | "NEEDS_CLARIFICATION" | null;
+  language?: string | null;
   citations: Citation[];
   feedback: Feedback | null;
 }
@@ -88,7 +99,55 @@ export interface DocumentInfo {
   created_at: string;
   updated_at: string;
   indexed_at: string | null;
+  record_id: string | null;
+  source_type: string;
+  authority: string | null;
+  authority_tier: number;
+  category: string | null;
+  legal_reference: string | null;
+  jurisdiction: string | null;
+  district: string | null;
+  validity_status: "current" | "superseded" | "historical";
+  effective_from: string | null;
+  effective_until: string | null;
+  source_url: string | null;
+  last_verified: string | null;
+  verification_status: "verified" | "pending" | "rejected";
+  language: string | null;
+  lineage_id: string | null;
+  supersedes_id: string | null;
 }
+
+/** Editable source metadata (form fields). Empty string clears a free-text field. */
+export interface DocumentMeta {
+  source_type?: string;
+  authority_tier?: string;
+  authority?: string;
+  category?: string;
+  legal_reference?: string;
+  jurisdiction?: string;
+  district?: string;
+  validity_status?: string;
+  effective_from?: string;
+  effective_until?: string;
+  source_url?: string;
+  last_verified?: string;
+  verification_status?: string;
+  language?: string;
+}
+
+export interface Profile {
+  id: string;
+  assistant_name: string;
+  tagline: string;
+  suggestions: string[];
+  answer_format: string;
+}
+
+export const SOURCE_TYPES = [
+  "constitution", "act", "amendment", "regulation", "directive", "circular", "official_notice", "form",
+  "court_decision", "dao_charter", "local_notice", "official_portal", "secondary", "faq", "informal", "other",
+] as const;
 
 export interface Chunk {
   id: string;
@@ -223,18 +282,21 @@ export const api = {
 
   // knowledge (admin)
   listDocuments: () => request<DocumentInfo[]>("/api/documents"),
-  uploadDocument: (file: File, title?: string, tags?: string) => {
+  uploadDocument: (file: File, title?: string, tags?: string, meta: DocumentMeta = {}) => {
     const form = new FormData();
     form.append("file", file);
     if (title) form.append("title", title);
     if (tags) form.append("tags", tags);
+    // On upload, empty fields mean "use the file's front matter / defaults".
+    for (const [k, v] of Object.entries(meta)) if (v) form.append(k, v);
     return request<DocumentInfo>("/api/documents/upload", { method: "POST", body: form });
   },
-  updateDocument: (id: string, opts: { file?: File | null; title?: string; tags?: string }) => {
+  updateDocument: (id: string, opts: { file?: File | null; title?: string; tags?: string; meta?: DocumentMeta }) => {
     const form = new FormData();
     if (opts.file) form.append("file", opts.file);
     if (opts.title !== undefined) form.append("title", opts.title);
     if (opts.tags !== undefined) form.append("tags", opts.tags);
+    for (const [k, v] of Object.entries(opts.meta ?? {})) if (v !== undefined) form.append(k, v);
     return request<DocumentInfo>(`/api/documents/${id}`, { method: "PUT", body: form });
   },
   deleteDocument: (id: string) => request<void>(`/api/documents/${id}`, { method: "DELETE" }),
@@ -250,4 +312,5 @@ export const api = {
   logs: () => request<ErrorLog[]>("/api/admin/logs"),
   stats: () => request<Stats>("/api/admin/stats"),
   health: () => request<Health>("/api/health"),
+  profile: () => request<Profile>("/api/profile"),
 };

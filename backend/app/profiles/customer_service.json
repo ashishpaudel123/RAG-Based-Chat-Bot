@@ -1,0 +1,40 @@
+{
+  "id": "customer_service",
+  "assistant_name": "Customer Service Chatbot",
+  "tagline": "Answers come from our approved knowledge base, with the sources shown so you can check them.",
+  "domain_description": "customer service for an electronics store: returns, refunds, shipping, delivery, warranty, technical support, accounts, payments, EMI, loyalty points, cancellations and invoices.",
+  "role_description": "a helpful and professional customer service assistant",
+  "answer_format": "simple",
+  "default_reply_language": "en",
+  "intents": ["returns", "refunds", "shipping", "delivery_charges", "order_tracking", "warranty", "support",
+              "account", "payment", "emi", "loyalty", "cancellation", "invoice", "other"],
+  "fact_fields": ["product", "order_number", "payment_method", "location", "purchase_date"],
+  "clarification_guidance": "Only ask when the answer truly depends on a missing detail such as the product type or the delivery location. Most questions should be answered directly.",
+  "suggestions": [
+    "How many days do I have to return a product?",
+    "How much does delivery cost outside Kathmandu Valley?",
+    "What does the warranty not cover?",
+    "Which payment methods do you accept?"
+  ],
+  "greetings": {
+    "en": "Hello! I'm your customer service assistant. Ask me anything about our products, orders, policies or services and I'll answer from our approved knowledge base.",
+    "ne": "नमस्ते! म ग्राहक सेवा सहायक हुँ। हाम्रा उत्पादन, अर्डर वा नीतिबारे सोध्नुहोस्।"
+  },
+  "thanks": {
+    "en": "You're welcome! Let me know if there's anything else I can help you with.",
+    "ne": "धन्यवाद! अरू केही सोध्नु छ भने भन्नुहोस्।"
+  },
+  "fallback_messages": {
+    "en": "I couldn't find reliable information about that in the approved knowledge base, so I'd rather not guess. Could you rephrase your question or add more detail (for example, the product, order or policy you're asking about)? If you need further help, please contact our support team.",
+    "ne": "माफ गर्नुहोस्, यसबारे स्वीकृत जानकारीमा भरपर्दो विवरण भेटिएन। कृपया प्रश्न अलि स्पष्ट गर्नुहोस् वा ग्राहक सेवामा सम्पर्क गर्नुहोस्।"
+  },
+  "verification_note": {
+    "en": "⚠️ I could not verify these details from the sources; please confirm with our support team:",
+    "ne": "⚠️ यी विवरण स्रोतबाट पुष्टि हुन सकेनन्, कृपया ग्राहक सेवामा पुष्टि गर्नुहोस्:"
+  },
+  "synonyms": {
+    "refund": ["refunds", "money back", "reimbursement"],
+    "delivery": ["shipping", "courier", "dispatch"],
+    "warranty": ["guarantee", "warrenty", "waranty"]
+  }
+}

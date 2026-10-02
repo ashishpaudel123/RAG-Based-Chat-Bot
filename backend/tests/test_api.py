@@ -1,4 +1,5 @@
-from app.services.rag import FALLBACK_MESSAGE, sanitize
+from app.services.profile import get_profile
+from app.services.rag import sanitize
 from tests.conftest import auth_headers
 
 
@@ -69,7 +70,8 @@ def test_grounded_answer_with_sources(client, user_headers, knowledge):
 def test_fallback_when_no_evidence(client, user_headers, knowledge):
     r = client.post("/api/chat", headers=user_headers, json={"message": "Quantum chromodynamics gluon lattice xyzzy"})
     answer = r.json()["assistant_message"]
-    assert answer["is_fallback"] and answer["content"] == FALLBACK_MESSAGE
+    assert answer["is_fallback"] and answer["content"] == get_profile().text("fallback_messages", "en")
+    assert answer["kind"] == "fallback"
     assert answer["citations"] == []
 
 
@@ -136,6 +138,15 @@ def test_update_reindex_and_delete_document(client, admin_headers, user_headers,
     assert run["scope"] == "full" and run["failures"] == 0 and run["chunks_indexed"] > 0
     assert "8 PM" in ask()["content"]
 
+    # versioning: the old version is kept as "superseded", not deleted (spec §30)
+    docs = {d["id"]: d for d in client.get("/api/documents", headers=admin_headers).json()}
+    assert docs[doc["id"]]["validity_status"] == "superseded"
+    assert docs[updated["id"]]["supersedes_id"] == doc["id"] and updated["lineage_id"] == doc["id"]
+
+    # deleting the current version restores the previous one
+    assert client.delete(f"/api/documents/{updated['id']}", headers=admin_headers).status_code == 204
+    assert client.get(f"/api/documents/{doc['id']}", headers=admin_headers).json()["validity_status"] == "current"
+    assert "7 PM" in ask()["content"]
     assert client.delete(f"/api/documents/{doc['id']}", headers=admin_headers).status_code == 204
     assert ask()["is_fallback"]
 
@@ -195,7 +206,8 @@ def test_full_reindex_keeps_index_when_embedding_fails(client, admin_headers, us
 
     monkeypatch.setattr(provider, "embed", boom)
     run = client.post("/api/knowledge/reindex", headers=admin_headers, json={}).json()
-    assert run["chunks_indexed"] == 0 and run["failures"] == len(knowledge)
+    total_docs = len(client.get("/api/documents", headers=admin_headers).json())
+    assert run["chunks_indexed"] == 0 and run["failures"] == total_docs
     assert get_vector_store().count() == before  # existing vectors untouched
     monkeypatch.undo()
     answer = client.post("/api/chat", headers=user_headers, json={"message": "How long does it take to get my refund?"}).json()

@@ -6,17 +6,13 @@ import { MessageBubble, TypingIndicator } from "@/components/MessageBubble";
 import { FullPageLoader, Logo } from "@/components/ui";
 import { api, type ConversationSummary, type Message } from "@/lib/api";
 import { useRequireAuth } from "@/lib/auth";
+import { useProfile } from "@/lib/profile";
 
 const MAX_CHARS = 2000;
-const SUGGESTIONS = [
-  "How many days do I have to return a product?",
-  "How much does delivery cost outside Kathmandu Valley?",
-  "What does the warranty not cover?",
-  "Which payment methods do you accept?",
-];
 
 export default function ChatPage() {
   const { user, ready, logout } = useRequireAuth();
+  const profile = useProfile();
   const [conversations, setConversations] = useState<ConversationSummary[]>([]);
   const [listLoading, setListLoading] = useState(true);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -131,7 +127,7 @@ export default function ChatPage() {
     <div className="flex h-full overflow-hidden">
       {/* Sidebar: static on desktop, drawer on mobile */}
       <div className={`fixed inset-y-0 left-0 z-30 transition-transform md:static md:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        <ChatSidebar user={user} conversations={conversations} activeId={activeId} loading={listLoading}
+        <ChatSidebar assistantName={profile.assistant_name} user={user} conversations={conversations} activeId={activeId} loading={listLoading}
           onSelect={openConversation} onNew={newChat} onRename={rename} onDelete={remove} onLogout={logout} />
       </div>
       {sidebarOpen && <button aria-label="Close menu" className="fixed inset-0 z-20 bg-black/30 md:hidden" onClick={() => setSidebarOpen(false)} />}
@@ -150,10 +146,10 @@ export default function ChatPage() {
                 <Logo size={52} />
                 <h2 className="mt-4 text-xl font-semibold">Hi {user.full_name.split(" ")[0]}, how can I help?</h2>
                 <p className="mt-1.5 max-w-md text-sm text-muted">
-                  Answers come from our approved knowledge base, with the sources shown so you can check them.
+                  {profile.tagline}
                 </p>
                 <div className="mt-6 grid w-full max-w-xl gap-2 sm:grid-cols-2">
-                  {SUGGESTIONS.map((s) => (
+                  {profile.suggestions.map((s) => (
                     <button key={s} type="button" onClick={() => send(s)}
                       className="rounded-xl border border-border bg-surface px-3.5 py-3 text-left text-sm transition hover:border-accent">
                       {s}
@@ -197,7 +193,7 @@ export default function ChatPage() {
                   }
                 }}
                 rows={1}
-                placeholder="Ask a question about our products, orders or policies…"
+                placeholder={profile.id === "nepal_citizenship" ? "आफ्नो प्रश्न लेख्नुहोस् — नेपाली, English वा Roman Nepali…" : "Ask a question…"}
                 className="max-h-40 min-h-[2.25rem] flex-1 resize-none bg-transparent px-2 py-1.5 text-sm outline-none"
                 style={{ fieldSizing: "content" } as React.CSSProperties}
                 maxLength={MAX_CHARS}

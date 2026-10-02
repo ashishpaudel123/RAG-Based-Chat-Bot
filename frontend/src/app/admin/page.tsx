@@ -7,6 +7,8 @@ import {
   api,
   type Chunk,
   type DocumentInfo,
+  type DocumentMeta,
+  SOURCE_TYPES,
   type ErrorLog,
   type Health,
   type IndexRun,
@@ -80,9 +82,82 @@ function KnowledgeTab() {
   const [busy, setBusy] = useState<string | null>(null);
   const [editing, setEditing] = useState<DocumentInfo | null>(null);
   const [viewing, setViewing] = useState<{ doc: DocumentInfo; chunks: Chunk[] } | null>(null);
+  const [showOld, setShowOld] = useState(false);
 
   const load = useCallback(() => api.listDocuments().then(setDocs).catch((e) => setError(msg(e))), []);
   useEffect(() => { load(); }, [load]);
+
+  const visible = (docs ?? []).filter((d) => showOld || d.validity_status === "current");
+  const docTable = (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-left text-xs uppercase tracking-wide text-muted">
+                <tr className="border-b border-border">
+                  <th className="py-2 pr-3 font-medium">Document</th>
+                  <th className="py-2 pr-3 font-medium">Status</th>
+                  <th className="py-2 pr-3 font-medium">Chunks</th>
+                  <th className="py-2 pr-3 font-medium">Version</th>
+                  <th className="py-2 pr-3 font-medium">Updated</th>
+                  <th className="py-2 font-medium" />
+                </tr>
+              </thead>
+              <tbody>
+                {visible.map((d) => (
+                  <tr key={d.id} className="border-b border-border last:border-0 align-top">
+                    <td className="py-3 pr-3">
+                      <p className="font-medium">{d.title}</p>
+                      <p className="text-xs text-muted">{d.filename} · {formatBytes(d.size_bytes)}{d.record_id ? ` · ${d.record_id}` : ""}</p>
+                      <div className="mt-1 flex flex-wrap gap-1">
+                        <Badge>{d.source_type} · tier {d.authority_tier}</Badge>
+                        {d.legal_reference && <Badge>{d.legal_reference}</Badge>}
+                        {d.district && <Badge tone="warn">{d.district}</Badge>}
+                        {d.last_verified && <Badge>source checked {d.last_verified}</Badge>}
+                      </div>
+                      {d.tags.length > 0 && <div className="mt-1 flex flex-wrap gap-1">{d.tags.map((t) => <Badge key={t}>{t}</Badge>)}</div>}
+                      {d.error && <p className="mt-1 text-xs text-red-600 dark:text-red-400">{d.error}</p>}
+                    </td>
+                    <td className="py-3 pr-3">
+                      <div className="flex flex-col items-start gap-1">
+                        <Badge tone={d.status === "indexed" ? "good" : d.status === "failed" ? "bad" : "warn"}>{d.status}</Badge>
+                        <Badge tone={d.validity_status === "current" ? "good" : "warn"}>{d.validity_status}</Badge>
+                        <Badge tone={d.verification_status === "verified" ? "good" : d.verification_status === "pending" ? "warn" : "bad"}>
+                          {d.verification_status}
+                        </Badge>
+                      </div>
+                    </td>
+                    <td className="py-3 pr-3">{d.chunk_count}</td>
+                    <td className="py-3 pr-3">v{d.version}</td>
+                    <td className="py-3 pr-3 whitespace-nowrap text-muted">{formatDate(d.updated_at)}</td>
+                    <td className="py-3">
+                      <div className="flex flex-wrap justify-end gap-1.5">
+                        <button type="button" className="btn-secondary" onClick={async () => {
+                          try { setViewing({ doc: d, chunks: await api.documentChunks(d.id) }); } catch (e) { setError(msg(e)); }
+                        }}>Chunks</button>
+                        {d.verification_status !== "verified" && (
+                          <button type="button" className="btn-secondary" disabled={!!busy}
+                            onClick={() => run(`ver-${d.id}`, async () => {
+                              await api.updateDocument(d.id, { meta: { verification_status: "verified" } });
+                              return `“${d.title}” is verified and now used for answers.`;
+                            })}>Verify</button>
+                        )}
+                        <button type="button" className="btn-secondary" onClick={() => setEditing(d)}>Edit</button>
+                        <button type="button" className="btn-secondary" disabled={!!busy}
+                          onClick={() => run(d.id, async () => { await api.reindex(d.id); return `Re-indexed “${d.title}”.`; })}>
+                          {busy === d.id && <Spinner />} Re-index
+                        </button>
+                        <button type="button" className="btn-danger" disabled={!!busy}
+                          onClick={() => confirm(`Delete “${d.title}” from the knowledge base?`) &&
+                            run(`del-${d.id}`, async () => { await api.deleteDocument(d.id); return `Deleted “${d.title}”.`; })}>
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+  );
 
   async function run(label: string, fn: () => Promise<string | void>) {
     setBusy(label);
@@ -105,6 +180,11 @@ function KnowledgeTab() {
       <Card
         title="Documents"
         action={
+          <div className="flex items-center gap-3">
+          <label className="flex items-center gap-1.5 text-xs text-muted">
+            <input type="checkbox" checked={showOld} onChange={(e) => setShowOld(e.target.checked)} />
+            Show superseded versions
+          </label>
           <button type="button" className="btn-secondary" disabled={!!busy}
             onClick={() => confirm("Re-index the entire knowledge base? This re-embeds every document.") &&
               run("all", async () => {
@@ -113,62 +193,25 @@ function KnowledgeTab() {
               })}>
             {busy === "all" && <Spinner />} Re-index all
           </button>
+          </div>
         }
       >
         <ErrorNote error={error} />
         {notice && <p className="mb-4 rounded-lg bg-accent-soft px-3 py-2 text-sm text-accent">{notice}</p>}
         {docs === null ? (
           <p className="text-sm text-muted">Loading…</p>
+        ) : docs.length > 0 && docs.some((d) => d.verification_status === "pending") && !notice ? (
+          <>
+            <p className="mb-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+              {docs.filter((d) => d.verification_status === "pending").length} document(s) are pending review and are not
+              used for answers. Check each against its official source, then click Verify.
+            </p>
+            {docTable}
+          </>
         ) : docs.length === 0 ? (
           <p className="text-sm text-muted">No documents yet. Upload approved policies, manuals or FAQs above.</p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="text-left text-xs uppercase tracking-wide text-muted">
-                <tr className="border-b border-border">
-                  <th className="py-2 pr-3 font-medium">Document</th>
-                  <th className="py-2 pr-3 font-medium">Status</th>
-                  <th className="py-2 pr-3 font-medium">Chunks</th>
-                  <th className="py-2 pr-3 font-medium">Version</th>
-                  <th className="py-2 pr-3 font-medium">Updated</th>
-                  <th className="py-2 font-medium" />
-                </tr>
-              </thead>
-              <tbody>
-                {docs.map((d) => (
-                  <tr key={d.id} className="border-b border-border last:border-0 align-top">
-                    <td className="py-3 pr-3">
-                      <p className="font-medium">{d.title}</p>
-                      <p className="text-xs text-muted">{d.filename} · {formatBytes(d.size_bytes)}</p>
-                      {d.tags.length > 0 && <div className="mt-1 flex flex-wrap gap-1">{d.tags.map((t) => <Badge key={t}>{t}</Badge>)}</div>}
-                      {d.error && <p className="mt-1 text-xs text-red-600 dark:text-red-400">{d.error}</p>}
-                    </td>
-                    <td className="py-3 pr-3"><Badge tone={d.status === "indexed" ? "good" : d.status === "failed" ? "bad" : "warn"}>{d.status}</Badge></td>
-                    <td className="py-3 pr-3">{d.chunk_count}</td>
-                    <td className="py-3 pr-3">v{d.version}</td>
-                    <td className="py-3 pr-3 whitespace-nowrap text-muted">{formatDate(d.updated_at)}</td>
-                    <td className="py-3">
-                      <div className="flex flex-wrap justify-end gap-1.5">
-                        <button type="button" className="btn-secondary" onClick={async () => {
-                          try { setViewing({ doc: d, chunks: await api.documentChunks(d.id) }); } catch (e) { setError(msg(e)); }
-                        }}>Chunks</button>
-                        <button type="button" className="btn-secondary" onClick={() => setEditing(d)}>Edit</button>
-                        <button type="button" className="btn-secondary" disabled={!!busy}
-                          onClick={() => run(d.id, async () => { await api.reindex(d.id); return `Re-indexed “${d.title}”.`; })}>
-                          {busy === d.id && <Spinner />} Re-index
-                        </button>
-                        <button type="button" className="btn-danger" disabled={!!busy}
-                          onClick={() => confirm(`Delete “${d.title}” from the knowledge base?`) &&
-                            run(`del-${d.id}`, async () => { await api.deleteDocument(d.id); return `Deleted “${d.title}”.`; })}>
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          docTable
         )}
       </Card>
       {editing && (
@@ -195,6 +238,7 @@ function UploadCard({ onUploaded }: { onUploaded: (d: DocumentInfo) => void }) {
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState("");
+  const [meta, setMeta] = useState<DocumentMeta>({});
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -205,8 +249,8 @@ function UploadCard({ onUploaded }: { onUploaded: (d: DocumentInfo) => void }) {
     setBusy(true);
     setError(null);
     try {
-      const doc = await api.uploadDocument(file, title.trim() || undefined, tags.trim() || undefined);
-      setFile(null); setTitle(""); setTags("");
+      const doc = await api.uploadDocument(file, title.trim() || undefined, tags.trim() || undefined, meta);
+      setFile(null); setTitle(""); setTags(""); setMeta({});
       if (fileRef.current) fileRef.current.value = "";
       onUploaded(doc);
     } catch (err) {
@@ -235,8 +279,13 @@ function UploadCard({ onUploaded }: { onUploaded: (d: DocumentInfo) => void }) {
           <input className="input" value={tags} onChange={(e) => setTags(e.target.value)} maxLength={500} placeholder="policy, returns" />
         </label>
         <button type="submit" className="btn-primary h-[38px]" disabled={!file || busy}>{busy && <Spinner />} Upload & index</button>
+        <details className="md:col-span-4">
+          <summary className="cursor-pointer text-sm font-medium text-muted">Source metadata (optional — Markdown front matter fills these automatically)</summary>
+          <div className="mt-3"><MetadataFields value={meta} onChange={setMeta} upload /></div>
+        </details>
       </form>
-      <p className="mt-2 text-xs text-muted">PDF, DOCX, TXT or Markdown · max 10 MB · only upload documents approved for customer use.</p>
+      <p className="mt-2 text-xs text-muted">PDF, DOCX, TXT or Markdown · max 10 MB · only upload documents from approved sources.
+        Uploading a record whose front-matter <code>id</code> already exists creates a new version.</p>
     </Card>
   );
 }
@@ -245,6 +294,13 @@ function EditDialog({ doc, onClose, onSaved }: { doc: DocumentInfo; onClose: () 
   const [title, setTitle] = useState(doc.title);
   const [tags, setTags] = useState(doc.tags.join(", "));
   const [file, setFile] = useState<File | null>(null);
+  const [meta, setMeta] = useState<DocumentMeta>(() => ({
+    source_type: doc.source_type, authority_tier: String(doc.authority_tier), authority: doc.authority ?? "",
+    category: doc.category ?? "", legal_reference: doc.legal_reference ?? "", jurisdiction: doc.jurisdiction ?? "",
+    district: doc.district ?? "", validity_status: doc.validity_status, effective_from: doc.effective_from ?? "",
+    effective_until: doc.effective_until ?? "", source_url: doc.source_url ?? "", last_verified: doc.last_verified ?? "",
+    verification_status: doc.verification_status, language: doc.language ?? "",
+  }));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -253,7 +309,7 @@ function EditDialog({ doc, onClose, onSaved }: { doc: DocumentInfo; onClose: () 
     setBusy(true);
     setError(null);
     try {
-      onSaved(await api.updateDocument(doc.id, { file, title, tags }));
+      onSaved(await api.updateDocument(doc.id, { file, title, tags, meta }));
     } catch (err) {
       setError(msg(err));
       setBusy(false);
@@ -268,14 +324,48 @@ function EditDialog({ doc, onClose, onSaved }: { doc: DocumentInfo; onClose: () 
           <input className="input" value={title} onChange={(e) => setTitle(e.target.value)} required maxLength={255} /></label>
         <label className="block text-sm"><span className="mb-1.5 block font-medium">Tags</span>
           <input className="input" value={tags} onChange={(e) => setTags(e.target.value)} maxLength={500} /></label>
-        <label className="block text-sm"><span className="mb-1.5 block font-medium">Replace with a new version <span className="font-normal text-muted">(optional)</span></span>
+        <MetadataFields value={meta} onChange={setMeta} />
+        <label className="block text-sm"><span className="mb-1.5 block font-medium">Upload a new version <span className="font-normal text-muted">(optional — the current one becomes “superseded” and is kept)</span></span>
           <input type="file" accept=".pdf,.docx,.txt,.md" onChange={(e) => setFile(e.target.files?.[0] ?? null)} className="block w-full text-sm" /></label>
         <div className="flex justify-end gap-2">
           <button type="button" className="btn-secondary" onClick={onClose}>Cancel</button>
-          <button type="submit" className="btn-primary" disabled={busy}>{busy && <Spinner />} Save & re-index</button>
+          <button type="submit" className="btn-primary" disabled={busy}>{busy && <Spinner />} Save</button>
         </div>
       </form>
     </Modal>
+  );
+}
+
+function MetadataFields({ value, onChange, upload = false }: { value: DocumentMeta; onChange: (m: DocumentMeta) => void; upload?: boolean }) {
+  const set = (key: keyof DocumentMeta) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    onChange({ ...value, [key]: e.target.value });
+  const text = (key: keyof DocumentMeta, label: string, placeholder = "") => (
+    <label className="block text-sm"><span className="mb-1 block text-xs font-medium text-muted">{label}</span>
+      <input className="input" value={value[key] ?? ""} onChange={set(key)} placeholder={placeholder} /></label>
+  );
+  const select = (key: keyof DocumentMeta, label: string, options: readonly string[]) => (
+    <label className="block text-sm"><span className="mb-1 block text-xs font-medium text-muted">{label}</span>
+      <select className="input" value={value[key] ?? ""} onChange={set(key)}>
+        {upload && <option value="">(from file / default)</option>}
+        {options.map((o) => <option key={o} value={o}>{o}</option>)}
+      </select></label>
+  );
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {select("source_type", "Source type", SOURCE_TYPES)}
+      {select("authority_tier", "Authority tier (1 = primary law)", ["1", "2", "3", "4", "5"])}
+      {select("validity_status", "Status", ["current", "superseded", "historical"])}
+      {select("verification_status", "Verification", ["verified", "pending", "rejected"])}
+      {text("legal_reference", "Section / rule", "दफा ३ / Rule 7")}
+      {text("authority", "Issuing authority", "Ministry of Home Affairs")}
+      {text("jurisdiction", "Jurisdiction", "Nepal")}
+      {text("district", "District (local practice only)", "Kathmandu")}
+      {text("category", "Category", "citizenship_by_descent")}
+      {text("effective_from", "Effective from", "2082-01-15 BS")}
+      {text("effective_until", "Effective until")}
+      {text("last_verified", "Last verified", "2026-10-01")}
+      <div className="sm:col-span-2 lg:col-span-3">{text("source_url", "Official source URL", "https://…")}</div>
+    </div>
   );
 }
 
@@ -288,7 +378,7 @@ function Modal({ title, onClose, children }: { title: string; onClose: () => voi
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4" onClick={onClose}>
       <div role="dialog" aria-modal="true" aria-label={title}
-        className="flex max-h-[85vh] w-full max-w-2xl flex-col rounded-2xl border border-border bg-surface shadow-xl"
+        className="flex max-h-[85vh] w-full max-w-3xl flex-col rounded-2xl border border-border bg-surface shadow-xl"
         onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-border px-5 py-3">
           <h3 className="truncate text-sm font-semibold">{title}</h3>

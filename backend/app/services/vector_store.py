@@ -57,12 +57,25 @@ class VectorStore:
                 pass
             self._collection = self._get_collection()
 
+    def update_document_metadata(self, document_id: str, fields: dict) -> int:
+        """Merge ``fields`` into the metadata of every chunk of a document (no re-embedding)."""
+        clean = {k: v for k, v in fields.items() if v is not None}
+        with self._lock:
+            found = self._collection.get(where={"document_id": document_id}, include=["metadatas"])
+            ids = found.get("ids") or []
+            if ids:
+                metas = [{**(m or {}), **clean} for m in found["metadatas"]]
+                self._collection.update(ids=ids, metadatas=metas)
+        return len(ids)
+
     def count(self) -> int:
         return self._collection.count()
 
     def query(self, embedding: list[float], top_k: int, where: dict | None = None) -> list[VectorHit]:
         if self.count() == 0:
             return []
+        if where and len(where) > 1 and not any(k.startswith("$") for k in where):
+            where = {"$and": [{k: v} for k, v in where.items()]}
         result = self._collection.query(
             query_embeddings=[embedding],
             n_results=min(top_k, self.count()),

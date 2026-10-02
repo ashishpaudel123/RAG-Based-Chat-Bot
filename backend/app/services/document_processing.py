@@ -79,14 +79,23 @@ def parse_document(data: bytes, kind: str) -> list[Block]:
     elif kind == "docx":
         blocks = _parse_docx(data)
     elif kind == "md":
-        blocks = _parse_markdown(data.decode("utf-8"))
+        blocks = _parse_markdown(strip_front_matter(data.decode("utf-8")))
     else:
-        blocks = _parse_text(data.decode("utf-8"))
+        blocks = _parse_text(strip_front_matter(data.decode("utf-8")))
     blocks = [Block(clean_text(b.text), b.section, b.page) for b in blocks]
     blocks = [b for b in blocks if b.text]
     if not blocks:
         raise DocumentValidationError("No readable text could be extracted from the document")
     return blocks
+
+
+FRONT_MATTER = re.compile(r"^\ufeff?---\s*\n(.*?)\n---\s*(\n|$)", re.S)
+
+
+def strip_front_matter(text: str) -> str:
+    """Remove a leading YAML metadata block (read separately by document_metadata)."""
+    match = FRONT_MATTER.match(text)
+    return text[match.end():] if match else text
 
 
 def _paragraphs(text: str) -> list[str]:
