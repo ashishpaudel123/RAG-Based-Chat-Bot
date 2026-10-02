@@ -3,10 +3,9 @@
   "generated_by": "Gemini Deep Research (prompt 1), reviewed by Claude Code on 2026-10-02",
   "status": "UNVERIFIED - every entry must be checked by a person (see sources/README.md)",
   "missing_sources": [
-    "Text of Act s.7क (NRN citizenship, from the 2079 First Amendment) and Constitution Art. 14 and Part 2 full text",
-    "Text of the First Amendment Act 2079 (or the consolidated Act); s.8क(1),(2) text",
+    "Constitution Part 2 (Articles 10-15) official consolidated text (Art. 11(5) and Art. 14 are still from user excerpts or summaries)",
     "Third Amendment Regulation 2080 text",
-    "DAO Kathmandu citizen charter PDF (fees, timings, Schedule 2 duplicate procedure)",
+    "DAO Kathmandu citizen charter (site returned a server error; try another district's charter)",
     "MoHA circular on implementing the 2079 First Amendment; Supreme Court decisions NKP 8557, 9627, 9687, 9841"
   ],
   "sources": [
@@ -94,24 +93,24 @@
       "source_title_en": "Nepal Citizenship (First Amendment) Act, 2079",
       "source_type": "amendment",
       "authority_tier": 1,
-      "issuing_authority": "Federal Parliament (authenticated by the President)",
+      "issuing_authority": "Federal Parliament; published by the Ministry of Law, Justice and Parliamentary Affairs (Nepal Gazette Khanda 73, Extraordinary 6, Part 2; Act No. 1 of 2080)",
       "publication_date": "2023-05-31 (AD) / 2080-02-17 BS",
-      "effective_date": "2023-05-31 (AD)",
+      "effective_date": "2080-02-17 BS (in force immediately)",
       "amendment_status": "amends Nepal Citizenship Act, 2063",
       "status": "current",
       "jurisdiction": "Nepal",
       "source_url": null,
       "retrieved_date": null,
-      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship). User-provided reference (2026-10-02): published in the Nepal Gazette, 'Volume 79', Extraordinary Issue 6. User-supplied excerpt (2026-10-02, second batch): Gazette Vol. 73 (the earlier 'Volume 79' was the Act year); authenticated Jestha 2080. Quoted new s.3(4) and s.3(5), and a new s.8क (surname/address of mother or father).",
+      "notes": "Scanned Gazette (10 pp) uploaded by the user; manual transcription in sources/text/src-act-amend1-2079.txt. Amends s.3, 5, 8, 9, 21; adds s.7क (NRN) and 8क; repeals s.4 (citizenship by birth).",
       "review": {
-        "priority": "critical",
+        "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
-          "Find the official text: Nepal Law Commission (recent Acts) or Nepal Gazette 2080. Or use the consolidated Act that already includes it.",
-          "'Volume 79' looks like the Act year, not a Gazette volume (2080 BS issues are Khanda 73); check the Gazette volume/issue and date (Gemini said 2080-02-17).",
-          "User-supplied excerpt (2026-10-02, second batch): s.3(4) and s.3(5) used in the descent records. s.8क is NOT used: it is not in any text seen, and its wording is close to Constitution Art. 12; confirm before writing a record."
+          "Manual transcription from page images: check quoted sections against the PDF.",
+          "CORRECTION: the user's earlier excerpt of s.3(4) left out 'संवत् २०७२ साल असोज ३ गतेभन्दा अघि' (birth-based citizenship obtained before the Constitution). Records corrected.",
+          "Gazette volume is Khanda 73 (the earlier 'Volume 79' reference was wrong)."
         ]
       }
     },

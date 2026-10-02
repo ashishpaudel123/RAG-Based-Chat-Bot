@@ -128,3 +128,11 @@ were added to the evaluation set (`rw-*`).
 
 The 2082 warnings in the records were replaced with the actual provisions. New records: `mother.born_abroad`,
 `minor_id_card`, `parent_name_omission`, `nrn`.
+
+## First Amendment Act 2079 received (2026-10-02, fourth batch)
+
+`src-act-amend1-2079.pdf`: Nepal Gazette Khanda 73, Extraordinary 6 (2080-02-17), Act No. 1 of 2080, 10-page scan;
+manual transcription in `text/src-act-amend1-2079.txt`. It gave the NRN section 7क, the new s.3(3)-(8), 8(3क), 8(4)
+(two citizens + one local official at the sarjamin), 8क (choose mother's or father's surname; gender identity),
+21(3क)-(3घ), and repealed s.4. **Correction:** the earlier user excerpt of s.3(4) left out "before 3 Asoj 2072".
+The DAO Kathmandu charter could not be downloaded (server error).

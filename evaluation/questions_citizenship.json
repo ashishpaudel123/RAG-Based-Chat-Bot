@@ -931,8 +931,12 @@
       "language": "ne",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
-      "expected_answer_facts": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [
+        "आर्थिक, सामाजिक तथा सांस्कृतिक"
+      ],
       "must_not_claim": [
         "full political rights",
         "मतदान गर्न पाइन्छ",
@@ -945,7 +949,9 @@
       "language": "roman_ne",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": [
         "full political rights",
@@ -959,7 +965,9 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": [
         "full political rights",
@@ -1162,6 +1170,20 @@
         "citizenship.mother.born_abroad.001"
       ],
       "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "nrn-en-02",
+      "question": "I live in India and have Indian citizenship; my father was Nepali. Can I get NRN citizenship?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [
+        "SAARC"
+      ],
       "must_not_claim": []
     }
   ]

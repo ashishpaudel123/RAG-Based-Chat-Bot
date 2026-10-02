@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text up to the 2069 Ordinance; NRN citizenship provisions not reviewed"
+amendment_status: "Act text up to the 2069 Ordinance; NRN citizenship: see citizenship.nrn.001 (s.7क, First Amendment Act, 2079)"
 confidence: medium
 user_questions:
   - "नेपालमा दोहोरो नागरिकता पाइन्छ?"
@@ -39,7 +39,7 @@ English: Under these sources, a Nepali citizen who voluntarily takes foreign cit
 - कसैले पनि एकभन्दा बढी नागरिकताको प्रमाणपत्र लिन हुँदैन; बसाइँ सरेको आधारमा पुरानो खिची नयाँ जारी गर्न बाधा पर्दैन। [ऐन, दफा १३]
 
 ## सामान्य गल्ती र भ्रम (Common mistakes and misconceptions)
-- “गैरआवासीय नेपाली नागरिकता भनेको पूर्ण दोहोरो नागरिकता हो” भन्ने कुरा यी स्रोतबाट पुष्टि हुँदैन; त्यसको कानुनी पाठ यहाँ उपलब्ध छैन।
+- गैरआवासीय नेपाली नागरिकता पूर्ण दोहोरो नागरिकता होइन; सार्कबाहेकका देशमा बस्ने विदेशी नागरिकलाई **आर्थिक, सामाजिक तथा सांस्कृतिक अधिकार**का लागि दिइन्छ – citizenship.nrn.001। [ऐन, दफा ७क(१), पहिलो संशोधन २०७९]
 - दुई जिल्लाबाट दुई वटा नागरिकता लिनु दफा १३ विपरीत हो; झुट्टो विवरणमा सजाय हुन सक्छ – citizenship.fraud.penalties.001।
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)

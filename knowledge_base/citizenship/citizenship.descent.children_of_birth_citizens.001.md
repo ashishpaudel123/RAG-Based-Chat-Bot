@@ -17,7 +17,7 @@ source_document_id: "src-reg-2063-consolidated"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as replaced by the First Amendment Act, 2079 (text from a user-supplied excerpt, not yet checked against the Gazette); s.3(4क) added by the Second Amendment Act, 2082 and Rule 7(1क) by the Fourth Amendment Rules, 2082"
+amendment_status: "Act s.3(4) and s.8(1क) from the First Amendment Act, 2079 (Gazette 2080-02-17, transcribed from the scan); s.3(4क) from the Second Amendment Act, 2082; Rule 3(3क) (2078) and Rule 7(1क) (2082)"
 confidence: medium
 related_sources:
   - "नेपाल नागरिकता ऐन, २०६३, दफा ३(४) (पहिलो संशोधन, २०७९)"
@@ -33,12 +33,13 @@ user_questions:
 # जन्मको आधारमा नागरिकता पाएका बाबुआमाका सन्तानको वंशजको नागरिकता (Children of citizens by birth)
 
 ## सारांश (Summary)
-जन्मको आधारमा नागरिकता पाएको नागरिकको सन्तानले, **बाबु र आमा दुवै** नेपाली नागरिक भए, **वंशजको आधारमा** नागरिकता लिन सक्छ। सोह्र वर्ष पूरा भएपछि जन्मदर्ता, **बाबु र आमा दुवैको** नागरिकता र स्थानीय तहको सिफारिससहित अनुसूची–१ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन दिनुपर्छ।
+**संवत् २०७२ असोज ३ (संविधान जारी) अघि** जन्मको आधारमा नागरिकता पाएको नागरिकको सन्तानले, **बाबु र आमा दुवै** नेपाली नागरिक भए, **वंशजको आधारमा** नागरिकता लिन सक्छ। सोह्र वर्ष पूरा भएपछि जन्मदर्ता, **बाबु र आमा दुवैको** नागरिकता र स्थानीय तहको सिफारिससहित अनुसूची–१ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन दिनुपर्छ।
 
-English: A child of a citizen by birth whose father and mother are both Nepali citizens gets citizenship by descent. At 16+, apply on Schedule-1 with the birth certificate, the citizenship certificates of **both** father and mother, and the local-level recommendation.
+English: A child of a person who got citizenship by birth before 3 Asoj 2072 (20 September 2015), whose father and mother are both Nepali citizens, gets citizenship by descent. At 16+, apply on Schedule-1 with the birth certificate, the citizenship certificates of **both** father and mother, and the local-level recommendation.
 
 ## कानुनी नियम (Legal rule)
-- "जन्मको आधारमा नेपालको नागरिकता प्राप्त गरेको नागरिकको सन्तानले बाबु र आमा दुवै नेपालको नागरिक रहेछन् भने निजको उमेर सोह्र वर्ष पूरा भएपछि वंशजको आधारमा नेपालको नागरिकता प्राप्त गर्नेछ।" [ऐन, दफा ३(४), पहिलो संशोधन २०७९] (प्रयोगकर्ताले दिएको उद्धरणबाट; राजपत्रसँग भिडाउनुहोस्)
+- "संवत् २०७२ साल असोज ३ गतेभन्दा अघि जन्मको आधारमा नेपालको नागरिकता प्राप्त गरेको नागरिकको सन्तानले बाबु र आमा दुवै नेपालको नागरिक रहेछन् भने निजको उमेर सोह्र वर्ष पूरा भएपछि वंशजको आधारमा नेपालको नागरिकता प्राप्त गर्नेछ।" [ऐन, दफा ३(४), पहिलो संशोधन २०७९]
+- निवेदनमा **बाबु र आमा दुवैको** नेपाली नागरिकताको प्रमाणपत्रको प्रतिलिपि संलग्न गर्नुपर्छ। [ऐन, दफा ८(१क)]
 - ऐनको दफा ३(४) बमोजिम सोह्र वर्ष पूरा भएको व्यक्तिले अनुसूची–१ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन दिनुपर्छ। [नियमावली, नियम ३(३क)]
 - पुरानो (२०६९ सम्म संशोधित) ऐनको PDF मा दफा ३(४) को पाठ फरक थियो: जन्मको आधारमा नागरिकता पाएको व्यक्तिको त्यस्तो प्रमाणपत्र पाउनुअघि जन्मेको सन्तानले वंशजको नागरिकता पाउने। हाल २०७९ को संशोधित पाठ लागू हुन्छ।
 
@@ -67,7 +68,7 @@ English: A child of a citizen by birth whose father and mother are both Nepali c
 - छानबिनपछि अनुसूची–८ को ढाँचामा अङ्गीकृत नागरिकताको प्रमाणपत्र दिइन्छ। [नियमावली, नियम ७(१ग)]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
-- दफा ३(४) को पाठ प्रयोगकर्ताले दिएको उद्धरणबाट लिइएको हो; नेपाल राजपत्रमा प्रकाशित पहिलो संशोधन ऐन, २०७९ सँग भिडाउनुहोस्।
+- पहिले प्रयोगकर्ताले दिएको उद्धरणमा "संवत् २०७२ साल असोज ३ गतेभन्दा अघि" भन्ने शब्द छुटेको थियो; राजपत्रको पाठबाट सच्याइएको।
 - थप प्रमाण (जस्तै बसोबासको प्रमाण) कार्यालयअनुसार माग हुन सक्छ: स्रोतमा उल्लेख छैन।
 
 ## स्रोत (Sources)
