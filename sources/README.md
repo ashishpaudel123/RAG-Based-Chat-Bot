@@ -104,9 +104,9 @@ Quoted text was supplied for Constitution Art. 10-11, Act s.3(4)/3(5) as amended
 charters. It is used in the records (marked "user-supplied excerpt") and must still be checked against the official text.
 Not used:
 - **Second Amendment Act 2082:** only a description, no text.
-- **"Fourth Amendment Regulation 2082" quotes:** these are rules 3(3ख) and 3(6क) from the 2078 amendment, already
-  in the records. The "blank parent names" quote merges rule 3(6) (guardian's name for a person with no known
-  parents) with 3(6क) (father's details left blank). The National ID requirement is unconfirmed.
+- ~~"Fourth Amendment Regulation 2082" quotes~~ **Correction (2026-10-02):** I wrongly said these were 2078 rules.
+  The Gazette text (below) shows the Fourth Amendment did replace rule 3(3ख)(ङ) and rule 3(6), and added National ID
+  number fields to the forms. The user's excerpt was right.
 - **Act s.8क (surname/address):** not seen in any text; confirm first.
 
 ## Research pack 2082/2083 (2026-10-02)
@@ -117,3 +117,14 @@ charter PDF and the MoHA NRN forms. These hosts are blocked from Claude's enviro
 downloaded into `sources/pdfs/`. Its description of the 2082 Act (s.3(4क), 5(3)(ग), 5(5क), 5(5ख), 8क(1क), 18, 21(3क),
 22क) was added as a warning to the six records it affects; nothing was quoted from it. Its 50 test questions
 were added to the evaluation set (`rw-*`).
+
+## Official texts received (2026-10-02, third batch)
+
+| File | What it is | Text |
+|---|---|---|
+| `src-act-amend2-2082.pdf` | Second Amendment Act 2082 (Act No. 08, 2082-06-05), Ministry of Law PDF | `text/src-act-amend2-2082.txt` (some letters garbled) |
+| `src-reg-amend4-2082.pdf` | Fourth Amendment Rules 2082, Gazette Khanda 75 No. 55 (2082-09-21), 38-page scan | `text/src-reg-amend4-2082.txt` (manual transcription) |
+| `src-moha-nrn-forms-8ga/8gha/8cha.pdf` | MoHA NRN forms: application, commitment, oath | `text/src-moha-nrn-forms.txt` |
+
+The 2082 warnings in the records were replaced with the actual provisions. New records: `mother.born_abroad`,
+`minor_id_card`, `parent_name_omission`, `nrn`.

@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "description": "Starter Nepal citizenship gold set for the 21 records in knowledge_base/citizenship (written by Claude Code from the Act, Regulation and Directive). Extend with prompt 6 in sources/GEMINI_PROMPTS.md.",
   "questions": [
     {
@@ -599,7 +599,9 @@
       "language": "ne",
       "noise_level": "clean",
       "expected_intent": "parent",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.parent_name_omission.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -609,7 +611,9 @@
       "language": "roman_ne",
       "noise_level": "clean",
       "expected_intent": "parent",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.parent_name_omission.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -619,7 +623,9 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "parent",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.parent_name_omission.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -893,7 +899,9 @@
       "language": "roman_ne",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": [
         "full political rights",
@@ -907,7 +915,9 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": [
         "full political rights",
@@ -963,7 +973,9 @@
       "language": "ne",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -973,7 +985,9 @@
       "language": "roman_ne",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -983,7 +997,9 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "non_resident",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -1095,7 +1111,9 @@
       "expected_sources": [
         "citizenship.appeal.review.001"
       ],
-      "expected_answer_facts": [],
+      "expected_answer_facts": [
+        "पैंतीस"
+      ],
       "must_not_claim": []
     },
     {
@@ -1116,7 +1134,9 @@
       "language": "roman_ne",
       "noise_level": "clean",
       "expected_intent": "national_id",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.minor_id_card.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     },
@@ -1126,7 +1146,21 @@
       "language": "en",
       "noise_level": "clean",
       "expected_intent": "national_id",
-      "expected_sources": [],
+      "expected_sources": [
+        "citizenship.minor_id_card.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "born-abroad-rne-01",
+      "question": "bidesh ma janmeko, aama nepali, baba ko pahichan chaina, nagarikta milcha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "mother",
+      "expected_sources": [
+        "citizenship.mother.born_abroad.001"
+      ],
       "expected_answer_facts": [],
       "must_not_claim": []
     }

@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text up to the 2069 Ordinance; the 2079 Amendment Act was not reviewed"
+amendment_status: "Act text up to the 2069 Ordinance; the 2079 Amendment Act was not reviewed; Rules 5(1)(क1), 5(2) and 8 amended by the Fourth Amendment Rules, 2082"
 confidence: medium
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३, नियम ५, ८(१), अनुसूची–७"
@@ -45,10 +45,11 @@ English: A foreign woman married to a Nepali citizen applies to the Chief Distri
 [नियमावली, नियम ५(१)] – अनुसूची–७ को ढाँचामा:
 1. नेपाली नागरिकसँग भएको वैवाहिक सम्बन्ध खुल्ने स्थानीय तहको सिफारिस।
 2. विदेशी नागरिकता त्याग्ने कारबाही चलाएको निस्सा।
+3. **नेपालको भिसा आवश्यक पर्ने विदेशी मुलुकको नागरिक भए** त्यस्तो भिसाको म्याद कायम रहेको निस्सा। [नियमावली, नियम ५(१)(क१), चौथो संशोधन २०८२]
 
 ## प्रक्रिया (Procedure)
 1. जिल्ला प्रशासन कार्यालयमा अनुसूची–७ मा निवेदन। [नियमावली, नियम ५(१)]
-2. छानबिनपछि योग्य देखिएमा अङ्गीकृत प्रमाणपत्र जारी। [नियमावली, नियम ५(२)]
+2. छानबिनपछि योग्य देखिएमा **वैवाहिक** अङ्गीकृत नेपाली नागरिकताको प्रमाणपत्र (अनुसूची–८ खण्ड (ख) को ढाँचामा) जारी। [नियमावली, नियम ५(२), ८(१)(ख), ८(७), चौथो संशोधन २०८२]
 3. शपथ ग्रहण। [ऐन, दफा ५(६)]
 
 ## दस्तुर र समय (Fees and time)

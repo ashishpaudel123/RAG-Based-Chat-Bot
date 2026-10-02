@@ -17,8 +17,8 @@ source_document_id: "src-reg-2063-consolidated"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as replaced by the First Amendment Act, 2079 (text from a user-supplied excerpt, not yet checked against the Gazette); may be affected by the Second Amendment Act, 2082 (text not yet seen)"
-confidence: low
+amendment_status: "Rule 3(3क) added by the Second Amendment Rules, 2078; Act s.3(4) as replaced by the First Amendment Act, 2079 (text from a user-supplied excerpt, not yet checked against the Gazette); s.3(4क) added by the Second Amendment Act, 2082 and Rule 7(1क) by the Fourth Amendment Rules, 2082"
+confidence: medium
 related_sources:
   - "नेपाल नागरिकता ऐन, २०६३, दफा ३(४) (पहिलो संशोधन, २०७९)"
   - "नेपालको संविधान, धारा ११"
@@ -27,6 +27,7 @@ user_questions:
   - "janmasiddha nagarikta ko santan lai bansaj ko nagarikta"
   - "baba aama ko janma ko adhar ma nagarikta xa, malai kun nagarikta?"
   - "Can children of citizens by birth get citizenship by descent?"
+  - "baba janmasiddha nagarik, aama ko nagarikta banauna aghi mrityu bhayo, malai nagarikta?"
   - "birth based citizen ko chhora chhori citizenship"
 ---
 # जन्मको आधारमा नागरिकता पाएका बाबुआमाका सन्तानको वंशजको नागरिकता (Children of citizens by birth)
@@ -53,12 +54,25 @@ English: A child of a citizen by birth whose father and mother are both Nepali c
 ## दस्तुर र समय (Fees and time)
 स्रोतमा उल्लेख छैन (not stated in the source)। अयोग्य ठहरिएमा सात दिनभित्र जानकारी। [नियमावली, नियम ६]
 
+## विशेष अवस्था: एक अभिभावकको मृत्यु वा सम्पर्कविहीन भएमा (Special case: one parent died or out of contact)
+- "उपदफा (४) मा जुनसुकै कुरा लेखिएको भए तापनि बाबु वा आमा मध्ये कुनै एकले जन्मको आधारमा नेपाली नागरिकता प्राप्त गरेको र अर्कोको नेपाली नागरिकता प्राप्त गर्नु अगावै मृत्यु भएको वा सम्पर्कविहीन रहेको व्यक्तिको हकमा दफा ५ को उपदफा (५क) बमोजिम हुनेछ।" [ऐन, दफा ३(४क), दोस्रो संशोधन २०८२]
+- यस्तो व्यक्तिले स्वघोषणा गरेमा **अङ्गीकृत** नागरिकता पाउँछ (वंशज होइन)। [ऐन, दफा ५(५क)]
+- सोह्र वर्ष पूरा भएपछि अनुसूची–७ मा प्रमुख जिल्ला अधिकारीसमक्ष निवेदन; कागजात [नियमावली, नियम ७(१क), चौथो संशोधन २०८२]:
+  1. जन्म दर्ता प्रमाणपत्र।
+  2. बाबु वा आमामध्ये एकले जन्मको आधारमा पाएको नेपाली नागरिकताको प्रमाणपत्र।
+  3. बाबु वा आमाको मृत्यु भएको भए मृत्यु दर्ता प्रमाणपत्र।
+  4. जन्मस्थान, नाता र नेपालमा स्थायी बसोबास खुल्ने स्थानीय तहको सिफारिस।
+  5. बाबु वा आमा सम्पर्कविहीन भए सो व्यहोरा खुल्ने स्थानीय तहको सिफारिस।
+  6. मृत्यु वा सम्पर्कविहीन भएको व्यहोराको अनुसूची–७ख को स्वघोषणा।
+- छानबिनपछि अनुसूची–८ को ढाँचामा अङ्गीकृत नागरिकताको प्रमाणपत्र दिइन्छ। [नियमावली, नियम ७(१ग)]
+
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
-- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले दफा ३(४क) थपी, जन्मको आधारमा नागरिकता पाएका एक अभिभावकको अर्को अभिभावकको नागरिकता नपाउँदै मृत्यु भएको वा सम्पर्कविहीन भएको अवस्थाका लागि दफा ५(५क) सँग जोडिएको छुट्टै बाटो बनाएको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
 - दफा ३(४) को पाठ प्रयोगकर्ताले दिएको उद्धरणबाट लिइएको हो; नेपाल राजपत्रमा प्रकाशित पहिलो संशोधन ऐन, २०७९ सँग भिडाउनुहोस्।
 - थप प्रमाण (जस्तै बसोबासको प्रमाण) कार्यालयअनुसार माग हुन सक्छ: स्रोतमा उल्लेख छैन।
 
 ## स्रोत (Sources)
+- नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२, दफा २(१), ३(२) – https://www.moljpa.gov.np/public/uploads/a807e5ec-369b-4922-bd65-ecbcd281374b.pdf
+- नेपाल नागरिकता (चौथो संशोधन) नियमावली, २०८२, नियम ४(२) (नियम ७(१क), (१ग)), अनुसूची–७ख
 - नेपाल नागरिकता ऐन, २०६३, दफा ३(४), नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ द्वारा संशोधित
 - नेपाल नागरिकता नियमावली, २०६३ (दोस्रो संशोधन, २०७८), नियम ३(३क) – https://lawcommission.gov.np/content/12656/12656-nepal-citizenship-regulation/
 

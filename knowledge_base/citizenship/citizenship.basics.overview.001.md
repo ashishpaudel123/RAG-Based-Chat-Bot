@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text as amended up to the Nepal Citizenship (First Amendment) Ordinance, 2069; the 2079 First Amendment Act was not available when this record was written; may be affected by the Second Amendment Act, 2082 (text not yet seen)"
+amendment_status: "Act text as amended up to the Nepal Citizenship (First Amendment) Ordinance, 2069; the 2079 First Amendment Act was not available when this record was written; 2082 amendments summarised from the Second Amendment Act and Fourth Amendment Rules texts"
 confidence: high
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३ (संशोधनसहित, २०७८), नियम ८"
@@ -49,7 +49,7 @@ English: The Nepal Citizenship Act, 2063 recognises citizenship by descent (s.3)
 सामान्यतया सम्बन्धित **जिल्ला प्रशासन कार्यालय (प्रमुख जिल्ला अधिकारी)**। प्रमुख जिल्ला अधिकारीले आफ्नो मातहतको अधिकृत वा नागरिकता वितरण टोली प्रमुखलाई अधिकार प्रत्यायोजन गर्न सक्छन्। [नियमावली, नियम ८(२)]
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
-- **नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५) ले वंशज (दफा ३(४क)), अङ्गीकृत (दफा ५(५क), ५(५ख)), आमाबाबुको विवरण हटाउने (दफा ८क(१क)), पुनरावलोकन (दफा १८), सजाय (दफा २१(३क)) र नाबालक परिचयपत्र (दफा २२क) सम्बन्धी परिवर्तन गरेको भन्ने सारांश प्राप्त भएको छ; आधिकारिक पाठ नआएसम्म यो रेकर्डको जवाफ पुरानो हुन सक्छ भनी जानकारी दिनुहोस्। (Second Amendment Act 2082, summary only)**
+- **२०८२ का संशोधन:** नेपाल नागरिकता (दोस्रो संशोधन) ऐन, २०८२ (ऐन नं. ०८, प्रमाणीकरण २०८२/०६/०५, तुरुन्त प्रारम्भ) ले दफा ३(४क), ३(५क), ५(३)(ग), ५(५क), ५(५ख), ८क(१क), १८, २०(२), २१(३क) र २२क मा परिवर्तन गरेको छ; नेपाल नागरिकता (चौथो संशोधन) नियमावली, २०८२ (राजपत्र २०८२।०९।२१) ले नियम ३, ५, ७, ८, ९, १४ संशोधन गरी नियम १६क (नाबालक परिचयपत्र) थपेको छ। विषयगत रेकर्डहरू हेर्नुहोस्: citizenship.mother.father_unidentified.001, citizenship.mother.born_abroad.001, citizenship.descent.children_of_birth_citizens.001, citizenship.parent_name_omission.001, citizenship.minor_id_card.001, citizenship.appeal.review.001।
 - नेपालको संविधानका नागरिकतासम्बन्धी धारा र गैरआवासीय नेपाली नागरिकताको व्यवस्था यो रेकर्ड लेख्दा प्रयोग भएका स्रोतमा थिएनन् (स्रोत उपलब्ध छैन)।
 - नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ ले ल्याएका परिवर्तनहरू यहाँ समेटिएका छैनन्।
 
