@@ -17,7 +17,7 @@ source_document_id: "src-act-amend1-2079"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "s.7क and s.21(3ख) added by the First Amendment Act, 2079 (Gazette 2080-02-17, transcribed from the scan); forms as published by MoHA, amended by the Fourth Amendment Rules, 2082; Constitution Art. 14 text not available"
+amendment_status: "s.7क and s.21(3ख) added by the First Amendment Act, 2079 (Gazette 2080-02-17, transcribed from the scan); forms as published by MoHA, amended by the Fourth Amendment Rules, 2082; Constitution Art. 14 from a user-supplied text"
 confidence: medium
 user_questions:
   - "NRN citizenship bhaneko k ho?"
@@ -38,6 +38,7 @@ user_questions:
 English: A person who holds a foreign citizenship, lives in a country that is not a SAARC member, and who (or whose father, mother, grandfather or grandmother) was a Nepali citizen by descent or birth before acquiring foreign citizenship, can get NRN citizenship to enjoy economic, social and cultural rights. Apply on Schedule 8ग with a Rs 10 stamp; a commitment and an oath are required.
 
 ## कानुनी नियम (Legal rule)
+- संवैधानिक आधार: सार्कबाहेकका देशमा बस्ने, साबिकमा आफू वा बाबु/आमा/बाजे/बज्यै नेपाली नागरिक भएका विदेशी नागरिकलाई संघीय कानून बमोजिम आर्थिक, सामाजिक र सांस्कृतिक अधिकार उपभोग गर्न पाउने गरी गैरआवासीय नागरिकता दिन सकिन्छ। [संविधान, धारा १४]
 - "विदेशी मुलुकको नागरिकता प्राप्त गरी दक्षिण एशियाली क्षेत्रीय सहयोग सङ्गठनको सदस्य राष्ट्रबाहेकका देशमा बसोबास गरेको र साविकमा वंशजको वा जन्मको आधारमा निज वा निजको बाबु वा आमा, बाजे वा बज्यै नेपालको नागरिक रही पछि विदेशी मुलुकको नागरिकता प्राप्त गरेको व्यक्तिले आर्थिक, सामाजिक तथा सांस्कृतिक अधिकारको उपभोग गर्न पाउने गरी गैर आवासीय नेपाली नागरिकता प्राप्त गर्न सक्नेछ।" [ऐन, दफा ७क(१)]
 - तोकिएको अधिकारीले सबुद प्रमाण बुझी नागरिकता दिन्छ र तोकिए बमोजिम **शपथ** गराइन्छ। [ऐन, दफा ७क(४), (५)]
 - झुट्टो विवरण दिई लिएको वा नेपालको स्वतन्त्रता, सार्वभौमसत्ता, भौगोलिक अखण्डता तथा राष्ट्र हित विपरीत कार्य गरेको ठहरेमा नेपाल सरकारले **रद्द** गर्छ। [ऐन, दफा ७क(६)]
@@ -75,10 +76,10 @@ English: A person who holds a foreign citizenship, lives in a country that is no
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
 - सम्पत्ति किन्ने, लगानी गर्ने जस्ता "आर्थिक अधिकार" को विस्तृत दायरा यी स्रोतमा छैन; अन्य कानून (जस्तै भूमि, लगानीसम्बन्धी) हेर्नुपर्छ।
-- संविधानको धारा १४ को पाठ उपलब्ध छैन।
 - ऐनको दफा ७क स्क्यान गरिएको राजपत्रबाट हातले सारिएको हो; राजपत्रसँग भिडाउनुहोस्।
 
 ## स्रोत (Sources)
+- नेपालको संविधान, भाग–२ – https://lawcommission.gov.np/content/13437/nepal-s-constitution/
 - नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९, दफा ४ (दफा ७क थप), दफा ८ (दफा २१(३ख)) – नेपाल राजपत्र खण्ड ७३ अतिरिक्ताङ्क ६, २०८०।०२।१७
 - गृह मन्त्रालय, अनुसूची–८ग, ८घ, ८च – https://moha.gov.np/page/ga-raaava-sa-ya-na-pa-l-na-gara-kata-pa-rama-naepata-ra-sama-bna-thha-ana-sa-ca
 

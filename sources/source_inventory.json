@@ -3,8 +3,7 @@
   "generated_by": "Gemini Deep Research (prompt 1), reviewed by Claude Code on 2026-10-02",
   "status": "UNVERIFIED - every entry must be checked by a person (see sources/README.md)",
   "missing_sources": [
-    "Constitution Part 2 (Articles 10-15) official consolidated text (Art. 11(5) and Art. 14 are still from user excerpts or summaries)",
-    "Third Amendment Regulation 2080 text",
+    "Third Amendment Regulation 2080 official Gazette text (Gazette No. 28, 2080-06-04)",
     "DAO Kathmandu citizen charter (site returned a server error; try another district's charter)",
     "MoHA circular on implementing the 2079 First Amendment; Supreme Court decisions NKP 8557, 9627, 9687, 9841"
   ],
@@ -31,7 +30,8 @@
         "pdf_downloaded": false,
         "flags": [
           "Confirm the linked text includes BOTH amendments (2072 first amendment and 2077 second amendment); download the consolidated Nepali text.",
-          "User-supplied excerpt (2026-10-02, second batch): Art. 10(1), 10(2), 11(2), 11(5) quoted; used in citizenship.constitution.part2.001. Check the wording and the clause numbering of 11(2) against the official text."
+          "User-supplied excerpt (2026-10-02, second batch): Art. 10(1), 10(2), 11(2), 11(5) quoted; used in citizenship.constitution.part2.001. Check the wording and the clause numbering of 11(2) against the official text.",
+          "Full Part 2 (Art. 10-15) text supplied by the user (2026-10-02) and saved in sources/text/src-const-2072-part2.txt. Art. 11(3), 11(4), 11(5), 14 match the 2079 Act Gazette wording. Still check Art. 11(2) clause numbering and the phrase 'वंशीय आधार' in Art. 12."
         ]
       }
     },
@@ -239,7 +239,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Gazette date 2080-06-04 confirmed by the user; get the text (the consolidated Regulation PDF stops at 2078)."
+          "Gazette date 2080-06-04 confirmed by the user; get the text (the consolidated Regulation PDF stops at 2078).",
+          "User-supplied 'main provisions' (2026-10-02) NOT used: they conflict with official texts. (1) A rule 3(1)(ग1) for children of birth citizens: the procedure is rule 3(3क) (2078). (2) Self-declaration on 'Schedule 1क': the official texts use Schedule 4क. (3) NRN 'rule 22क / Schedules 11क, 11ग': the official MoHA forms are rule 8क with Schedules 8ग, 8घ, 8च, and the 2082 amendment amends Schedule 8ग. The text also contains '...' so it is not verbatim. Inference: the 2080 amendment probably added rule 8क and Schedules 8ग-8च for NRN; confirm with the Gazette (No. 28, 2080-06-04)."
         ]
       }
     },

@@ -136,3 +136,12 @@ manual transcription in `text/src-act-amend1-2079.txt`. It gave the NRN section 
 (two citizens + one local official at the sarjamin), 8क (choose mother's or father's surname; gender identity),
 21(3क)-(3घ), and repealed s.4. **Correction:** the earlier user excerpt of s.3(4) left out "before 3 Asoj 2072".
 The DAO Kathmandu charter could not be downloaded (server error).
+
+## Constitution Part 2 and "Third Amendment 2080" text (2026-10-02, fifth batch)
+
+- **Constitution Part 2 (Art. 10-15)** text supplied in chat, saved to `text/src-const-2072-part2.txt` and used in
+  `citizenship.constitution.part2.001` and as the constitutional basis in six topic records. Art. 11(3)-(5) and 14 match
+  the 2079 Act Gazette wording.
+- **"Third Amendment Regulation 2080 main provisions": not used.** They conflict with the official texts: the procedure
+  for children of birth citizens is rule 3(3क) (2078), the self-declaration schedule is 4क (not "1क"), and NRN uses
+  rule 8क with Schedules 8ग/8घ/8च (official MoHA forms), not "rule 22क / Schedules 11क, 11ग". The text also has "...".
