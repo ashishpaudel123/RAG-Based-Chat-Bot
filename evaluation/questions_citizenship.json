@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.3",
   "description": "Starter Nepal citizenship gold set for the 21 records in knowledge_base/citizenship (written by Claude Code from the Act, Regulation and Directive). Extend with prompt 6 in sources/GEMINI_PROMPTS.md.",
   "questions": [
     {
@@ -552,6 +552,637 @@
       ],
       "expected_answer_facts": [
         "11(5)"
+      ],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-01",
+      "question": "वंशजको आधारमा नागरिकता लिन कति वर्ष उमेर पुगेको हुनुपर्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "eligibility",
+      "expected_sources": [
+        "citizenship.descent.first_issue.001"
+      ],
+      "expected_answer_facts": [
+        "सोह्र"
+      ],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-02",
+      "question": "bansaj ko nagarikta banauna k k kagaj chahincha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "required_documents",
+      "expected_sources": [
+        "citizenship.descent.first_issue.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-03",
+      "question": "What documents are normally required for citizenship by descent?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "required_documents",
+      "expected_sources": [
+        "citizenship.descent.first_issue.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-04",
+      "question": "मेरो बुबा नेपाली नागरिक हुनुहुन्छ तर आमाको विवरण नागरिकतामा राख्न चाहन्नँ, के गर्न मिल्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "parent",
+      "expected_sources": [
+        "citizenship.parent_name_omission.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-05",
+      "question": "ama ko naam citizenship ma narakhna milcha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "parent",
+      "expected_sources": [
+        "citizenship.parent_name_omission.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-06",
+      "question": "Can a parent’s name be omitted from a citizenship certificate?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "parent",
+      "expected_sources": [
+        "citizenship.parent_name_omission.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-07",
+      "question": "बाबुको पहिचान नभएको व्यक्तिले आमाको आधारमा नागरिकता कसरी पाउँछ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "mother",
+      "expected_sources": [
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-08",
+      "question": "babu contact ma chaina bhane citizenship kasari banaune?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "father",
+      "expected_sources": [
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-09",
+      "question": "What happens if the father cannot be identified?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "father",
+      "expected_sources": [
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-10",
+      "question": "आमाले बाबुको पहिचान गर्न नसक्ने अवस्थामा के हुन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "mother",
+      "expected_sources": [
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-11",
+      "question": "janma ko aadhar ko citizenship bhayeko manchhe ko santan le kasto citizenship paucha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "birth_based",
+      "expected_sources": [
+        "citizenship.descent.children_of_birth_citizens.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-12",
+      "question": "What is the difference between citizenship by descent and naturalized citizenship?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "legal_definition",
+      "expected_sources": [
+        "citizenship.basics.overview.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-13",
+      "question": "वैवाहिक अंगीकृत नागरिकताको लागि के कागजात चाहिन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "required_documents",
+      "expected_sources": [
+        "citizenship.matrimonial.foreign_wife.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-14",
+      "question": "bideshi mahila le Nepali sanga bihe garepachi citizenship kasari line?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "foreign_spouse",
+      "expected_sources": [
+        "citizenship.matrimonial.foreign_wife.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-15",
+      "question": "What evidence is required for a foreign woman married to a Nepali citizen?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "foreign_spouse",
+      "expected_sources": [
+        "citizenship.matrimonial.foreign_wife.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-16",
+      "question": "नागरिकताको प्रतिलिपि लिन के चाहिन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "replacement",
+      "expected_sources": [
+        "citizenship.duplicate.lost_damaged.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-17",
+      "question": "citizenship harayo bhane copy kasari nikalne?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "lost",
+      "expected_sources": [
+        "citizenship.duplicate.lost_damaged.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-18",
+      "question": "What should I do if my citizenship certificate is lost?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "lost",
+      "expected_sources": [
+        "citizenship.duplicate.lost_damaged.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-19",
+      "question": "नागरिकतामा उमेर फरक परेको छ भने सच्याउन मिल्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "correction",
+      "expected_sources": [
+        "citizenship.correction.details.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-20",
+      "question": "citizenship ma spelling mistake cha, kasari sachyaune?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "correction",
+      "expected_sources": [
+        "citizenship.correction.details.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-21",
+      "question": "Can minor errors in a citizenship certificate be corrected?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "correction",
+      "expected_sources": [
+        "citizenship.correction.details.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-22",
+      "question": "विवाहपछि नागरिकतामा पतिको नाम राख्न के गर्नुपर्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "marriage",
+      "expected_sources": [
+        "citizenship.marriage.surname_change.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-23",
+      "question": "divorce pachi citizenship ko details kasari change garne?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "divorce",
+      "expected_sources": [
+        "citizenship.marriage.surname_change.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-24",
+      "question": "Can citizenship details be changed after divorce?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "divorce",
+      "expected_sources": [
+        "citizenship.marriage.surname_change.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-25",
+      "question": "विदेशी नागरिकता लिएपछि नेपाली नागरिकता के हुन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "renunciation",
+      "expected_sources": [
+        "citizenship.renunciation.loss.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-26",
+      "question": "foreign citizenship liye pachi Nepali citizenship automatically cancel huncha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "renunciation",
+      "expected_sources": [
+        "citizenship.renunciation.loss.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-27",
+      "question": "Does acquiring foreign citizenship affect Nepali citizenship?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "renunciation",
+      "expected_sources": [
+        "citizenship.renunciation.loss.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-28",
+      "question": "विदेशी नागरिकता त्यागेपछि नेपाली नागरिकता पुनः प्राप्त गर्न मिल्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "reacquisition",
+      "expected_sources": [
+        "citizenship.reacquisition.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-29",
+      "question": "NRN citizenship bhaneko k ho?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": [
+        "full political rights",
+        "मतदान गर्न पाइन्छ",
+        "can vote"
+      ]
+    },
+    {
+      "id": "rw-30",
+      "question": "Who can receive non-resident Nepali citizenship?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": [
+        "full political rights",
+        "मतदान गर्न पाइन्छ",
+        "can vote"
+      ]
+    },
+    {
+      "id": "rw-31",
+      "question": "NRN नागरिकताले मतदान गर्न पाइन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [
+        "आर्थिक, सामाजिक तथा सांस्कृतिक"
+      ],
+      "must_not_claim": [
+        "full political rights",
+        "मतदान गर्न पाइन्छ",
+        "can vote"
+      ]
+    },
+    {
+      "id": "rw-32",
+      "question": "NRN citizenship le property kinna milcha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": [
+        "full political rights",
+        "मतदान गर्न पाइन्छ",
+        "can vote"
+      ]
+    },
+    {
+      "id": "rw-33",
+      "question": "What rights does NRN citizenship provide?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": [
+        "full political rights",
+        "मतदान गर्न पाइन्छ",
+        "can vote"
+      ]
+    },
+    {
+      "id": "rw-34",
+      "question": "NRN नागरिकताको आवेदनमा कुन अनुसूची प्रयोग हुन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-35",
+      "question": "NRN ko lagi schedule 8G ke ho?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-36",
+      "question": "What is Schedule 8G for NRN citizenship?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-37",
+      "question": "नागरिकता बनाउन वडा कार्यालयबाट के सिफारिस चाहिन्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "required_documents",
+      "expected_sources": [
+        "citizenship.descent.first_issue.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-38",
+      "question": "DAO ma citizenship banauda kati time lagcha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "processing_time",
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-39",
+      "question": "How long does citizenship service take at a DAO?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "processing_time",
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-40",
+      "question": "काठमाडौंमा नागरिकता बनाउन कति शुल्क लाग्छ?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "fee",
+      "expected_sources": [
+        "citizenship.dao.fees_timing.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": [
+        "Rs 500",
+        "Rs 1000"
+      ]
+    },
+    {
+      "id": "rw-41",
+      "question": "arko jilla bata basai sarera Kathmandu aayeko chu, citizenship copy kasari line?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "replacement",
+      "expected_sources": [
+        "citizenship.duplicate.lost_damaged.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-42",
+      "question": "What if my citizenship was issued by another district?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "replacement",
+      "expected_sources": [
+        "citizenship.duplicate.lost_damaged.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-43",
+      "question": "नागरिकता आवेदन अस्वीकृत भयो भने पुनरावेदन कहाँ गर्ने?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "appeal",
+      "expected_sources": [
+        "citizenship.appeal.review.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-44",
+      "question": "citizenship ko decision ma chitta bujhena bhane kaha appeal garne?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "appeal",
+      "expected_sources": [
+        "citizenship.appeal.review.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-45",
+      "question": "What is the time limit for challenging a citizenship decision?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "appeal",
+      "expected_sources": [
+        "citizenship.appeal.review.001"
+      ],
+      "expected_answer_facts": [
+        "पैंतीस"
+      ],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-46",
+      "question": "२०८२ को दोस्रो संशोधनले बाबुको पहिचान नभएको केसमा के परिवर्तन गर्‍यो?",
+      "language": "ne",
+      "noise_level": "clean",
+      "expected_intent": "father",
+      "expected_sources": [
+        "citizenship.mother.father_unidentified.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-47",
+      "question": "2082 ko amendment le minor identity card ko barema k bhancha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "national_id",
+      "expected_sources": [
+        "citizenship.minor_id_card.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "rw-48",
+      "question": "What did the Second Amendment Act, 2082 change about a minor identity card?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "national_id",
+      "expected_sources": [
+        "citizenship.minor_id_card.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "born-abroad-rne-01",
+      "question": "bidesh ma janmeko, aama nepali, baba ko pahichan chaina, nagarikta milcha?",
+      "language": "roman_ne",
+      "noise_level": "clean",
+      "expected_intent": "mother",
+      "expected_sources": [
+        "citizenship.mother.born_abroad.001"
+      ],
+      "expected_answer_facts": [],
+      "must_not_claim": []
+    },
+    {
+      "id": "nrn-en-02",
+      "question": "I live in India and have Indian citizenship; my father was Nepali. Can I get NRN citizenship?",
+      "language": "en",
+      "noise_level": "clean",
+      "expected_intent": "non_resident",
+      "expected_sources": [
+        "citizenship.nrn.001"
+      ],
+      "expected_answer_facts": [
+        "SAARC"
       ],
       "must_not_claim": []
     }

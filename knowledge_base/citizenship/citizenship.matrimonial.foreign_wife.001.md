@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Act text up to the 2069 Ordinance; the 2079 Amendment Act was not reviewed"
+amendment_status: "Act text up to the 2069 Ordinance; the 2079 Amendment Act was not reviewed; Rules 5(1)(क1), 5(2) and 8 amended by the Fourth Amendment Rules, 2082"
 confidence: medium
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३, नियम ५, ८(१), अनुसूची–७"
@@ -37,6 +37,7 @@ user_questions:
 English: A foreign woman married to a Nepali citizen applies to the Chief District Officer on Schedule-7 with proof of the marriage and proof that she has started renouncing her foreign citizenship.
 
 ## कानुनी नियम (Legal rule)
+- संवैधानिक आधार: "नेपाली नागरिकसँग वैवाहिक सम्बन्ध कायम गरेकी विदेशी महिलाले चाहेमा संघीय कानून बमोजिम नेपालको अंगीकृत नागरिकता लिन सक्नेछ।" [संविधान, धारा ११(६)]
 - नेपाली नागरिकसँग वैवाहिक सम्बन्ध भएकी विदेशी महिलाले तोकिएको अधिकारीसमक्ष निवेदन दिनुपर्छ र वैवाहिक सम्बन्धको तथा विदेशी नागरिकता त्याग्ने कारबाही चलाएको निस्सा पेश गर्नुपर्छ। [ऐन, दफा ५(१)]
 - अङ्गीकृत नागरिकता पाउनेलाई ऐनको अनुसूची बमोजिम शपथ गराई प्रमाणपत्र दिइन्छ, र प्रमाणपत्र पाएको मितिदेखि अङ्गीकृत नागरिक हुन्छ। [ऐन, दफा ५(६)]
 - वैवाहिक अङ्गीकृत नागरिकता जारी गर्ने अधिकार प्रमुख जिल्ला अधिकारीलाई छ। [नियमावली, नियम ८(१)]
@@ -45,10 +46,11 @@ English: A foreign woman married to a Nepali citizen applies to the Chief Distri
 [नियमावली, नियम ५(१)] – अनुसूची–७ को ढाँचामा:
 1. नेपाली नागरिकसँग भएको वैवाहिक सम्बन्ध खुल्ने स्थानीय तहको सिफारिस।
 2. विदेशी नागरिकता त्याग्ने कारबाही चलाएको निस्सा।
+3. **नेपालको भिसा आवश्यक पर्ने विदेशी मुलुकको नागरिक भए** त्यस्तो भिसाको म्याद कायम रहेको निस्सा। [नियमावली, नियम ५(१)(क१), चौथो संशोधन २०८२]
 
 ## प्रक्रिया (Procedure)
 1. जिल्ला प्रशासन कार्यालयमा अनुसूची–७ मा निवेदन। [नियमावली, नियम ५(१)]
-2. छानबिनपछि योग्य देखिएमा अङ्गीकृत प्रमाणपत्र जारी। [नियमावली, नियम ५(२)]
+2. छानबिनपछि योग्य देखिएमा **वैवाहिक** अङ्गीकृत नेपाली नागरिकताको प्रमाणपत्र (अनुसूची–८ खण्ड (ख) को ढाँचामा) जारी। [नियमावली, नियम ५(२), ८(१)(ख), ८(७), चौथो संशोधन २०८२]
 3. शपथ ग्रहण। [ऐन, दफा ५(६)]
 
 ## दस्तुर र समय (Fees and time)
@@ -62,6 +64,7 @@ English: A foreign woman married to a Nepali citizen applies to the Chief Distri
 - नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ ले यस विषयमा परिवर्तन गरेको हुन सक्छ – पुष्टि गर्नुहोस्।
 
 ## स्रोत (Sources)
+- नेपालको संविधान, भाग–२ – https://lawcommission.gov.np/content/13437/nepal-s-constitution/
 - नेपाल नागरिकता ऐन, २०६३, दफा ५(१), ५(६), अनुसूची (शपथ)
 - नेपाल नागरिकता नियमावली, २०६३ (२०७८ सम्म संशोधित), नियम ५, ८(१), अनुसूची–७
 

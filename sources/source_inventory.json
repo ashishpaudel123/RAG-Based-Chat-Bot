@@ -3,12 +3,9 @@
   "generated_by": "Gemini Deep Research (prompt 1), reviewed by Claude Code on 2026-10-02",
   "status": "UNVERIFIED - every entry must be checked by a person (see sources/README.md)",
   "missing_sources": [
-    "Text of the Nepal Citizenship (First Amendment) Act, 2079 (or the consolidated Act including it)",
-    "Text of the Nepal Citizenship (Second Amendment) Act, 2082 (Gazette Extraordinary Issue 27, 2082-06-05)",
-    "Text of the Third (2080, Gazette No. 28) and Fourth (2082, Gazette No. 55) Amendment Regulations",
-    "Constitution of Nepal, Part 2 (Articles 10-15), consolidated Nepali text",
-    "DAO citizen charter PDFs (Kathmandu, Lalitpur, Bhaktapur, Kaski) to check fees and timings",
-    "MOHA circular(s) on implementing the 2079 First Amendment"
+    "Third Amendment Regulation 2080 official Gazette text (Gazette No. 28, 2080-06-04)",
+    "DAO Kathmandu citizen charter (site returned a server error; try another district's charter)",
+    "MoHA circular on implementing the 2079 First Amendment; Supreme Court decisions NKP 8557, 9627, 9687, 9841"
   ],
   "sources": [
     {
@@ -33,7 +30,8 @@
         "pdf_downloaded": false,
         "flags": [
           "Confirm the linked text includes BOTH amendments (2072 first amendment and 2077 second amendment); download the consolidated Nepali text.",
-          "User-supplied excerpt (2026-10-02, second batch): Art. 10(1), 10(2), 11(2), 11(5) quoted; used in citizenship.constitution.part2.001. Check the wording and the clause numbering of 11(2) against the official text."
+          "User-supplied excerpt (2026-10-02, second batch): Art. 10(1), 10(2), 11(2), 11(5) quoted; used in citizenship.constitution.part2.001. Check the wording and the clause numbering of 11(2) against the official text.",
+          "Full Part 2 (Art. 10-15) text supplied by the user (2026-10-02) and saved in sources/text/src-const-2072-part2.txt. Art. 11(3), 11(4), 11(5), 14 match the 2079 Act Gazette wording. Still check Art. 11(2) clause numbering and the phrase 'वंशीय आधार' in Art. 12."
         ]
       }
     },
@@ -95,24 +93,24 @@
       "source_title_en": "Nepal Citizenship (First Amendment) Act, 2079",
       "source_type": "amendment",
       "authority_tier": 1,
-      "issuing_authority": "Federal Parliament (authenticated by the President)",
+      "issuing_authority": "Federal Parliament; published by the Ministry of Law, Justice and Parliamentary Affairs (Nepal Gazette Khanda 73, Extraordinary 6, Part 2; Act No. 1 of 2080)",
       "publication_date": "2023-05-31 (AD) / 2080-02-17 BS",
-      "effective_date": "2023-05-31 (AD)",
+      "effective_date": "2080-02-17 BS (in force immediately)",
       "amendment_status": "amends Nepal Citizenship Act, 2063",
       "status": "current",
       "jurisdiction": "Nepal",
       "source_url": null,
       "retrieved_date": null,
-      "notes": "Added from Gemini's Table 1; Gemini could not find the official text. Most important recent amendment (children of citizens by birth; NRN citizenship). User-provided reference (2026-10-02): published in the Nepal Gazette, 'Volume 79', Extraordinary Issue 6. User-supplied excerpt (2026-10-02, second batch): Gazette Vol. 73 (the earlier 'Volume 79' was the Act year); authenticated Jestha 2080. Quoted new s.3(4) and s.3(5), and a new s.8क (surname/address of mother or father).",
+      "notes": "Scanned Gazette (10 pp) uploaded by the user; manual transcription in sources/text/src-act-amend1-2079.txt. Amends s.3, 5, 8, 9, 21; adds s.7क (NRN) and 8क; repeals s.4 (citizenship by birth).",
       "review": {
-        "priority": "critical",
+        "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
-          "Find the official text: Nepal Law Commission (recent Acts) or Nepal Gazette 2080. Or use the consolidated Act that already includes it.",
-          "'Volume 79' looks like the Act year, not a Gazette volume (2080 BS issues are Khanda 73); check the Gazette volume/issue and date (Gemini said 2080-02-17).",
-          "User-supplied excerpt (2026-10-02, second batch): s.3(4) and s.3(5) used in the descent records. s.8क is NOT used: it is not in any text seen, and its wording is close to Constitution Art. 12; confirm before writing a record."
+          "Manual transcription from page images: check quoted sections against the PDF.",
+          "CORRECTION: the user's earlier excerpt of s.3(4) left out 'संवत् २०७२ साल असोज ३ गतेभन्दा अघि' (birth-based citizenship obtained before the Constitution). Records corrected.",
+          "Gazette volume is Khanda 73 (the earlier 'Volume 79' reference was wrong)."
         ]
       }
     },
@@ -122,25 +120,23 @@
       "source_title_en": "Nepal Citizenship (Second Amendment) Act, 2082",
       "source_type": "amendment",
       "authority_tier": 1,
-      "issuing_authority": "Federal Parliament / Department of Printing",
+      "issuing_authority": "Ministry of Law, Justice and Parliamentary Affairs",
       "publication_date": "2025-09-21 (AD) / 2082-06-05 BS",
       "effective_date": "2025-09-21 (AD)",
-      "amendment_status": "amends Nepal Citizenship Act, 2063",
+      "amendment_status": "amends Nepal Citizenship Act, 2063 (s.3, 5, 8क, 18, 20, 21; adds 22क)",
       "status": "current",
       "jurisdiction": "Nepal",
-      "source_url": "https://dop.gov.np/content/12736/citizenship-act-2082/",
+      "source_url": "https://www.moljpa.gov.np/public/uploads/a807e5ec-369b-4922-bd65-ecbcd281374b.pdf",
       "retrieved_date": "2026-10-02",
-      "notes": "Published in Rajpatra Extraordinary Issue 27. User-provided reference (2026-10-02): confirms Extraordinary Issue 27, 2082-06-05.",
+      "notes": "Act No. 08 of 2082, authenticated 2082-06-05, in force immediately. Official PDF from the Ministry of Law uploaded by the user; text in sources/text/src-act-amend2-2082.txt (text layer partly garbled: र/ख shown as ि).",
       "review": {
-        "priority": "critical",
+        "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
-          "Existence now reported by the user (Extraordinary Issue 27, 2082-06-05) but the text has not been seen. The House was dissolved ~12 Sep 2025 (2082-05-27), so check whether it was passed before dissolution or is an ordinance.",
-          "amendment_status 'current consolidated text' is wrong for an amending Act; it amends the 2063 Act.",
-          "Gemini did not quote any provision from it; do not write records from it until the official text is in hand.",
-          "User-supplied excerpt (2026-10-02, second batch): only a description (single mothers' children), no text. Nothing written from it."
+          "Existence and text now confirmed from the official PDF; earlier 'unconfirmed' flags removed.",
+          "Records using it: appeal.review, mother.father_unidentified, mother.born_abroad, descent.children_of_birth_citizens, parent_name_omission, minor_id_card, fraud.penalties, basics.overview."
         ]
       }
     },
@@ -243,7 +239,8 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": [
-          "Gazette date 2080-06-04 confirmed by the user; get the text (the consolidated Regulation PDF stops at 2078)."
+          "Gazette date 2080-06-04 confirmed by the user; get the text (the consolidated Regulation PDF stops at 2078).",
+          "User-supplied 'main provisions' (2026-10-02) NOT used: they conflict with official texts. (1) A rule 3(1)(ग1) for children of birth citizens: the procedure is rule 3(3क) (2078). (2) Self-declaration on 'Schedule 1क': the official texts use Schedule 4क. (3) NRN 'rule 22क / Schedules 11क, 11ग': the official MoHA forms are rule 8क with Schedules 8ग, 8घ, 8च, and the 2082 amendment amends Schedule 8ग. The text also contains '...' so it is not verbatim. Inference: the 2080 amendment probably added rule 8क and Schedules 8ग-8च for NRN; confirm with the Gazette (No. 28, 2080-06-04)."
         ]
       }
     },
@@ -253,23 +250,23 @@
       "source_title_en": "Nepal Citizenship (Fourth Amendment) Regulation, 2082",
       "source_type": "amendment",
       "authority_tier": 1,
-      "issuing_authority": "Government of Nepal / Department of Printing",
-      "publication_date": "2026-01-04 (AD) / 2082-09-21 BS",
-      "effective_date": "2026-01-04 (AD)",
+      "issuing_authority": "Government of Nepal, Ministry of Home Affairs (Nepal Gazette Khanda 75, Sankhya 55, Part 3; Regulation (NeRaPa) No. 33 of 2082)",
+      "publication_date": "2026-01-05 (AD) / 2082-09-21 BS",
+      "effective_date": "2082-09-21 BS (in force immediately)",
       "amendment_status": "amends Nepal Citizenship Regulation, 2063",
       "status": "current",
       "jurisdiction": "Nepal",
-      "source_url": "https://dop.gov.np/category/sankhya-2082/?page=8",
+      "source_url": "https://dop.gov.np/content/12646/nepal-citizenship--fourth-amendment--regulations--2082--no-/",
       "retrieved_date": "2026-10-02",
-      "notes": "User-provided reference (2026-10-02): Nepal Gazette Number 55, 2082-09-21.",
+      "notes": "Scanned Gazette (38 pp, no text layer) uploaded by the user; manually transcribed to sources/text/src-reg-amend4-2082.txt. Amends rules 3, 5, 7, 8, 9, 14, adds rule 16क (minor ID card) and Schedules 4क, 7क, 7ख, 11, 13, 14; adds National ID number fields to the schedules.",
       "review": {
-        "priority": "critical",
+        "priority": "high",
         "verified_by_human": false,
         "url_checked": false,
-        "pdf_downloaded": false,
+        "pdf_downloaded": true,
         "flags": [
-          "Existence reported by the user; the text has not been seen. Find the exact Gazette PDF (current URL is a list page).",
-          "User-supplied excerpt (2026-10-02, second batch): the quoted 'Fourth Amendment' provisions (Sch. 4क self-declaration, leaving the father's details blank) are already rules 3(3ख) and 3(6क) of the Regulation as amended in 2078, so they are not new in 2082. The 'blank parent names' quote also merges rule 3(6) (no known parents: guardian's name is written) with 3(6क) (father unidentified: left blank). The National ID number requirement is unconfirmed. Nothing written from it."
+          "Manual transcription from page images: check every quoted rule against the PDF.",
+          "CORRECTION: an earlier note said the user's 'Fourth Amendment' quotes were really 2078 rules. That was wrong: this amendment does replace rule 3(3ख)(ङ) (now the applicant AND the mother self-declare on Sch. 4क; Sch. 4ख removed) and rule 3(6) (parents' names left blank; guardian's name shown if there is a guardian)."
         ]
       }
     },
@@ -338,7 +335,7 @@
       "amendment_status": "current consolidated text",
       "status": "current",
       "jurisdiction": "Kathmandu",
-      "source_url": "https://daokathmandu.moha.gov.np/en/page/citizen-charter-23",
+      "source_url": "https://daokathmandu.moha.gov.np/assets/3/%E0%A4%A8%E0%A4%BE%E0%A4%97%E0%A4%B0%E0%A4%BF%E0%A4%95_%E0%A4%B5%E0%A4%A1%E0%A4%BE%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0_pdf(1).pdf/file",
       "retrieved_date": "2026-10-02",
       "notes": "Details requirements for new, duplicate, and NRN citizenship.",
       "review": {
@@ -348,7 +345,8 @@
         "pdf_downloaded": false,
         "flags": [
           "No date: note the date shown on the charter page; treat as local practice of DAO Kathmandu only.",
-          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text."
+          "User-provided reference (2026-10-02): new certificate free; Rs 10/20 postal stamp for some services (e.g. duplicate); same-day issue when documents and ward recommendation are complete. Used for record citizenship.dao.fees_timing.001 (pending); check against the charter text.",
+          "Research pack (sources/research_pack_2082.md): official 9-page charter PDF URL; download it for fees, timing and the Schedule 2 duplicate procedure."
         ]
       }
     },
@@ -602,6 +600,31 @@
         "url_checked": false,
         "pdf_downloaded": false,
         "flags": []
+      }
+    },
+    {
+      "source_document_id": "src-moha-nrn-forms",
+      "source_title_ne": "गैरआवासीय नेपाली नागरिकताको प्रमाणपत्र सम्बन्धी अनुसूचीहरू",
+      "source_title_en": "MoHA NRN citizenship schedule forms (8G application, 8D commitment, 8Cha oath)",
+      "source_type": "official_portal",
+      "authority_tier": 2,
+      "issuing_authority": "Ministry of Home Affairs",
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_status": "forms under the 2079 amendment",
+      "status": "current",
+      "jurisdiction": "Nepal",
+      "source_url": "https://moha.gov.np/page/ga-raaava-sa-ya-na-pa-l-na-gara-kata-pa-rama-naepata-ra-sama-bna-thha-ana-sa-ca",
+      "retrieved_date": "2026-10-02",
+      "notes": "Research pack (sources/research_pack_2082.md): Schedule 8G (application), 8D (commitment), 8Cha (oath). No NRN record exists yet. Uploaded PDFs: sources/pdfs/src-moha-nrn-forms-8ga.pdf (application, 5 pp), -8gha.pdf (commitment), -8cha.pdf (oath); transcription in sources/text/src-moha-nrn-forms.txt. Used in citizenship.nrn.001.",
+      "review": {
+        "priority": "high",
+        "verified_by_human": false,
+        "url_checked": false,
+        "pdf_downloaded": true,
+        "flags": [
+          "Still need Act s.7क (NRN conditions) and Constitution Art. 14 to say who qualifies and which rights NRN citizens have."
+        ]
       }
     },
     {

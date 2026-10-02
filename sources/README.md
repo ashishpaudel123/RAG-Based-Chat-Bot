@@ -104,7 +104,44 @@ Quoted text was supplied for Constitution Art. 10-11, Act s.3(4)/3(5) as amended
 charters. It is used in the records (marked "user-supplied excerpt") and must still be checked against the official text.
 Not used:
 - **Second Amendment Act 2082:** only a description, no text.
-- **"Fourth Amendment Regulation 2082" quotes:** these are rules 3(3ख) and 3(6क) from the 2078 amendment, already
-  in the records. The "blank parent names" quote merges rule 3(6) (guardian's name for a person with no known
-  parents) with 3(6क) (father's details left blank). The National ID requirement is unconfirmed.
+- ~~"Fourth Amendment Regulation 2082" quotes~~ **Correction (2026-10-02):** I wrongly said these were 2078 rules.
+  The Gazette text (below) shows the Fourth Amendment did replace rule 3(3ख)(ङ) and rule 3(6), and added National ID
+  number fields to the forms. The user's excerpt was right.
 - **Act s.8क (surname/address):** not seen in any text; confirm first.
+
+## Research pack 2082/2083 (2026-10-02)
+
+`research_pack_2082.md` (from the user's .docx) gives the official URLs of the Second Amendment Act 2082
+(Act No. 08, Ministry of Law PDF), the Fourth Amendment Rules 2082 (Department of Printing page), the DAO Kathmandu
+charter PDF and the MoHA NRN forms. These hosts are blocked from Claude's environment, so the PDFs still need to be
+downloaded into `sources/pdfs/`. Its description of the 2082 Act (s.3(4क), 5(3)(ग), 5(5क), 5(5ख), 8क(1क), 18, 21(3क),
+22क) was added as a warning to the six records it affects; nothing was quoted from it. Its 50 test questions
+were added to the evaluation set (`rw-*`).
+
+## Official texts received (2026-10-02, third batch)
+
+| File | What it is | Text |
+|---|---|---|
+| `src-act-amend2-2082.pdf` | Second Amendment Act 2082 (Act No. 08, 2082-06-05), Ministry of Law PDF | `text/src-act-amend2-2082.txt` (some letters garbled) |
+| `src-reg-amend4-2082.pdf` | Fourth Amendment Rules 2082, Gazette Khanda 75 No. 55 (2082-09-21), 38-page scan | `text/src-reg-amend4-2082.txt` (manual transcription) |
+| `src-moha-nrn-forms-8ga/8gha/8cha.pdf` | MoHA NRN forms: application, commitment, oath | `text/src-moha-nrn-forms.txt` |
+
+The 2082 warnings in the records were replaced with the actual provisions. New records: `mother.born_abroad`,
+`minor_id_card`, `parent_name_omission`, `nrn`.
+
+## First Amendment Act 2079 received (2026-10-02, fourth batch)
+
+`src-act-amend1-2079.pdf`: Nepal Gazette Khanda 73, Extraordinary 6 (2080-02-17), Act No. 1 of 2080, 10-page scan;
+manual transcription in `text/src-act-amend1-2079.txt`. It gave the NRN section 7क, the new s.3(3)-(8), 8(3क), 8(4)
+(two citizens + one local official at the sarjamin), 8क (choose mother's or father's surname; gender identity),
+21(3क)-(3घ), and repealed s.4. **Correction:** the earlier user excerpt of s.3(4) left out "before 3 Asoj 2072".
+The DAO Kathmandu charter could not be downloaded (server error).
+
+## Constitution Part 2 and "Third Amendment 2080" text (2026-10-02, fifth batch)
+
+- **Constitution Part 2 (Art. 10-15)** text supplied in chat, saved to `text/src-const-2072-part2.txt` and used in
+  `citizenship.constitution.part2.001` and as the constitutional basis in six topic records. Art. 11(3)-(5) and 14 match
+  the 2079 Act Gazette wording.
+- **"Third Amendment Regulation 2080 main provisions": not used.** They conflict with the official texts: the procedure
+  for children of birth citizens is rule 3(3क) (2078), the self-declaration schedule is 4क (not "1क"), and NRN uses
+  rule 8क with Schedules 8ग/8घ/8च (official MoHA forms), not "rule 22क / Schedules 11क, 11ग". The text also has "...".

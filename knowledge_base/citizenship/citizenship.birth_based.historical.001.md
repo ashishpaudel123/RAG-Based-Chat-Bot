@@ -17,7 +17,7 @@ source_document_id: "src-act-2063"
 last_verified: null
 verification_status: pending
 language: [ne, en]
-amendment_status: "Time-limited provision of the original Act; application windows have passed"
+amendment_status: "Section 4 (citizenship by birth) was REPEALED by the First Amendment Act, 2079 (s.9); kept for historical reference only"
 confidence: high
 related_sources:
   - "नेपाल नागरिकता नियमावली, २०६३, नियम ४"
@@ -51,6 +51,7 @@ English: Historical, time-limited rule. Persons born in Nepal by the end of Chai
 जन्मको आधारमा नागरिकता पाएकाका सन्तानको वंशजको नागरिकता – citizenship.descent.children_of_birth_citizens.001
 
 ## अस्पष्ट वा स्रोतमा नभएका कुरा (Unclear / not in the source)
+- **नेपाल नागरिकता (पहिलो संशोधन) ऐन, २०७९ को दफा ९ ले मूल ऐनको दफा ४ खारेज गरेको छ।** अब यो बाटोबाट नयाँ नागरिकता पाइँदैन; पहिले जन्मको आधारमा नागरिकता पाएकाका सन्तानका लागि citizenship.descent.children_of_birth_citizens.001 हेर्नुहोस्।
 - अहिले नयाँ निवेदन दिन मिल्छ कि मिल्दैन भन्ने कुरा: ऐनमा समयसीमा तोकिएको छ; पछिल्ला संशोधन र संविधानका व्यवस्था यो रेकर्डमा समेटिएका छैनन्। अनुमान / Inference: यो सामान्यतया हाल उपलब्ध बाटो होइन; जिल्ला प्रशासन कार्यालयमा पुष्टि गर्नुहोस्।
 
 ## स्रोत (Sources)
