@@ -94,12 +94,20 @@ _BYE = re.compile(r"^\s*(bye|goodbye|see you)[\s!.,।]*$", re.I)
 _TAG_PATTERN = re.compile(r"</?\s*(evidence|source|system|instructions?|user_situation|latest_message|conversation)\b[^>]*>", re.I)
 
 
-# Scripts that never belong in a Nepali/English reply (models occasionally emit stray kana/CJK).
-_STRAY_SCRIPT = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]")
+# Scripts that never belong in a Nepali/English reply (models occasionally emit stray
+# Cyrillic, Hebrew, Arabic, kana/CJK or Hangul characters inside words).
+_STRAY_SCRIPT = re.compile(
+    r"[\u0400-\u04ff\u0590-\u05ff\u0600-\u06ff\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]")
 
 
 def _strip_stray_script(text: str, question: str) -> str:
     return text if _STRAY_SCRIPT.search(question) else _STRAY_SCRIPT.sub("", text)
+
+
+def _validation_text(e: "Evidence") -> str:
+    """Evidence text plus the source metadata shown to the model, so a cited section or rule
+    number taken from the source's reference (not its body) is not flagged as unsupported."""
+    return " ".join(filter(None, [e.text, e.legal_reference, e.section, e.document_title]))
 
 
 def sanitize(text: str) -> str:
@@ -408,7 +416,7 @@ class RAGPipeline:
                              "model_insufficient", analysis=analysis, confidence="LOW", language=lang)
 
         raw = _strip_stray_script(raw, question)
-        checked = validate_answer(raw.replace(INSUFFICIENT, "").strip(), {e.rank: e.text for e in evidence})
+        checked = validate_answer(raw.replace(INSUFFICIENT, "").strip(), {e.rank: _validation_text(e) for e in evidence})
         answer = checked.answer
         if checked.unsupported:
             answer += f"\n\n{self.profile.text('verification_note', lang)} " + ", ".join(checked.unsupported)
