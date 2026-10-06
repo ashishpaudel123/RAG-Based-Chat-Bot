@@ -234,6 +234,17 @@ def test_clarifying_question_once_then_answer(client, user_headers, knowledge, m
 def test_stray_script_is_removed_from_answers():
     assert rag_module._strip_stray_script("तपाईんको उमेर", "नागरिकता कसरी बनाउने?") == "तपाईको उमेर"
     assert rag_module._strip_stray_script("日本", "日本の市民権") == "日本"
+    assert rag_module._strip_stray_script("नागरिकтаको", "q") == "नागरिकको"
+    assert rag_module._strip_stray_script("Section 3(5ק)", "q") == "Section 3(5)"
+
+
+def test_cited_reference_from_source_metadata_is_not_flagged():
+    evidence = rag_module.Evidence(rank=1, chunk_id="c", document_id="d", document_title="Citizenship Act",
+                                   section="Eligibility", page=None, text="A child of a citizen mother qualifies.",
+                                   score=1.0, legal_reference="Nepal Citizenship Act 2063, Section 3(5)")
+    checked = validate_answer("Under Section 3(5) [1], a child qualifies. Section 99, also applies.",
+                              {1: rag_module._validation_text(evidence)})
+    assert checked.unsupported == ["Section 99"]
 
 
 def test_unsupported_figures_are_flagged(client, user_headers, knowledge, monkeypatch):

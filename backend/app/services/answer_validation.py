@@ -53,7 +53,7 @@ def validate_answer(answer: str, evidence_texts: dict[int, str]) -> ValidationRe
     for pattern in _CLAIM_PATTERNS:
         for match in pattern.finditer(folded):
             if _norm_number(match.group(1)) not in evidence_numbers:
-                claim = " ".join(match.group(0).split())
+                claim = " ".join(match.group(0).split()).rstrip(",.")
                 if claim not in unsupported:
                     unsupported.append(claim)
     return ValidationResult(answer=answer.strip(), cited_ranks=cited, unsupported=unsupported,
