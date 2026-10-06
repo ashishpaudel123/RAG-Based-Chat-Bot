@@ -94,6 +94,14 @@ _BYE = re.compile(r"^\s*(bye|goodbye|see you)[\s!.,।]*$", re.I)
 _TAG_PATTERN = re.compile(r"</?\s*(evidence|source|system|instructions?|user_situation|latest_message|conversation)\b[^>]*>", re.I)
 
 
+# Scripts that never belong in a Nepali/English reply (models occasionally emit stray kana/CJK).
+_STRAY_SCRIPT = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]")
+
+
+def _strip_stray_script(text: str, question: str) -> str:
+    return text if _STRAY_SCRIPT.search(question) else _STRAY_SCRIPT.sub("", text)
+
+
 def sanitize(text: str) -> str:
     """Neutralise delimiter tags so retrieved/user text cannot break out of its block."""
     return _TAG_PATTERN.sub(lambda m: m.group(0).replace("<", "‹").replace(">", "›"), text or "")
@@ -155,6 +163,7 @@ class RAGResult:
     confidence: str | None = None   # HIGH | MEDIUM | LOW | NEEDS_CLARIFICATION
     warnings: list[str] = field(default_factory=list)
     language: str = "en"
+    follow_up_questions: list[str] = field(default_factory=list)  # asked after an answer
 
     @property
     def kind(self) -> str:
@@ -359,19 +368,25 @@ class RAGPipeline:
         lang = analysis.language
         query = analysis.standalone_question or question
 
-        if (allow_clarification and self.settings.clarifying_questions and analysis.needs_clarification
-                and analysis.clarifying_questions):
+        wants_clarification = bool(allow_clarification and self.settings.clarifying_questions
+                                   and analysis.needs_clarification and analysis.clarifying_questions)
+        questions = [_strip_stray_script(q, question) for q in analysis.clarifying_questions]
+
+        def clarification() -> RAGResult:
             intro = ("तपाईंको अवस्थाअनुसार सही जानकारी दिन मलाई यी कुरा थाहा हुनुपर्छ:" if lang != "en"
                      else "To give you the correct answer for your situation, I need to know:")
-            text = intro + "\n" + "\n".join(f"{i}. {q}" for i, q in enumerate(analysis.clarifying_questions, 1))
-            return RAGResult(text, False, query, reason="clarification", analysis=analysis,
-                             confidence="NEEDS_CLARIFICATION", language=lang,
-                             retrieval_ms=int((time.perf_counter() - t0) * 1000))
+            text = intro + "\n" + "\n".join(f"{i}. {q}" for i, q in enumerate(questions, 1))
+            return RAGResult(text, False, query, [], [], candidates, retrieval_ms, 0, reason="clarification",
+                             analysis=analysis, confidence="NEEDS_CLARIFICATION", language=lang)
 
+        # Retrieve first: when the general rule is in the evidence, answer it and ask for the
+        # missing facts afterwards instead of withholding the answer behind questions.
         candidates, evidence = self.retrieve(analysis)
         retrieval_ms = int((time.perf_counter() - t0) * 1000)
         fallback = self.profile.text("fallback_messages", lang)
         if not evidence:
+            if wants_clarification:
+                return clarification()
             return RAGResult(fallback, True, query, [], [], candidates, retrieval_ms, 0, "no_evidence",
                              analysis=analysis, confidence="LOW", language=lang)
 
@@ -387,17 +402,25 @@ class RAGPipeline:
         generation_ms = int((time.perf_counter() - t1) * 1000)
 
         if INSUFFICIENT in raw and len(raw.replace(INSUFFICIENT, "").strip()) < 20:
+            if wants_clarification:
+                return clarification()
             return RAGResult(fallback, True, query, evidence, [], candidates, retrieval_ms, generation_ms,
                              "model_insufficient", analysis=analysis, confidence="LOW", language=lang)
 
+        raw = _strip_stray_script(raw, question)
         checked = validate_answer(raw.replace(INSUFFICIENT, "").strip(), {e.rank: e.text for e in evidence})
         answer = checked.answer
         if checked.unsupported:
             answer += f"\n\n{self.profile.text('verification_note', lang)} " + ", ".join(checked.unsupported)
+        follow_up = questions if wants_clarification else []
+        if follow_up:
+            intro = ("थप सही जानकारीका लागि कृपया यी कुरा बताउनुहोस्:" if lang != "en"
+                     else "To give you a more exact answer for your situation, please tell me:")
+            answer += "\n\n**" + intro + "**\n" + "\n".join(f"{n}. {q}" for n, q in enumerate(follow_up, 1))
         cited = [e for e in evidence if e.rank in checked.cited_ranks] or evidence
         return RAGResult(answer, False, query, evidence, cited, candidates, retrieval_ms, generation_ms,
                          analysis=analysis, confidence=self._confidence(cited, checked.unsupported, analysis),
-                         warnings=checked.unsupported, language=lang)
+                         warnings=checked.unsupported, language=lang, follow_up_questions=follow_up)
 
     @staticmethod
     def _confidence(cited: list[Evidence], unsupported: list[str], analysis: QueryAnalysis) -> str:

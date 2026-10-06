@@ -238,11 +238,13 @@ def main():
         a = result.analysis
         row.update(answer=result.answer, kind=result.kind, confidence=result.confidence,
                    detected_language=result.language, intents=a.intents if a else [],
-                   warnings=result.warnings, clarified=result.kind == "clarification")
+                   warnings=result.warnings, clarified=result.kind == "clarification",
+                   follow_up=bool(getattr(result, "follow_up_questions", None)))
+        row["asked"] = row["clarified"] or row["follow_up"]  # asked for missing facts (alone or after answering)
         if q["expected_intent"]:
             row["intent_correct"] = q["expected_intent"] in row["intents"]
         if q["expect_clarification"] is not None:
-            row["clarification_correct"] = row["clarified"] == bool(q["expect_clarification"])
+            row["clarification_correct"] = row["asked"] == bool(q["expect_clarification"])
 
         # retrieval: unique documents in reranked order
         ranked, seen = [], set()
@@ -344,6 +346,7 @@ def aggregate(rows: list[dict], args) -> dict:
         "intent_accuracy": rate(r.get("intent_correct") for r in ok),
         "clarification_accuracy": rate(r.get("clarification_correct") for r in ok),
         "clarification_rate": rate(r.get("clarified") for r in ok),
+        "follow_up_rate": rate(r.get("follow_up") for r in ok),
         "language_correctness": rate(r.get("language_ok") for r in ok),
         "latency_ms": {"mean": mean(lat), "p50": percentile(lat, 50), "p95": percentile(lat, 95)},
     }
