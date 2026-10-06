@@ -88,10 +88,34 @@ def rate(values):
     return round(sum(1 for v in values if v) / len(values), 4) if values else None
 
 
+# Nepali number words, so an expected fact "सोह्र वर्ष" matches an answer that says "१६ वर्ष"
+# (and vice versa). "छ" (six) is left out because it is also the verb "is".
+_NE_NUMBER_WORDS = {
+    "एक": 1, "दुई": 2, "तीन": 3, "चार": 4, "पाँच": 5, "पांच": 5, "सात": 7, "आठ": 8, "नौ": 9,
+    "दश": 10, "दस": 10, "एघार": 11, "बाह्र": 12, "तेह्र": 13, "चौध": 14, "पन्ध्र": 15, "सोह्र": 16,
+    "सत्र": 17, "अठार": 18, "अठाह्र": 18, "उन्नाइस": 19, "बीस": 20, "बिस": 20, "पच्चीस": 25,
+    "तीस": 30, "पैंतीस": 35, "चालीस": 40,
+}
+_NE_NUMBER_RE = re.compile(
+    r"(?<![\u0900-\u097F])(" + "|".join(sorted(_NE_NUMBER_WORDS, key=len, reverse=True)) + r")(?![\u0900-\u097F])")
+_BRACKETED = re.compile(r"\([^()]*\)|\[[^\[\]]*\]")
+
+
 def norm_text(text: str) -> str:
     from app.services.normalization import fold_digits
 
-    return re.sub(r"\s+", " ", fold_digits(text or "").lower().replace(",", ""))
+    text = _NE_NUMBER_RE.sub(lambda m: str(_NE_NUMBER_WORDS[m.group(1)]), text or "")
+    return re.sub(r"\s+", " ", fold_digits(text).lower().replace(",", ""))
+
+
+def language_ok(answer: str, expected_lang: str) -> bool:
+    """English answers may gloss Nepali terms in brackets, e.g. "relation letter (नाता प्रमाणित पत्र)";
+    those glosses are ignored so the answer still counts as English."""
+    from app.services.normalization import detect_language
+
+    if expected_lang == "en":
+        return detect_language(_BRACKETED.sub(" ", answer)) == "en"
+    return detect_language(answer) in ("ne", "mixed")
 
 
 def load_questions(path: str) -> list[dict]:
@@ -273,7 +297,7 @@ def main():
         row["unsupported_claims"] = bool(result.warnings)
         if result.kind == "answer":
             expected_lang = "en" if row["language"] == "en" else "ne"
-            row["language_ok"] = detect_language(result.answer) in (("en",) if expected_lang == "en" else ("ne", "mixed"))
+            row["language_ok"] = language_ok(result.answer, expected_lang)
 
         if not args.no_baseline:
             start = time.perf_counter()
