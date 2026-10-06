@@ -15,6 +15,8 @@ def test_fact_matching_treats_number_words_and_digits_alike():
     assert norm("१६ वर्ष") in norm("सोह्र वर्ष उमेर पूरा भएपछि")
     assert norm("पन्ध्र वर्ष") in norm("कम्तीमा 15 वर्षसम्म")
     assert norm("तीन जना") in norm("३ जना")
+    assert norm("पन्ध्र वर्ष") in norm("कम्तीमा १५ (पन्ध्र) वर्षसम्म")
+    assert norm("15 वर्ष") not in norm("15 (16) वर्ष")
     assert norm("सात") not in norm("साताको")  # number words inside other words are left alone
     assert norm("छ") == "छ"
 
@@ -26,3 +28,10 @@ def test_english_answer_with_bracketed_nepali_terms_counts_as_english():
     assert not run_eval.language_ok("तपाईंले जिल्ला प्रशासन कार्यालयमा निवेदन दिनुपर्छ।", "en")
     assert run_eval.language_ok("तपाईंले जिल्ला प्रशासन कार्यालयमा निवेदन दिनुपर्छ।", "ne")
     assert not run_eval.language_ok("Please apply at the District Administration Office.", "ne")
+    loss = ("**Short answer** - Yes, according to the law, if you voluntarily take foreign citizenship "
+            "(such as US citizenship), your Nepali citizenship no longer remains valid [2][3].\n\n"
+            "**Rule / eligibility** - A Nepali citizen who voluntarily acquires foreign citizenship stops "
+            "being a Nepali citizen [2][3].\n\n**Legal source** - नेपाल नागरिकता ऐन, २०६३ (Nepal "
+            "Citizenship Act, 2063), दफा १० (Section 10) [1][2][3]; नियम ९, १० (Rules 9, 10) [3].")
+    assert run_eval.language_ok(loss, "en")
+    assert not run_eval.language_ok("नागरिकता त्याग्न अनुसूची–९ मा सूचना दिनुपर्छ, Section 10.", "en")
