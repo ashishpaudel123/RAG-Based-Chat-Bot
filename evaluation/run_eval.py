@@ -105,16 +105,22 @@ def norm_text(text: str) -> str:
     from app.services.normalization import fold_digits
 
     text = _NE_NUMBER_RE.sub(lambda m: str(_NE_NUMBER_WORDS[m.group(1)]), text or "")
-    return re.sub(r"\s+", " ", fold_digits(text).lower().replace(",", ""))
+    text = fold_digits(text)
+    text = re.sub(r"(\d+)\s*\(\s*\1\s*\)", r"\1", text)  # "१५ (पन्ध्र)" -> "15 (15)" -> "15"
+    return re.sub(r"\s+", " ", text.lower().replace(",", ""))
 
 
 def language_ok(answer: str, expected_lang: str) -> bool:
-    """English answers may gloss Nepali terms in brackets, e.g. "relation letter (नाता प्रमाणित पत्र)";
-    those glosses are ignored so the answer still counts as English."""
+    """English answers may quote Nepali terms, e.g. "relation letter (नाता प्रमाणित पत्र)" or
+    "दफा १० (Section 10)"; bracketed glosses are ignored, and the answer counts as English when
+    at least 80% of the remaining letters are Latin."""
     from app.services.normalization import detect_language
 
     if expected_lang == "en":
-        return detect_language(_BRACKETED.sub(" ", answer)) == "en"
+        text = _BRACKETED.sub(" ", answer)
+        latin = len(re.findall(r"[A-Za-z]", text))
+        devanagari = len(re.findall(r"[\u0900-\u097F]", text))
+        return latin > 0 and latin >= 4 * devanagari
     return detect_language(answer) in ("ne", "mixed")
 
 
