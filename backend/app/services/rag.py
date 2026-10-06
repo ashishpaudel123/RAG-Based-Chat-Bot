@@ -12,6 +12,7 @@ No database or HTTP dependencies, so the evaluation harness reuses it.
 import json
 import re
 import time
+import unicodedata
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
@@ -19,7 +20,7 @@ from app.config import Settings, get_settings
 from app.services.answer_validation import validate_answer
 from app.services.keyword_index import BM25Index
 from app.services.llm import ChatTurn, LLMProvider
-from app.services.normalization import Normalizer, detect_language, tokenize
+from app.services.normalization import Normalizer, detect_language, fold_digits, tokenize
 from app.services.profile import DomainProfile, get_profile
 from app.services.query_analysis import QueryAnalysis, analyze_query, heuristic_analysis
 from app.services.vector_store import VectorStore
@@ -95,13 +96,66 @@ _TAG_PATTERN = re.compile(r"</?\s*(evidence|source|system|instructions?|user_sit
 
 
 # Scripts that never belong in a Nepali/English reply (models occasionally emit stray
-# Cyrillic, Hebrew, Arabic, kana/CJK or Hangul characters inside words).
+# Cyrillic, Armenian, Hebrew, Arabic, Thai, Georgian, kana/CJK or Hangul characters inside words).
 _STRAY_SCRIPT = re.compile(
-    r"[\u0400-\u04ff\u0590-\u05ff\u0600-\u06ff\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]")
+    r"[\u0400-\u04ff\u0530-\u05ff\u0600-\u06ff\u0e00-\u0e7f\u10a0-\u10ff"
+    r"\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]")
+
+
+def _indic_to_devanagari() -> dict[int, int | None]:
+    """Bengali, Gurmukhi and Gujarati letters (e.g. "ऐન") map to the Devanagari letter at the same
+    offset in their Unicode block; characters without a Devanagari counterpart are dropped."""
+    table: dict[int, int | None] = {}
+    for base in (0x0980, 0x0A00, 0x0A80):
+        for code in range(base, base + 0x80):
+            if unicodedata.name(chr(code), None):
+                target = code - base + 0x0900
+                table[code] = target if unicodedata.name(chr(target), None) else None
+    return table
+
+
+_INDIC_TABLE = _indic_to_devanagari()
+_INDIC_SCRIPT = re.compile(r"[\u0980-\u0aff]")
+_CJK_STOP = re.compile(r"[。．]")
 
 
 def _strip_stray_script(text: str, question: str) -> str:
-    return text if _STRAY_SCRIPT.search(question) else _STRAY_SCRIPT.sub("", text)
+    if not _STRAY_SCRIPT.search(question):
+        text = _STRAY_SCRIPT.sub("", text)
+
+        def stop(m: re.Match) -> str:  # CJK full stop -> danda after Nepali, period otherwise
+            before = re.sub(r"(?:\[[^\]]*\]|\s)+$", "", text[: m.start()])
+            return "।" if before and "\u0900" <= before[-1] <= "\u097f" else "."
+
+        text = _CJK_STOP.sub(stop, text)
+    if not _INDIC_SCRIPT.search(question):
+        text = text.translate(_INDIC_TABLE)
+    return text
+
+
+# Citation lists such as "[1, 2]", "[१][२]" or "[1-3]" become "[1][2]" so they are recognized,
+# and template placeholders the model sometimes copies ("[USER_SITUATION]",
+# "[युजरको छुटेका तथ्यहरू]") are removed.
+_CITATION_LIST = re.compile(r"\[\s*([\d०-९]+(?:\s*(?:,|-|–)\s*[\d०-९]+)*)\s*\](?!\()")
+_PLACEHOLDER = re.compile(
+    r"[ \t]*\[(?![^\]\n]*\d)[^\]\n]{0,60}(?:_|user|situation|युजर|प्रयोगकर्ता|तथ्य|प्रश्न)[^\]\n]{0,60}\](?!\()",
+    re.I)
+
+
+def _tidy_citations(text: str) -> str:
+    def expand(m: re.Match) -> str:
+        ranks: list[int] = []
+        for part in re.split(r"\s*,\s*", fold_digits(m.group(1))):
+            lo, _, hi = re.sub(r"\s+", "", part).replace("–", "-").partition("-")
+            if hi and int(lo) <= int(hi) <= int(lo) + 10:
+                ranks.extend(range(int(lo), int(hi) + 1))
+            else:
+                ranks.append(int(lo))
+        if any(r > 20 for r in ranks):  # a year or other number in brackets, not a citation
+            return m.group(0)
+        return "".join(f"[{r}]" for r in ranks)
+
+    return _PLACEHOLDER.sub("", _CITATION_LIST.sub(expand, text))
 
 
 def _validation_text(e: "Evidence") -> str:
@@ -415,7 +469,7 @@ class RAGPipeline:
             return RAGResult(fallback, True, query, evidence, [], candidates, retrieval_ms, generation_ms,
                              "model_insufficient", analysis=analysis, confidence="LOW", language=lang)
 
-        raw = _strip_stray_script(raw, question)
+        raw = _tidy_citations(_strip_stray_script(raw, question))
         checked = validate_answer(raw.replace(INSUFFICIENT, "").strip(), {e.rank: _validation_text(e) for e in evidence})
         answer = checked.answer
         if checked.unsupported:
