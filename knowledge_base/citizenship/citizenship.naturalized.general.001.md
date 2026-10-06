@@ -27,13 +27,15 @@ user_questions:
   - "bidesi le nepali nagarikta lina milcha?"
   - "angikrit nagarikta ko sarta"
   - "How can a foreigner become a Nepali citizen?"
+  - "विदेशीले नेपाली नागरिकता लिन कति वर्ष नेपालमा बस्नुपर्छ?"
+  - "How many years must a foreigner live in Nepal to get citizenship?"
 ---
 # विदेशी नागरिकको सामान्य अङ्गीकृत नेपाली नागरिकता (General naturalised citizenship for foreigners)
 
 ## सारांश (Summary)
-तोकिएका शर्त पूरा गरेका विदेशी नागरिकमध्ये विज्ञान, दर्शनशास्त्र, कला, साहित्य, विश्वशान्ति, मानव कल्याण वा नेपालको औद्योगिक, आर्थिक वा सामाजिक उन्नतिमा विशेष योगदान पुर्‍याएको वा पुर्‍याउन सक्ने भनी नेपाल सरकारले ठहर्‍याएको व्यक्तिलाई अङ्गीकृत नागरिकता दिन सकिन्छ। यस्तो प्रमाणपत्र **गृह मन्त्रालय**ले दिन्छ।
+तोकिएका शर्त पूरा गरेका विदेशी नागरिकमध्ये विज्ञान, दर्शनशास्त्र, कला, साहित्य, विश्वशान्ति, मानव कल्याण वा नेपालको औद्योगिक, आर्थिक वा सामाजिक उन्नतिमा विशेष योगदान पुर्‍याएको वा पुर्‍याउन सक्ने भनी नेपाल सरकारले ठहर्‍याएको व्यक्तिलाई अङ्गीकृत नागरिकता दिन सकिन्छ। यस्तो प्रमाणपत्र **गृह मन्त्रालय**ले दिन्छ। मुख्य शर्तमध्ये एक: निवेदक **कम्तीमा पन्ध्र (१५) वर्षसम्म नेपालमा बसोबास** गरेको हुनुपर्छ [ऐन, दफा ५(४)(घ)]।
 
-English: A foreigner who meets all the listed conditions and whom the Government considers to have made (or able to make) a special contribution may be naturalised. The Ministry of Home Affairs issues this certificate.
+English: A foreigner who meets all the listed conditions and whom the Government considers to have made (or able to make) a special contribution may be naturalised. The Ministry of Home Affairs issues this certificate. One of the main conditions is **residence in Nepal for at least fifteen (15) years** [Act, s.5(4)(d)].
 
 ## कानुनी नियम (Legal rule)
 देहायका शर्त र अवस्था पूरा गरेको हुनुपर्छ [ऐन, दफा ५(४)]:

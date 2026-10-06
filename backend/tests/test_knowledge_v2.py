@@ -236,6 +236,20 @@ def test_stray_script_is_removed_from_answers():
     assert rag_module._strip_stray_script("日本", "日本の市民権") == "日本"
     assert rag_module._strip_stray_script("नागरिकтаको", "q") == "नागरिकको"
     assert rag_module._strip_stray_script("Section 3(5ק)", "q") == "Section 3(5)"
+    assert rag_module._strip_stray_script("ऐન लागू भएको मितի", "q") == "ऐन लागू भएको मित"
+    assert rag_module._strip_stray_script("नियम १६ अनुसार हुन्छ [2][3]。", "q") == "नियम १६ अनुसार हुन्छ [2][3]।"
+    assert rag_module._strip_stray_script("It applies [1]。", "q") == "It applies [1]."
+
+
+def test_citation_lists_and_placeholders_are_tidied():
+    tidy = rag_module._tidy_citations
+    assert tidy("यो कानून हो [1, 2]।") == "यो कानून हो [1][2]।"
+    assert tidy("Rule 3 [१][३] and [2-4].") == "Rule 3 [1][3] and [2][3][4]."
+    assert tidy("You hold US citizenship [user_situation].") == "You hold US citizenship."
+    assert tidy("तथ्यमा निर्भर हुन्छ [युजरको छुटेका तथ्यहरू]!") == "तथ्यमा निर्भर हुन्छ!"
+    assert tidy("See [the form](https://example.org) [3].") == "See [the form](https://example.org) [3]."
+    assert tidy("Effective [2070-2075] [2]") == "Effective [2070-2075] [2]"
+    assert tidy("नागरिकता [citizenship certificate] बनाउन") == "नागरिकता [citizenship certificate] बनाउन"
 
 
 def test_cited_reference_from_source_metadata_is_not_flagged():
