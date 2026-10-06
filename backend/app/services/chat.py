@@ -44,7 +44,9 @@ def handle_message(db: Session, user: User, conversation: Conversation | None, t
     # Ask clarifying questions at most once in a row, so the user is never stuck in a loop.
     last_assistant = next((m for m in reversed(history_rows) if m.role == "assistant"), None)
     result = pipeline.answer(text, recent_history(history_rows), conversation.summary if conversation else None,
-                             allow_clarification=not (last_assistant and last_assistant.kind == "clarification"))
+                             allow_clarification=not (last_assistant and (
+                                 last_assistant.kind == "clarification"
+                                 or (last_assistant.analysis or {}).get("follow_up"))))
 
     if conversation is None:
         conversation = Conversation(user_id=user.id, title=make_title(text))
@@ -68,7 +70,7 @@ def handle_message(db: Session, user: User, conversation: Conversation | None, t
         kind=result.kind,
         confidence=result.confidence,
         language=result.language,
-        analysis=result.analysis.to_dict() if result.analysis else None,
+        analysis={**result.analysis.to_dict(), "follow_up": bool(result.follow_up_questions)} if result.analysis else None,
         warnings=result.warnings or None,
     )
     # Guard against vectors whose chunk row was removed concurrently.

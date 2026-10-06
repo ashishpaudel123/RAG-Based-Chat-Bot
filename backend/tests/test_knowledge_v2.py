@@ -214,13 +214,26 @@ def test_clarifying_question_once_then_answer(client, user_headers, knowledge, m
         return a
 
     monkeypatch.setattr(rag_module, "analyze_query", needs_more)
-    first = ask(client, user_headers, "Can I return it?")
+    # Evidence exists: the general rule is answered first and the missing facts are asked afterwards.
+    first = ask(client, user_headers, "How many days do I have to return a product?")
     msg = first["assistant_message"]
-    assert msg["kind"] == "clarification" and msg["confidence"] == "NEEDS_CLARIFICATION"
-    assert "Which product is it?" in msg["content"] and not msg["citations"]
-    # The follow-up is answered even if analysis still wants more facts (no clarification loops).
-    second = ask(client, user_headers, "A laptop, how many days do I have to return it?", first["conversation_id"])
+    assert msg["kind"] == "answer" and msg["citations"]
+    assert "Which product is it?" in msg["content"]
+    # The follow-up turn is answered without asking the same questions again (no loops).
+    second = ask(client, user_headers, "A laptop.", first["conversation_id"])
     assert second["assistant_message"]["kind"] in ("answer", "fallback")
+    assert "Which product is it?" not in second["assistant_message"]["content"]
+    # No evidence at all: asking for the missing facts is more useful than the fallback.
+    third = ask(client, user_headers, "Can I return it?")
+    msg = third["assistant_message"]
+    if not msg["citations"]:
+        assert msg["kind"] == "clarification" and msg["confidence"] == "NEEDS_CLARIFICATION"
+        assert "Which product is it?" in msg["content"]
+
+
+def test_stray_script_is_removed_from_answers():
+    assert rag_module._strip_stray_script("तपाईんको उमेर", "नागरिकता कसरी बनाउने?") == "तपाईको उमेर"
+    assert rag_module._strip_stray_script("日本", "日本の市民権") == "日本"
 
 
 def test_unsupported_figures_are_flagged(client, user_headers, knowledge, monkeypatch):
